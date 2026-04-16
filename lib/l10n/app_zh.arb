@@ -1902,5 +1902,49 @@
             }
         }
     },
-    "today": "今天"
+    "today": "今天",
+    "gestures": "手势",
+    "anyLanguage": "任何语言",
+    "enableEdgeGesturesTitle": "启用边缘手势",
+    "enableEdgeGesturesDesc": "通过在屏幕边缘上下滑动，调节亮度和音量",
+    "reverseEdgeGesturesTitle": "切换边缘手势",
+    "reverseEdgeGesturesDesc": "切换亮度与音量控制的侧边",
+    "brightnessIndicator": "亮度: {brightness}",
+    "@brightnessIndicator": {
+        "placeholders": {
+            "brightness": {
+                "type": "int"
+            }
+        }
+    },
+    "viewTrailer": "观看预告片",
+    "personBirthday": "生日: {date}",
+    "@personBirthday": {
+        "description": "Birthday label with formatted date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "personAge": "年龄: {age}",
+    "@personAge": {
+        "description": "Age label with age number",
+        "placeholders": {
+            "age": {
+                "type": "int",
+                "example": "30"
+            }
+        }
+    },
+    "personBirthPlace": "出生于 {place}",
+    "@personBirthPlace": {
+        "placeholders": {
+            "place": {
+                "type": "String"
+            }
+        }
+    },
+    "seerrMovies": "推荐电影",
+    "seerrSeries": "推荐节目"
 }
