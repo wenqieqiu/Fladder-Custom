@@ -1946,5 +1946,7 @@
         }
     },
     "seerrMovies": "推荐电影",
-    "seerrSeries": "推荐节目"
+    "seerrSeries": "推荐节目",
+    "stepForward": "向前",
+    "stepBack": "向后"
 }
