@@ -1949,5 +1949,7 @@
         }
     },
     "seerrMovies": "استكشاف الأفلام",
-    "seerrSeries": "استكشاف المسلسلات"
+    "seerrSeries": "استكشاف المسلسلات",
+    "stepForward": "التقدم خطوة",
+    "stepBack": "الرجوع خطوة"
 }
