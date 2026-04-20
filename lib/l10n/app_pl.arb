@@ -173,7 +173,7 @@
     },
     "goTo": "Idź do",
     "grid": "Siatka",
-    "group": "Grupa",
+    "group": "Grupuj",
     "groupBy": "Grupuj według",
     "hide": "Ukryj",
     "hideEmpty": "Ukryj puste",
@@ -1897,5 +1897,37 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "stepForward": "Do przodu",
+    "stepBack": "Do tyłu",
+    "anyLanguage": "Dowolny język",
+    "personBirthday": "Data urodzenia: {date}",
+    "@personBirthday": {
+        "description": "Birthday label with formatted date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "personAge": "Wiek: {age}",
+    "@personAge": {
+        "description": "Age label with age number",
+        "placeholders": {
+            "age": {
+                "type": "int",
+                "example": "30"
+            }
+        }
+    },
+    "personBirthPlace": "Urodzony w {place}",
+    "@personBirthPlace": {
+        "placeholders": {
+            "place": {
+                "type": "String"
+            }
+        }
+    },
+    "seerrMovies": "Odkryj filmy",
+    "seerrSeries": "Odkryj seriale"
 }
