@@ -1928,5 +1928,7 @@
     },
     "seerrMovies": "Найти новые фильмы",
     "seerrSeries": "Найти новые сериалы",
-    "anyLanguage": "Любой язык"
+    "anyLanguage": "Любой язык",
+    "stepForward": "Кадр вперёд",
+    "stepBack": "Кадр назад"
 }
