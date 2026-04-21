@@ -1953,5 +1953,7 @@
         }
     },
     "seerrMovies": "Filme entdecken",
-    "seerrSeries": "Serien entdecken"
+    "seerrSeries": "Serien entdecken",
+    "stepBack": "Schritt zurück",
+    "stepForward": "Schritt vorwärts"
 }
