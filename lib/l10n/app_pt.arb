@@ -205,7 +205,7 @@
         }
     },
     "masonry": "Alvenaria",
-    "mediaTypeBoxset": "Boxset",
+    "mediaTypeBoxset": "{count, plural, one{Coletânea} other{Coletâneas}}",
     "mediaTypeFolder": "{count, plural, one{Pasta} other{Pastas}}",
     "metaDataSavedFor": "Metadados salvos para {item}",
     "@metaDataSavedFor": {
@@ -219,7 +219,7 @@
     "mediaTypeMovie": "{count, plural, one{Filme} other{Filmes}}",
     "mediaTypePlaylist": "{count, plural, one{Lista de Reprodução} other{Listas de Reprodução}}",
     "mediaTypeSeason": "{count, plural, one{Temporada} other{Temporadas}}",
-    "mediaTypePhotoAlbum": "Álbum de fotos",
+    "mediaTypePhotoAlbum": "{count, plural, one{Álbum de fotos} other{Álbuns de fotos}}",
     "metadataRefreshDefault": "Verificar se há arquivos novos e atualizados",
     "minutes": "{count, plural, other{Minutos} one{Minuto}}",
     "@minutes": {
@@ -671,7 +671,7 @@
     "video": "{count, plural, one{Vídeo} other{Vídeos}}",
     "videoScaling": "Dimensionamento de vídeo",
     "videoScalingFill": "Preencher",
-    "videoScalingFillScreenTitle": "Tela cheia",
+    "videoScalingFillScreenTitle": "Preencher tela",
     "videoScalingFitHeight": "Ajustar altura",
     "videoScalingContain": "Conter",
     "videoScalingFillScreenDesc": "Preencha a barra de navegação e status",
