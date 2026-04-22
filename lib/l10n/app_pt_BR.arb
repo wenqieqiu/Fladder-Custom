@@ -216,7 +216,7 @@
         }
     },
     "mediaTypeMovie": "{count, plural, one{Filme} other{Filmes}}",
-    "mediaTypePlaylist": "{count, plural, one{Playlist} other{Playlists}}",
+    "mediaTypePlaylist": "{count, plural, one{Lista de Reprodução} other{Listas de Reprodução}}",
     "mediaTypeSeason": "{count, plural, one{Temporada} other{Temporadas}}",
     "mediaTypePhotoAlbum": "{count, plural, one{Álbum de Foto} other{Álbuns de Fotos}}",
     "metadataRefreshDefault": "Verificar se há arquivos novos e atualizados",
@@ -670,11 +670,11 @@
     "video": "{count, plural, one{Vídeo} other{Vídeos}}",
     "videoScaling": "Dimensionamento de vídeo",
     "videoScalingFill": "Preencher",
-    "videoScalingFillScreenTitle": "Tela cheia",
+    "videoScalingFillScreenTitle": "Preencher tela",
     "videoScalingFitHeight": "Ajustar altura",
     "videoScalingContain": "Conter",
     "videoScalingFillScreenDesc": "Preencha a barra de navegação e status",
-    "videoScalingCover": "Capa",
+    "videoScalingCover": "Cobrir",
     "nativeName": "Português (Brasil)",
     "homeBannerSlideshow": "Apresentação de slides",
     "settingsHomeBannerInformationDesc": "Informações para mostrar no banner inicial",
@@ -1004,11 +1004,11 @@
     "offline": "Offline",
     "shortCuts": "Atalho",
     "keyboardShortCuts": "Atalhos do teclado",
-    "skipForwardLength": "Avançar",
-    "skipBackLength": "Retroceder",
+    "skipForwardLength": "Comprimento do Avançar",
+    "skipBackLength": "Comprimento do Retroceder",
     "playPause": "Reproduzir/Pausar",
     "seekForward": "Avançar",
-    "seekBack": "Retornar",
+    "seekBack": "Retroceder",
     "mute": "Silenciar",
     "volumeUp": "Aumentar Volume",
     "volumeDown": "Diminuir Volume",
@@ -1860,10 +1860,56 @@
     "audioCodecLabel": "Codec de áudio",
     "bitrateLabel": "Taxa de bits",
     "transcodeInfoNoMetadata": "Não há metadados de transcodificação disponíveis.",
-    "containerLabel": "Container",
+    "containerLabel": "Contêiner",
     "kbps": "kbps",
     "resolutionLabel": "Resolução",
     "downloadOriginal": "Baixar original",
     "gestures": "Gestos",
-    "anyLanguage": "Qualquer idioma"
+    "anyLanguage": "Qualquer idioma",
+    "enableEdgeGesturesTitle": "Ativar gestos de borda",
+    "enableEdgeGesturesDesc": "Controlar o brilho e volume deslizando para cima e para baixo nos cantos da tela",
+    "reverseEdgeGesturesTitle": "Inverter gestos de borda",
+    "reverseEdgeGesturesDesc": "Inverter de lados o controle de volume e brilho",
+    "stepForward": "Avançar um quadro",
+    "stepBack": "Retroceder um quadro",
+    "brightnessIndicator": "Brilho: {brightness}",
+    "@brightnessIndicator": {
+        "placeholders": {
+            "brightness": {
+                "type": "int"
+            }
+        }
+    },
+    "viewTrailer": "Assistir trailer",
+    "downloadTranscoded": "Baixar convertido",
+    "personBirthday": "Data de nascimento: {date}",
+    "@personBirthday": {
+        "description": "Birthday label with formatted date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "personAge": "Idade: {age}",
+    "@personAge": {
+        "description": "Age label with age number",
+        "placeholders": {
+            "age": {
+                "type": "int",
+                "example": "30"
+            }
+        }
+    },
+    "personBirthPlace": "Nascido em {place}",
+    "@personBirthPlace": {
+        "placeholders": {
+            "place": {
+                "type": "String"
+            }
+        }
+    },
+    "seerrMovies": "Descobrir Filmes",
+    "seerrSeries": "Descobrir Séries",
+    "today": "Hoje"
 }
