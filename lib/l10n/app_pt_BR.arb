@@ -1863,5 +1863,7 @@
     "containerLabel": "Container",
     "kbps": "kbps",
     "resolutionLabel": "Resolução",
-    "downloadOriginal": "Baixar original"
+    "downloadOriginal": "Baixar original",
+    "gestures": "Gestos",
+    "anyLanguage": "Qualquer idioma"
 }
