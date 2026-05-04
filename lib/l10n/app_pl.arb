@@ -905,8 +905,8 @@
     "syncDeleteAll": "Usuń wszystkie pliki",
     "syncAllFiles": "Pobierz wszystkie pliki",
     "playPause": "Odtwórz/Pauza",
-    "seekForward": "Przewiń do Przodu",
-    "seekBack": "Przewiń do Tyłu",
+    "seekForward": "Przewiń do przodu",
+    "seekBack": "Przewiń do tyłu",
     "mute": "Wycisz",
     "volumeUp": "Podgłośnij",
     "volumeDown": "Przycisz",
@@ -1162,9 +1162,9 @@
     "screensaverBlack": "Czarny",
     "playerSettingsScreensaverTitle": "Wygaszacz ekranu",
     "playerSettingsScreensaverDesc": "Wybierz wygaszacz ekranu który będzie pokazywany po braku aktywności odtwarzacza",
-    "settingsLocalUrlTitle": "Lokalny URL serwera",
-    "settingsLocalUrlSetTitle": "Konfiguruj Lokalny URL",
-    "settingsLocalUrlSetDesc": "Określ lokalny adres serwera. Fladder będzie automatycznie używać ten URL gdy Twoje urządzenie będzie w tej samej sieci.",
+    "settingsLocalUrlTitle": "Lokalny adres serwera Jellyfin",
+    "settingsLocalUrlSetTitle": "Konfiguruj lokalny adres serwera Jellyfin",
+    "settingsLocalUrlSetDesc": "Określ lokalny adres serwera Jellyfin. Fladder będzie automatycznie używać ten URL gdy Twoje urządzenie będzie w tej samej sieci.",
     "regenerateTrickplayImages": "Regeneruj obrazy trickplay",
     "controlPanel": "Panel Sterowania",
     "controlPanelDesc": "Serwer, Aktywność, Użytkownicy, Biblioteka",
@@ -1929,5 +1929,7 @@
         }
     },
     "seerrMovies": "Odkryj filmy",
-    "seerrSeries": "Odkryj seriale"
+    "seerrSeries": "Odkryj seriale",
+    "seekForwardInstant": "Przewiń do przodu (natychmiast)",
+    "seekBackInstant": "Przewiń do tyłu (natychmiast)"
 }
