@@ -1317,7 +1317,7 @@
     "requestMore": "Pedir mais",
     "viewRequest": "Ver pedido",
     "email": "Email",
-    "username": "Username",
+    "username": "Nome do utilizador",
     "ok": "OK",
     "transcodeInfoTitle": "Informações de transcodificação",
     "transcodeInfoNoMetadata": "Não existem metadados de transcodificação disponíveis.",
@@ -1384,7 +1384,7 @@
     "subtitleDownloads": "Transferência de legendas",
     "downloadLanguages": "Idiomas para transferência",
     "seerrHeaderValue": "Valor",
-    "emailUsername": "Email/Username",
+    "emailUsername": "Email / Nome do utilizador",
     "markAsAvailable": "Marcar como disponível",
     "deleteData": "Eliminar dados",
     "removeSeriesFromSonarrConfirm": "Remover esta série do Sonarr? Isto irá eliminar todos os dados, INCLUINDO ficheiros.",
@@ -1868,5 +1868,54 @@
     "seerrLoggedIn": "Com sessão iniciada no Seerr",
     "hidePlayedInLatestDescription": "Ocultar conteúdo já visto de 'Adicionados recentemente'",
     "homeBannerDetailed": "Detalhado",
-    "backgroundColor": "Cor de fundo"
+    "backgroundColor": "Cor de fundo",
+    "gestures": "Gestos",
+    "reverseEdgeGesturesTitle": "Inverter gestos de borda",
+    "enableEdgeGesturesDesc": "Controlar o brilho e volume deslizando para cima e para baixo nos cantos do ecrã",
+    "reverseEdgeGesturesDesc": "Inverter de lados o controlo de volume e brilho",
+    "stepForward": "Avançar um quadro",
+    "stepBack": "Retroceder um quadro",
+    "brightnessIndicator": "Brilho: {brightness}",
+    "@brightnessIndicator": {
+        "placeholders": {
+            "brightness": {
+                "type": "int"
+            }
+        }
+    },
+    "rootFolder": "Pasta raiz",
+    "seerrCustomHeaders": "Cabeçalhos personalizados",
+    "seerrHeader": "Cabeçalho",
+    "viewTrailer": "Ver trailer",
+    "fallbackMaxBitrate": "Taxa de transferência máxima de fallback (Mbps)",
+    "personBirthday": "Data de nascimento: {date}",
+    "@personBirthday": {
+        "description": "Birthday label with formatted date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "personAge": "Idade: {age}",
+    "@personAge": {
+        "description": "Age label with age number",
+        "placeholders": {
+            "age": {
+                "type": "int",
+                "example": "30"
+            }
+        }
+    },
+    "personBirthPlace": "Nascido em {place}",
+    "@personBirthPlace": {
+        "placeholders": {
+            "place": {
+                "type": "String"
+            }
+        }
+    },
+    "seerrMovies": "Descobrir Filmes",
+    "seerrSeries": "Descobrir Séries",
+    "today": "Hoje"
 }
