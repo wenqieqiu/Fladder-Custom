@@ -1930,5 +1930,7 @@
     "seerrSeries": "Найти новые сериалы",
     "anyLanguage": "Любой язык",
     "stepForward": "Кадр вперёд",
-    "stepBack": "Кадр назад"
+    "stepBack": "Кадр назад",
+    "seekForwardInstant": "Премотка вперёд (Мгновенно)",
+    "seekBackInstant": "Премотка назад (Мгновенно)"
 }
