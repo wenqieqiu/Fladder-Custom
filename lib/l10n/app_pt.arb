@@ -1917,5 +1917,7 @@
     },
     "seerrMovies": "Descobrir Filmes",
     "seerrSeries": "Descobrir Séries",
-    "today": "Hoje"
+    "today": "Hoje",
+    "anyLanguage": "Qualquer idioma",
+    "enableEdgeGesturesTitle": "Ativar gestos de borda"
 }
