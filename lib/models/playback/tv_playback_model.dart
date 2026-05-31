@@ -282,7 +282,6 @@ class TvPlaybackModel extends PlaybackModel {
   Future<PlaybackModel?> playbackStopped(Duration position, Duration? totalDuration, Ref ref) async {
     stopTracking();
 
-    ref.read(playBackModel.notifier).update((state) => null);
     await ref.read(jellyApiProvider).sessionsPlayingStoppedPost(
           body: PlaybackStopInfo(
             itemId: item.id,

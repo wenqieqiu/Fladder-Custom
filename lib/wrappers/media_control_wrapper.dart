@@ -451,6 +451,7 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
     await Future.delayed(const Duration(seconds: 1));
 
     await playbackModel.playbackStopped(position ?? Duration.zero, totalDuration, ref);
+    ref.read(playBackModel.notifier).update((_) => null);
     ref.read(mediaPlaybackProvider.notifier).update((state) => state.copyWith(position: Duration.zero));
 
     if (_isAudioQueueMode) {

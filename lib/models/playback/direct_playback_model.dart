@@ -13,7 +13,6 @@ import 'package:fladder/models/items/trick_play_model.dart';
 import 'package:fladder/models/playback/playback_queue_state.dart';
 import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
 import 'package:fladder/util/bitrate_helper.dart';
 import 'package:fladder/util/duration_extensions.dart';
 import 'package:fladder/wrappers/media_control_wrapper.dart';
@@ -82,7 +81,6 @@ class DirectPlaybackModel extends PlaybackModel {
 
   @override
   Future<PlaybackModel?> playbackStopped(Duration position, Duration? totalDuration, Ref ref) async {
-    ref.read(playBackModel.notifier).update((state) => null);
     final stopPosition = resolvedStopPosition(position, totalDuration);
 
     await ref.read(jellyApiProvider).sessionsPlayingStoppedPost(
