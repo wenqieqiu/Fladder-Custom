@@ -16,6 +16,7 @@ import 'package:fladder/models/items/media_streams_model.dart';
 import 'package:fladder/models/media_playback_model.dart';
 import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/models/settings/video_player_settings.dart';
+import 'package:fladder/providers/pip_provider.dart';
 import 'package:fladder/providers/settings/client_settings_provider.dart';
 import 'package:fladder/providers/settings/video_player_settings_provider.dart';
 import 'package:fladder/providers/user_provider.dart';
@@ -40,6 +41,7 @@ import 'package:fladder/util/list_padding.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/util/string_extensions.dart';
 import 'package:fladder/widgets/full_screen_helpers/full_screen_wrapper.dart';
+import 'package:fladder/wrappers/pip_manager.dart';
 
 class DesktopControls extends ConsumerStatefulWidget {
   const DesktopControls({super.key});
@@ -96,8 +98,18 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaSegments = ref.watch(playBackModel.select((value) => value?.mediaSegments));
+    final isInPip = ref.watch(pipStateProvider).asData?.value ?? false;
     final player = ref.watch(videoPlayerProvider);
+    if (isInPip) {
+      // Keep only the subtitle widget so it's captured in the PiP frame.
+      final pipSubtitleWidget = player.subtitleWidget(false, controlsKey: _bottomControlsKey);
+      return Stack(
+        children: [
+          if (pipSubtitleWidget != null) Positioned.fill(child: pipSubtitleWidget),
+        ],
+      );
+    }
+    final mediaSegments = ref.watch(playBackModel.select((value) => value?.mediaSegments));
     final subtitleWidget = player.subtitleWidget(showOverlay, controlsKey: _bottomControlsKey);
     final isDesktop = AdaptiveLayout.of(context).isDesktop || kIsWeb;
     final speedBoostEnabled = ref.watch(videoPlayerSettingsProvider.select((value) => value.enableSpeedBoost));
@@ -357,6 +369,19 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> {
                         IconButton(
                             onPressed: () => showVideoPlayerOptions(context, () => minimizePlayer(context)),
                             icon: const Icon(IconsaxPlusLinear.more)),
+                        if (pipPlatformSupported && MediaQuery.orientationOf(context) == Orientation.landscape)
+                          IconButton(
+                            tooltip: context.localized.pictureInPictureTitle,
+                            onPressed: () async {
+                              final ok = await ref.read(pipManagerProvider).enter();
+                              if (!ok && context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(context.localized.pictureInPictureNotSupported)),
+                                );
+                              }
+                            },
+                            icon: const Icon(IconsaxPlusLinear.screenmirroring),
+                          ),
                         if (AdaptiveLayout.layoutOf(context) == ViewSize.tablet) ...[
                           IconButton(
                             onPressed: () => showSubSelection(context),
