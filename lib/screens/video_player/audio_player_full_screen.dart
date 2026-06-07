@@ -562,71 +562,78 @@ class _AudioPlayerFullScreenState extends ConsumerState<AudioPlayerFullScreen> {
       );
     }
 
-    return PopScope(
-      canPop: false,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop) {
-          closeFullScreen();
-        }
+    return BackButtonListener(
+      onBackButtonPressed: () async {
+        closeFullScreen();
+        return true;
       },
-      child: ThemeOverwrite(
-        color: dominantColor,
-        child: (context) => Scaffold(
-          body: Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: const [
-                      0,
-                      1,
-                    ],
-                    colors: [
-                      Theme.of(context).colorScheme.primaryContainer,
-                      Theme.of(context).colorScheme.surface,
-                    ],
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didPop, result) {
+          if (!didPop) {
+            closeFullScreen();
+          }
+        },
+        child: ThemeOverwrite(
+          color: dominantColor,
+          child: (context) => Scaffold(
+            body: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.sizeOf(context).height,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: const [
+                        0,
+                        1,
+                      ],
+                      colors: [
+                        Theme.of(context).colorScheme.primaryContainer,
+                        Theme.of(context).colorScheme.surface,
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                children: [
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () => closeFullScreen(force: true),
-                        icon: const Icon(IconsaxPlusLinear.arrow_down),
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: () => ref.read(videoPlayerProvider).stop(),
-                        icon: const Icon(IconsaxPlusBold.stop),
-                      ),
-                    ],
+                ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24).add(
+                    const EdgeInsets.only(top: 16),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 16,
-                    children: [
-                      albumArt(context),
-                      const SizedBox(height: 24),
-                      buildMetadata(context),
-                      const _AudioPlayerControls(),
-                    ],
-                  ),
-                  const Divider(),
-                  playbackOptions(context),
-                  queuePreview(context),
-                ].addInBetween(const SizedBox(
-                  height: 24,
-                )),
-              ),
-            ],
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () => closeFullScreen(force: true),
+                          icon: const Icon(IconsaxPlusLinear.arrow_down),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () => ref.read(videoPlayerProvider).stop(),
+                          icon: const Icon(IconsaxPlusBold.stop),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 16,
+                      children: [
+                        albumArt(context),
+                        const SizedBox(height: 24),
+                        buildMetadata(context),
+                        const _AudioPlayerControls(),
+                      ],
+                    ),
+                    const Divider(),
+                    playbackOptions(context),
+                    queuePreview(context),
+                  ].addInBetween(const SizedBox(
+                    height: 16,
+                  )),
+                ),
+              ],
+            ),
           ),
         ),
       ),
