@@ -177,8 +177,11 @@ class PlaybackModelHelper {
           oldModel: currentModel,
         );
     if (newModel == null) return null;
-    ref.read(videoPlayerProvider.notifier).loadPlaybackItem(newModel, Duration.zero);
-    return newModel;
+    final advancedQueue =
+        currentModel?.playbackQueue.advanceFromCurrentTo(currentModel.item.id, newItem.id);
+    final modelToLoad = advancedQueue != null ? newModel.updatePlaybackQueue(advancedQueue) : newModel;
+    ref.read(videoPlayerProvider.notifier).loadPlaybackItem(modelToLoad, Duration.zero);
+    return modelToLoad;
   }
 
   Future<void> loadTVChannel(ChannelModel? channel) async {
