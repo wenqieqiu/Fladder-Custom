@@ -1,0 +1,6 @@
+{
+  "defaultBranch": "master",
+  "embeddings": false,
+  "workerTimeout": 60,
+  "skipSkills": true
+}
