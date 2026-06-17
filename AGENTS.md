@@ -30,3 +30,17 @@ This project is indexed by GitNexus as **Fladder-Custom** (19372 symbols, 50767 
 | `gitnexus://repo/Fladder-Custom/process/{name}` | Step-by-step execution trace |
 
 <!-- gitnexus:end -->
+
+## Agent skills
+
+### Issue tracker
+
+Issues tracked on GitHub (`wenqieqiu/Fladder-Custom`). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Five canonical roles use default label names. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context layout (`CONTEXT.md` + `docs/adr/` at repo root). See `docs/agents/domain.md`.
