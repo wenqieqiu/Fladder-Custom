@@ -54,6 +54,15 @@ _VideoPlayerSettingsModel _$VideoPlayerSettingsModelFromJson(
           json['enableAdvancedVideoOptions'] as bool? ?? false,
       enableEdgeGestures: json['enableEdgeGestures'] as bool? ?? true,
       reverseEdgeGestures: json['reverseEdgeGestures'] as bool? ?? false,
+      enablePictureInPicture: json['enablePictureInPicture'] as bool? ?? true,
+      enableReplayGain: json['enableReplayGain'] as bool? ?? true,
+      replayGainVolumeLevel: $enumDecodeNullable(
+              _$ReplayGainVolumeLevelEnumMap, json['replayGainVolumeLevel']) ??
+          ReplayGainVolumeLevel.quiet,
+      enablePlayPauseFade: json['enablePlayPauseFade'] as bool? ?? true,
+      enableCrossfade: json['enableCrossfade'] as bool? ?? true,
+      crossfadeDurationMs:
+          (json['crossfadeDurationMs'] as num?)?.toInt() ?? 400,
     );
 
 Map<String, dynamic> _$VideoPlayerSettingsModelToJson(
@@ -86,6 +95,13 @@ Map<String, dynamic> _$VideoPlayerSettingsModelToJson(
       'enableAdvancedVideoOptions': instance.enableAdvancedVideoOptions,
       'enableEdgeGestures': instance.enableEdgeGestures,
       'reverseEdgeGestures': instance.reverseEdgeGestures,
+      'enablePictureInPicture': instance.enablePictureInPicture,
+      'enableReplayGain': instance.enableReplayGain,
+      'replayGainVolumeLevel':
+          _$ReplayGainVolumeLevelEnumMap[instance.replayGainVolumeLevel]!,
+      'enablePlayPauseFade': instance.enablePlayPauseFade,
+      'enableCrossfade': instance.enableCrossfade,
+      'crossfadeDurationMs': instance.crossfadeDurationMs,
     };
 
 const _$BoxFitEnumMap = {
@@ -156,6 +172,10 @@ const _$VideoHotKeysEnumMap = {
   VideoHotKeys.playPause: 'playPause',
   VideoHotKeys.seekForward: 'seekForward',
   VideoHotKeys.seekBack: 'seekBack',
+  VideoHotKeys.seekForwardInstant: 'seekForwardInstant',
+  VideoHotKeys.seekBackInstant: 'seekBackInstant',
+  VideoHotKeys.stepForward: 'stepForward',
+  VideoHotKeys.stepBack: 'stepBack',
   VideoHotKeys.mute: 'mute',
   VideoHotKeys.volumeUp: 'volumeUp',
   VideoHotKeys.volumeDown: 'volumeDown',
@@ -178,4 +198,10 @@ const _$ScreensaverEnumMap = {
   Screensaver.logo: 'logo',
   Screensaver.time: 'time',
   Screensaver.black: 'black',
+};
+
+const _$ReplayGainVolumeLevelEnumMap = {
+  ReplayGainVolumeLevel.quiet: 'quiet',
+  ReplayGainVolumeLevel.normal: 'normal',
+  ReplayGainVolumeLevel.loud: 'loud',
 };
