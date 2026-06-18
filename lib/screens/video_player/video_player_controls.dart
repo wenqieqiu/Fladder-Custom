@@ -126,10 +126,12 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
             onHover: AdaptiveLayout.of(context).isDesktop || kIsWeb ? (event) => toggleOverlay(value: true) : null,
             child: Stack(
               children: [
-                if (_hDragActive)
-                  Positioned.fill(
+                Positioned.fill(
+                  child: IgnorePointer(
+                    ignoring: !_hDragActive,
                     child: _buildScrubPreview(),
                   ),
+                ),
                 Positioned.fill(
                   child: GestureDetector(
                     onTap: initInputDevice == InputDevice.pointer ? null : () => toggleOverlay(),
@@ -734,6 +736,8 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
       _hDragTotalDistance = 0;
       _hDragTargetPosition = mediaPlayback.position;
     });
+    // [DEBUG-slide] onDragStart
+    debugPrint('[DEBUG-slide] _handleHorizontalDragStart called. pos=${mediaPlayback.position} dur=${mediaPlayback.duration}');
     // Pause the video during drag
     ref.read(videoPlayerProvider).pause();
   }
@@ -757,6 +761,8 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
       final newMs = (_hDragTargetPosition!.inMilliseconds + deltaMs).clamp(0, totalMs.toInt()).toInt();
       _hDragTargetPosition = Duration(milliseconds: newMs);
     });
+    // [DEBUG-slide] onDragUpdate
+    debugPrint('[DEBUG-slide] _handleHorizontalDragUpdate called. deltaDx=$deltaDx deltaMs=$deltaMs _hDragTarget=${_hDragTargetPosition} _hDragTotalDist=${_hDragTotalDistance}');
   }
 
   void _handleHorizontalDragEnd(DragEndDetails details) {
@@ -781,10 +787,13 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
     if (totalDistance >= 20) {
       ref.read(videoPlayerProvider).seek(targetPosition);
     }
+    // [DEBUG-slide] onDragEnd
+    debugPrint('[DEBUG-slide] _handleHorizontalDragEnd called. totalDist=$totalDistance seek=${totalDistance >= 20 ? targetPosition : "skipped"}');
     ref.read(videoPlayerProvider).play();
   }
 
   Widget _buildScrubPreview() {
+    if (!_hDragActive) return const SizedBox.shrink();
     final playbackModel = ref.read(playBackModel);
     final trickPlay = playbackModel?.trickPlay;
     final mediaPlayback = ref.read(mediaPlaybackProvider);
