@@ -4,6 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:collection/collection.dart';
 import 'package:fladder/models/items/images_models.dart';
 import 'package:fladder/models/library_search/library_search_options.dart';
+import 'package:fladder/models/server_query_result.dart';
 import 'package:fladder/providers/service_provider.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

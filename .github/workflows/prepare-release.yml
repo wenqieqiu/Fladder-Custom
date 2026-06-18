@@ -10,13 +10,13 @@ jobs:
     steps:
       - name: Generate Bot Token
         id: generate-token
-        uses: actions/create-github-app-token@v3.1.1
+        uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.FLADDER_BOT_APP_ID }}
           private-key: ${{ secrets.FLADDER_BOT_APP_PRIVATE_KEY }}
 
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
         with:
           ref: develop
           fetch-depth: 0

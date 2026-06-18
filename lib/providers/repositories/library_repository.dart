@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chopper/chopper.dart';
 import 'package:fladder/providers/api_provider.dart';
+import 'package:fladder/models/server_query_result.dart';
 
 import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
 import 'package:fladder/models/items/episode_model.dart';

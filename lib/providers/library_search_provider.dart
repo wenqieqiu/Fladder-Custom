@@ -22,6 +22,7 @@ import 'package:fladder/models/library_search/library_search_model.dart';
 import 'package:fladder/models/library_search/library_search_options.dart';
 import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/models/view_model.dart';
+import 'package:fladder/models/server_query_result.dart';
 import 'package:fladder/providers/api_provider.dart';
 import 'package:fladder/providers/library_filters_provider.dart';
 import 'package:fladder/providers/service_provider.dart';

@@ -1,24 +1,17 @@
-import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'package:async/async.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:screen_brightness/screen_brightness.dart';
 
-import 'package:fladder/models/item_base_model.dart';
 import 'package:fladder/models/items/media_segments_model.dart';
+import 'package:fladder/screens/video_player/components/player_controls_mixin.dart';
 import 'package:fladder/models/media_playback_model.dart';
 import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/models/playback/tv_playback_model.dart';
 import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
 import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
 import 'package:fladder/screens/shared/media/components/item_logo.dart';
 import 'package:fladder/screens/video_player/components/video_playback_information.dart';
@@ -34,7 +27,6 @@ import 'package:fladder/util/duration_extensions.dart';
 import 'package:fladder/util/input_handler.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/widgets/full_screen_helpers/full_screen_wrapper.dart';
-import 'package:fladder/providers/playback_model_helper.dart';
 
 class TvPlayerControls extends ConsumerStatefulWidget {
   final Function(bool value) showGuide;
@@ -47,31 +39,7 @@ class TvPlayerControls extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _TvPlayerControlsState();
 }
 
-class _TvPlayerControlsState extends ConsumerState<TvPlayerControls> {
-  final GlobalKey _bottomControlsKey = GlobalKey();
-
-  late final initInputDevice = AdaptiveLayout.inputDeviceOf(context);
-
-  late RestartableTimer timer = RestartableTimer(
-    const Duration(seconds: 5),
-    () => mounted ? toggleOverlay(value: false) : null,
-  );
-
-  double? previousVolume;
-
-  final fadeDuration = const Duration(milliseconds: 350);
-  bool showOverlay = true;
-  bool wasPlaying = false;
-  SystemUiMode? _currentSystemUiMode;
-
-  late final double topPadding = MediaQuery.of(context).viewPadding.top;
-  late final double bottomPadding = MediaQuery.of(context).viewPadding.bottom;
-
-  @override
-  void initState() {
-    super.initState();
-    timer.reset();
-  }
+class _TvPlayerControlsState extends ConsumerState<TvPlayerControls> with PlayerControlsMixin {
 
   @override
   Widget build(BuildContext context) {
@@ -134,27 +102,6 @@ class _TvPlayerControlsState extends ConsumerState<TvPlayerControls> {
     );
   }
 
-  Widget playButton(bool playing, bool buffering) {
-    return Align(
-      alignment: Alignment.center,
-      child: AnimatedScale(
-        curve: Curves.easeInOutCubicEmphasized,
-        scale: playing
-            ? 0
-            : buffering
-                ? 0
-                : 1,
-        duration: const Duration(milliseconds: 250),
-        child: IconButton.outlined(
-          onPressed: () => ref.read(videoPlayerProvider).play(),
-          isSelected: true,
-          iconSize: 65,
-          tooltip: "Resume video",
-          icon: const Icon(IconsaxPlusBold.play),
-        ),
-      ),
-    );
-  }
 
   Widget topButtons(BuildContext context) {
     final channel = ref.watch(playBackModel.select((value) => value is TvPlaybackModel ? value.channel : null));
@@ -229,7 +176,7 @@ class _TvPlayerControlsState extends ConsumerState<TvPlayerControls> {
       final bitRateOptions = ref.watch(playBackModel.select((value) => value?.bitRateOptions));
       final isTvModel = ref.watch(playBackModel.select((value) => value.runtimeType == TvPlaybackModel));
       return Container(
-        key: _bottomControlsKey, // Add key to measure height
+        key: bottomControlsKey, // Add key to measure height
         decoration: BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.bottomCenter,
@@ -459,139 +406,10 @@ class _TvPlayerControlsState extends ConsumerState<TvPlayerControls> {
     );
   }
 
-  Widget get previousButton {
-    return Consumer(
-      builder: (context, ref, child) {
-        final previousVideo = ref.watch(playBackModel.select((value) => value?.previousVideo));
-        return Tooltip(
-          message: previousVideo?.detailedName(context.localized) ?? "",
-          textAlign: TextAlign.center,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.95),
-          ),
-          textStyle: Theme.of(context).textTheme.labelLarge,
-          child: IconButton(
-            onPressed: loadPreviousVideo(ref, video: previousVideo),
-            iconSize: 30,
-            icon: const Icon(
-              IconsaxPlusLinear.backward,
-            ),
-          ),
-        );
-      },
-    );
-  }
 
-  Function()? loadPreviousVideo(WidgetRef ref, {ItemBaseModel? video}) {
-    final previousVideo = video ?? ref.read(playBackModel.select((value) => value?.previousVideo));
-    final buffering = ref.read(mediaPlaybackProvider.select((value) => value.buffering));
-    return previousVideo != null && !buffering ? () => ref.read(playbackModelHelper).loadNewVideo(previousVideo) : null;
-  }
 
-  Widget get nextVideoButton {
-    return Consumer(
-      builder: (context, ref, child) {
-        final nextVideo = ref.watch(playBackModel.select((value) => value?.nextVideo));
-        return Tooltip(
-          message: nextVideo?.detailedName(context.localized) ?? "",
-          textAlign: TextAlign.center,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.95),
-          ),
-          textStyle: Theme.of(context).textTheme.labelLarge,
-          child: IconButton(
-            onPressed: loadNextVideo(ref, video: nextVideo),
-            iconSize: 30,
-            icon: const Icon(
-              IconsaxPlusLinear.forward,
-            ),
-          ),
-        );
-      },
-    );
-  }
 
-  Function()? loadNextVideo(WidgetRef ref, {ItemBaseModel? video}) {
-    final nextVideo = video ?? ref.read(playBackModel.select((value) => value?.nextVideo));
-    final buffering = ref.read(mediaPlaybackProvider.select((value) => value.buffering));
-    return nextVideo != null && !buffering ? () => ref.read(playbackModelHelper).loadNewVideo(nextVideo) : null;
-  }
 
-  Widget seekBackwardButton(WidgetRef ref) {
-    final backwardSpeed =
-        ref.read(userProvider.select((value) => value?.userSettings?.skipBackDuration.inSeconds ?? 30));
-    return IconButton(
-      onPressed: () => seekBack(ref, seconds: backwardSpeed),
-      tooltip: "-$backwardSpeed",
-      iconSize: 40,
-      icon: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Icon(
-            IconsaxPlusBroken.refresh,
-            size: 45,
-          ),
-          Transform.translate(
-            offset: const Offset(0, 1),
-            child: Text(
-              "-$backwardSpeed",
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget seekForwardButton(WidgetRef ref) {
-    final forwardSpeed =
-        ref.read(userProvider.select((value) => value?.userSettings?.skipForwardDuration.inSeconds ?? 30));
-    return IconButton(
-      onPressed: () => seekForward(ref, seconds: forwardSpeed),
-      tooltip: forwardSpeed.toString(),
-      iconSize: 40,
-      icon: Stack(
-        alignment: Alignment.center,
-        children: [
-          Transform.flip(
-            flipX: true,
-            child: const Icon(
-              IconsaxPlusBroken.refresh,
-              size: 45,
-            ),
-          ),
-          Transform.translate(
-            offset: const Offset(0, 1),
-            child: Text(
-              forwardSpeed.toString(),
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void skipToSegmentEnd(MediaSegment? mediaSegment, String? segmentId) {
-    final end = mediaSegment?.end;
-    if (end != null) {
-      resetTimer();
-      ref.read(videoPlayerProvider).seek(end);
-
-      if (segmentId != null) {
-        Future(() {
-          final currentSkipped = ref.read(mediaPlaybackProvider).skippedSegments;
-          ref.read(mediaPlaybackProvider.notifier).update(
-                (state) => state.copyWith(
-                  skippedSegments: {...currentSkipped, segmentId},
-                ),
-              );
-        });
-      }
-    }
-  }
 
   void seekBack(WidgetRef ref, {int seconds = 15}) {
     final mediaPlayback = ref.read(mediaPlaybackProvider);
@@ -607,71 +425,6 @@ class _TvPlayerControlsState extends ConsumerState<TvPlayerControls> {
     ref.read(videoPlayerProvider).seek(Duration(seconds: newPosition));
   }
 
-  void toggleOverlay({bool? value}) {
-    if (showOverlay == (value ?? !showOverlay)) return;
-    setState(() => showOverlay = (value ?? !showOverlay));
-    resetTimer();
-
-    final desiredMode = showOverlay ? SystemUiMode.edgeToEdge : SystemUiMode.immersiveSticky;
-
-    if (_currentSystemUiMode != desiredMode) {
-      _currentSystemUiMode = desiredMode;
-      SystemChrome.setEnabledSystemUIMode(desiredMode, overlays: []);
-    }
-
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarDividerColor: Colors.transparent,
-    ));
-  }
-
-  void minimizePlayer(BuildContext context) {
-    clearOverlaySettings();
-    ref.read(mediaPlaybackProvider.notifier).update((state) => state.copyWith(state: VideoPlayerState.minimized));
-    Navigator.of(context).pop();
-  }
-
-  void resetTimer() => timer.reset();
-
-  Future<void> closePlayer() async {
-    clearOverlaySettings();
-    ref.read(videoPlayerProvider).stop();
-    Navigator.of(context).pop();
-  }
-
-  Future<void> clearOverlaySettings() async {
-    toggleOverlay(value: true);
-    if (initInputDevice != InputDevice.pointer) {
-      ScreenBrightness().resetApplicationScreenBrightness();
-    } else {
-      disableFullScreen();
-    }
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarIconBrightness: ref.read(clientSettingsProvider.select((value) => value.statusBarBrightness(context))),
-    ));
-
-    timer.cancel();
-  }
-
-  Future<void> disableFullScreen() async {
-    resetTimer();
-    if (AdaptiveLayout.of(context).isDesktop && defaultTargetPlatform != TargetPlatform.macOS) {
-      fullScreenHelper.closeFullScreen(ref);
-    }
-  }
-
-  void setVolume(PointerEvent event) {
-    if (event is PointerScrollEvent) {
-      if (event.scrollDelta.dy > 0) {
-        ref.read(videoPlayerSettingsProvider.notifier).steppedVolume(-5);
-      } else {
-        ref.read(videoPlayerSettingsProvider.notifier).steppedVolume(5);
-      }
-    }
-  }
 
   bool _onKey(VideoHotKeys value) {
     final mediaSegments = ref.read(playBackModel.select((value) => value?.mediaSegments));

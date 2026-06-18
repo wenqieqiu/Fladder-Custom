@@ -11,7 +11,6 @@ import 'package:drift_db_viewer/drift_db_viewer.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
 
 import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
 import 'package:fladder/models/api_result.dart';
@@ -39,9 +38,10 @@ import 'package:fladder/providers/api_provider.dart';
 import 'package:fladder/providers/connectivity_provider.dart';
 import 'package:fladder/providers/service_provider.dart';
 import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/sync/background_download_provider.dart';
 import 'package:fladder/providers/sync/sync_provider_media.dart';
+import 'package:fladder/services/sync_file_manager.dart';
 import 'package:fladder/providers/sync/sync_provider_overlay.dart';
+import 'package:fladder/providers/sync/background_download_provider.dart';
 import 'package:fladder/providers/user_provider.dart';
 import 'package:fladder/screens/shared/fladder_notification_overlay.dart';
 import 'package:fladder/util/duration_extensions.dart';
@@ -57,17 +57,17 @@ final activeDownloadTasksProvider = StateProvider<List<DownloadTask>>((ref) {
 });
 
 const syncPathKey = "syncPathKey";
-
 class SyncNotifier extends StateNotifier<SyncSettingsModel> {
   SyncNotifier(this.ref, this.mobileDirectory)
       : _db = AppDatabase(ref),
+        fileManager = SyncFileManager(mobileDirectory.path),
         super(SyncSettingsModel()) {
     _init();
   }
 
-
   final Ref ref;
   final AppDatabase _db;
+  final SyncFileManager fileManager;
   final Directory mobileDirectory;
   final String subPath = "Synced";
   bool updatingSyncStatus = false;
@@ -148,67 +148,11 @@ class SyncNotifier extends StateNotifier<SyncSettingsModel> {
 
   Future<void> cleanupTemporaryFiles() async {
     final activeDownloads = ref.read(activeDownloadTasksProvider);
-    if (activeDownloads.isNotEmpty) return;
-
-    // List of directories to check
-    final directories = [
-      //Desktop directory
-      await getTemporaryDirectory(),
-      //Mobile directory
-      await getApplicationSupportDirectory(),
-    ];
-
-    for (final dir in directories) {
-      final List<FileSystemEntity> files = dir.listSync();
-
-      for (var file in files) {
-        if (file is File) {
-          final fileName = file.path.split(Platform.pathSeparator).last;
-          try {
-            final fileSize = await file.length();
-            if (fileName.startsWith('com.bbflight.background_downloader') && fileSize != 0) {
-              try {
-                await file.delete();
-                log('Deleted temporary file: $fileName from ${dir.path}');
-              } catch (e) {
-                log('Failed to delete file $fileName: $e');
-              }
-            }
-          } on PathAccessException {
-            // Skip files that are inaccessible
-            continue;
-          }
-        }
-      }
-    }
+    await fileManager.cleanupTemporaryFiles(hasActiveDownloads: activeDownloads.isNotEmpty);
   }
 
   Future<List<String>> getTempFiles() async {
-    final tempFiles = <String>[];
-
-    // List of directories to check
-    final directories = [
-      //Desktop directory
-      await getTemporaryDirectory(),
-      //Mobile directory
-      await getApplicationSupportDirectory(),
-    ];
-
-    for (final dir in directories) {
-      final List<FileSystemEntity> files = dir.listSync();
-
-      for (var file in files) {
-        if (file is File) {
-          final fileName = file.path.split(Platform.pathSeparator).last;
-          final fileSize = await file.length();
-          if (fileName.startsWith('com.bbflight.background_downloader') && fileSize != 0) {
-            tempFiles.add(file.path);
-          }
-        }
-      }
-    }
-
-    return tempFiles;
+    return fileManager.getTempFiles();
   }
 
   late final JellyService api = ref.read(jellyApiProvider);
