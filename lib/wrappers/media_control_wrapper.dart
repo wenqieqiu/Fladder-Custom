@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smtc_windows/smtc_windows.dart' if (dart.library.html) 'package:fladder/stubs/web/smtc_web.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:fladder/models/item_base_model.dart';
@@ -28,13 +27,11 @@ import 'package:fladder/providers/settings/client_settings_provider.dart';
 import 'package:fladder/providers/settings/subtitle_settings_provider.dart';
 import 'package:fladder/providers/settings/video_player_settings_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/providers/window_title_provider.dart';
-import 'package:fladder/src/video_player_helper.g.dart' hide PlaybackState;
+import 'package:fladder/generated/video_player_helper.g.dart' hide PlaybackState;
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/wrappers/players/base_player.dart';
-import 'package:fladder/wrappers/players/lib_mdk.dart'
-    if (dart.library.html) 'package:fladder/stubs/web/lib_mdk_web.dart';
 import 'package:fladder/wrappers/players/lib_mpv.dart';
+import 'package:fladder/wrappers/players/lib_mdk.dart';
 import 'package:fladder/wrappers/players/native_player.dart';
 import 'package:fladder/wrappers/players/player_states.dart';
 
@@ -67,7 +64,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
 
   List<StreamSubscription> subscriptions = [];
   ProviderSubscription? _subtitleSettingsSubscription;
-  SMTCWindows? smtc;
 
   bool initializedWrapper = false;
   bool _isNewPlayback = false;
@@ -165,10 +161,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
     await _player?.loadVideo(model.media?.url ?? "", play, startPosition: startPosition);
     _player?.applySubtitleSettings(ref.read(subtitleSettingsProvider));
 
-    final context = ref.read(localizationContextProvider);
-    if (context != null) {
-      ref.read(windowTitleProvider.notifier).setPlayTitle(model.item.windowTitle(context.localized));
-    }
   }
 
   Future<void> updateTVGuide(TVGuideModel guide) async {
@@ -200,55 +192,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
   }
 
   void _subscribePlayer() {
-    if (!kIsWeb && Platform.isWindows) {
-      smtc = SMTCWindows(
-        config: const SMTCConfig(
-          fastForwardEnabled: true,
-          nextEnabled: false,
-          pauseEnabled: true,
-          playEnabled: true,
-          rewindEnabled: true,
-          prevEnabled: false,
-          stopEnabled: true,
-        ),
-      );
-
-      if (smtc != null) {
-        subscriptions.add(
-          smtc!.buttonPressStream.listen((event) {
-            switch (event) {
-              case PressedButton.play:
-                play();
-                break;
-              case PressedButton.pause:
-                pause();
-                break;
-              case PressedButton.fastForward:
-                fastForward();
-                break;
-              case PressedButton.rewind:
-                rewind();
-                break;
-              case PressedButton.stop:
-                stop();
-                break;
-              case PressedButton.previous:
-                skipToPrevious();
-                break;
-              case PressedButton.next:
-                skipToNext();
-                break;
-              case PressedButton.record:
-                break;
-              case PressedButton.channelUp:
-                break;
-              case PressedButton.channelDown:
-                break;
-            }
-          }),
-        );
-      }
-    }
 
     subscriptions.add(_player!.stateStream.listen((value) {
       playbackState.add(playbackState.value.copyWith(
@@ -257,8 +200,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
         updatePosition: value.position,
         playing: value.playing,
       ));
-      smtc?.setPosition(value.position);
-      smtc?.setPlaybackStatus(value.playing ? PlaybackStatus.playing : PlaybackStatus.paused);
       if (value.completed && !_audioQueueTransitioning) {
         _onAudioTrackCompleted();
       }
@@ -364,7 +305,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
         playBackItem.images?.primary ?? (playBackItem is ItemStreamModel ? playBackItem.parentImages?.primary : null);
     final currentPosition = _player?.lastState.position ?? await playbackModel.startDuration() ?? Duration.zero;
 
-    windowSMTCSetup(playBackItem, currentPosition, playing);
 
     final hasNextVideo = ref.read(playBackModel.select((value) => value?.nextVideo != null));
     final hasPreviousVideo = ref.read(playBackModel.select((value) => value?.previousVideo != null));
@@ -415,30 +355,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
     ));
   }
 
-  Future<void> windowSMTCSetup(ItemBaseModel playBackItem, Duration currentPosition, bool playing) async {
-    final mainContext = ref.read(localizationContextProvider);
-    final poster =
-        playBackItem.images?.primary ?? (playBackItem is ItemStreamModel ? playBackItem.parentImages?.primary : null);
-
-    //Windows setup
-    smtc?.updateMetadata(MusicMetadata(
-      title: playBackItem.title,
-      artist: mainContext != null ? playBackItem.label(mainContext.localized) : null,
-      thumbnail: poster != null ? _imageDataToUri(poster.path).toString() : null,
-    ));
-    smtc?.updateTimeline(
-      PlaybackTimeline(
-        startTimeMs: 0,
-        endTimeMs: (playBackItem.overview.runTime ?? const Duration(seconds: 0)).inMilliseconds,
-        positionMs: currentPosition.inMilliseconds,
-        minSeekTimeMs: 0,
-        maxSeekTimeMs: (playBackItem.overview.runTime ?? const Duration(seconds: 0)).inMilliseconds,
-      ),
-    );
-
-    smtc?.enableSmtc();
-    smtc?.setPlaybackStatus(playing ? PlaybackStatus.playing : PlaybackStatus.paused);
-  }
 
   @override
   Future<void> stop() async {
@@ -448,7 +364,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
     ref.read(mediaPlaybackProvider.notifier).update((state) => state.copyWith(state: VideoPlayerState.disposed));
     WakelockPlus.disable();
     _player?.stop();
-    ref.read(windowTitleProvider.notifier).setPlayTitle(null);
 
     final position = _player?.lastState.position;
     final totalDuration = _player?.lastState.duration;
@@ -473,9 +388,6 @@ class MediaControlsWrapper extends BaseAudioHandler implements VideoPlayerContro
       await _restorePreviousPlayer();
     }
 
-    smtc?.setPlaybackStatus(PlaybackStatus.stopped);
-    smtc?.clearMetadata();
-    smtc?.disableSmtc();
 
     playbackState.add(
       playbackState.value.copyWith(

@@ -1,13 +1,13 @@
 
 <h1 align="center">
   <br>
-    <a href="https://github.com/DonutWare/Fladder"><img src="https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/develop/icons/production/fladder_macos_icon.png" alt="Fladder" width="200"></a>
+    <a href="https://github.com/DonutWare/Fladder"><img src="https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/develop/icons/production/fladder_icon.png" alt="Fladder" width="200"></a>
   <br>
   Fladder
   <br>
 </h1>
 
-<h4 align="center">A cross-platform Jellyfin Frontend built on top of <a href="https://flutter.dev/" target="_blank">Flutter</a>.</h4>
+<h4 align="center">A Jellyfin client for Android (forked from <a href="https://github.com/DonutWare/Fladder" target="_blank">Fladder</a>, slimmed to Android-only).</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -43,17 +43,11 @@
 * Sync items for all platforms
 * Download items and keep progress in sync
 * Keyboard shortcuts
-* Adaptive layout for all platforms
+* Adaptive layout for multiple screen sizes
 * Next-up overview when watching a queue
 * Server management
 * Seerr/Jellyseerr integration
-* Platforms
-  - Android + TV
-  - Web + Docker
-  - macOS
-  - Windows 
-  - iOS 
-  - Linux 
+* Platforms: Android (Phone + Tablet + TV)
  
 ## Screenshots
 <details close>
@@ -96,28 +90,18 @@
    <img src="https://github.com/DonutWare/Fladder/blob/develop/assets/marketing/screenshots/Television/Player.png?raw=true" alt="Fladder" width="1280">   
 </details>
 
-Web/Desktop [try out the web build!](https://DonutWare.github.io/Fladder)
-> [!NOTE]
-> The GitHub hosted web build only allows `https` connections. This is a limitation on GitHub's end, for self-hosted versions `http` works fine.
 
 ## Planned Features
 
 * Music playback
 * [And more???](https://github.com/DonutWare/Fladder/discussions/categories/ideas)
 
-## Download
+The latest Android APK can be found on the [releases page](https://github.com/DonutWare/Fladder/releases).
 
-The latest executables for Windows, macOS, Linux, iOS, Android and Web can be found on the [releases page](https://github.com/DonutWare/Fladder/releases).
-
-You can pull the Docker version using the following tags: ```ghcr.io/donutware/fladder:latest```. or ```ghcr.io/donutware/fladder-rootless:latest```
-
-*Platform-specific installation and usage instructions can be found [here](https://github.com/DonutWare/Fladder/blob/develop/INSTALL.md).*
+Installation and usage instructions can be found [here](https://github.com/DonutWare/Fladder/blob/develop/INSTALL.md).
 
 <a href='https://play.google.com/store/apps/details?id=nl.jknaapen.fladder&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width=250 align='middle'/></a>
-<a href='https://flathub.org/apps/nl.jknaapen.fladder'><img alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en' width=192 align='middle'/></a>
 
-> [!WARNING]
-> (Windows) Some flutter applications are marked as false positives by windows defender for more info see [this issue](https://github.com/DonutWare/Fladder/issues/197#issuecomment-2568906874).
 
 ## How to Contribute
 Interested in contributing? Here are a couple of ways you can help:

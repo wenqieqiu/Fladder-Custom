@@ -28,21 +28,10 @@ class NotificationService {
     if (kIsWeb) return;
 
     const android = AndroidInitializationSettings('ic_notification');
-    final darwin = const DarwinInitializationSettings();
-    final linux = const LinuxInitializationSettings(defaultActionName: 'Open notification');
-    final windows = const WindowsInitializationSettings(
-      appName: 'Fladder',
-      appUserModelId: 'nl.jknaapen.fladder',
-      guid: 'd49b0314-ee7a-4626-bf79-97cdb8a991bb',
-    );
 
     await _plugin.initialize(
       settings: InitializationSettings(
         android: android,
-        iOS: darwin,
-        macOS: darwin,
-        linux: linux,
-        windows: windows,
       ),
       onDidReceiveNotificationResponse: (NotificationResponse resp) {
         _selectNotificationController.add(resp.payload);
@@ -78,16 +67,6 @@ class NotificationService {
       return res.isGranted;
     }
 
-    if (Platform.isIOS || Platform.isMacOS) {
-      final iosImpl = _plugin.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
-      final result = await iosImpl?.requestPermissions(alert: true, badge: true, sound: true);
-      return result ?? true;
-    }
-
-    if (Platform.isLinux || Platform.isWindows) {
-      return true;
-    }
-
     return false;
   }
 
@@ -99,9 +78,6 @@ class NotificationService {
       importance: Importance.defaultImportance,
       priority: Priority.defaultPriority,
     );
-    const iosDetails = DarwinNotificationDetails();
-    final linuxDetails = const LinuxNotificationDetails(defaultActionName: 'Open notification');
-    final windowsDetails = const WindowsNotificationDetails();
 
     await _plugin.show(
       id: DateTime.now().millisecondsSinceEpoch.remainder(100000),
@@ -109,9 +85,6 @@ class NotificationService {
       body: body,
       notificationDetails: NotificationDetails(
         android: androidDetails,
-        iOS: iosDetails,
-        linux: linuxDetails,
-        windows: windowsDetails,
       ),
     );
   }
@@ -147,9 +120,6 @@ class NotificationService {
         groupAlertBehavior: GroupAlertBehavior.summary,
       );
 
-      final iosSummary = DarwinNotificationDetails(threadIdentifier: groupKey);
-      final linuxSummary = const LinuxNotificationDetails(defaultActionName: 'Open notification');
-      final windowsSummary = const WindowsNotificationDetails();
 
       await _plugin.show(
         id: baseId,
@@ -160,9 +130,6 @@ class NotificationService {
         payload: single.payLoad,
         notificationDetails: NotificationDetails(
           android: androidSummary,
-          iOS: iosSummary,
-          linux: linuxSummary,
-          windows: windowsSummary,
         ),
       );
 
@@ -182,9 +149,6 @@ class NotificationService {
         groupKey: groupKey,
         groupAlertBehavior: GroupAlertBehavior.summary,
       );
-      final iosChild = DarwinNotificationDetails(threadIdentifier: groupKey);
-      final linuxChild = const LinuxNotificationDetails(defaultActionName: 'Open notification');
-      final windowsChild = const WindowsNotificationDetails();
       futures.add(_plugin.show(
         id: childId,
         title: notification.title,
@@ -192,9 +156,6 @@ class NotificationService {
         payload: notification.payLoad,
         notificationDetails: NotificationDetails(
           android: androidChild,
-          iOS: iosChild,
-          linux: linuxChild,
-          windows: windowsChild,
         ),
       ));
     }
@@ -217,9 +178,6 @@ class NotificationService {
       groupAlertBehavior: GroupAlertBehavior.summary,
     );
 
-    final iosSummary = DarwinNotificationDetails(threadIdentifier: groupKey);
-    final linuxSummary = const LinuxNotificationDetails(defaultActionName: 'Open notification');
-    final windowsSummary = const WindowsNotificationDetails();
 
     await _plugin.show(
       id: baseId,
@@ -227,9 +185,6 @@ class NotificationService {
       body: summaryText ?? '${notifications.length} new item(s)',
       notificationDetails: NotificationDetails(
         android: androidSummary,
-        iOS: iosSummary,
-        linux: linuxSummary,
-        windows: windowsSummary,
       ),
     );
   }

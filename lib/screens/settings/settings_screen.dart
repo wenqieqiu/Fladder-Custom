@@ -18,7 +18,6 @@ import 'package:fladder/screens/shared/fladder_icon.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/util/theme_extensions.dart';
-import 'package:fladder/util/window_actions.dart';
 
 @RoutePage()
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -202,11 +201,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     context.localized.exitFladderTitle,
                     context.localized.exitFladderDesc,
                     (context) async {
-                      if (AdaptiveLayout.of(context).isDesktop) {
-                        await quitApplication(context);
-                      } else {
-                        SystemNavigator.pop();
-                      }
+                      await SystemNavigator.pop();
                     },
                     context.localized.close,
                     (context) => context.pop(),

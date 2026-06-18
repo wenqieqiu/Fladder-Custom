@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:file_picker/file_picker.dart';
 
 import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
 import 'package:fladder/models/item_editing_model.dart';
 import 'package:fladder/providers/edit_item_provider.dart';
 import 'package:fladder/providers/settings/client_settings_provider.dart';
 import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/shared/file_picker.dart';
 import 'package:fladder/util/custom_cache_manager.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 import 'package:fladder/util/focus_provider.dart';
@@ -24,6 +24,7 @@ class EditImageContent extends ConsumerStatefulWidget {
 
 class _EditImageContentState extends ConsumerState<EditImageContent> {
   bool loading = false;
+  final _urlController = TextEditingController();
 
   Future<void> loadAll() async {
     setState(() {
@@ -39,6 +40,12 @@ class _EditImageContentState extends ConsumerState<EditImageContent> {
   void initState() {
     super.initState();
     Future.microtask(() => loadAll());
+  }
+
+  @override
+  void dispose() {
+    _urlController.dispose();
+    super.dispose();
   }
 
   @override
@@ -180,28 +187,64 @@ class _EditImageContentState extends ConsumerState<EditImageContent> {
     };
     return Column(
       children: [
-        SizedBox(
-          height: 80,
-          child: FilePickerBar(
-            multipleFiles: switch (widget.type) {
-              ImageType.backdrop => true,
-              _ => false,
-            },
-            extensions: FladderFile.imageTypes,
-            urlPicked: (url) {
-              final newFile = EditingImageModel(providerName: "Custom(URL)", url: url);
-              ref.read(editItemProvider.notifier).addCustomImages(widget.type, [newFile]);
-            },
-            onFilesPicked: (file) {
-              final newFiles = file.map(
-                (e) => EditingImageModel(
-                  providerName: "Custom(${e.name})",
-                  imageData: e.data,
+        Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: _urlController,
+                decoration: const InputDecoration(
+                  hintText: 'Image URL',
+                  border: OutlineInputBorder(),
+                  isDense: true,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 ),
-              );
-              ref.read(editItemProvider.notifier).addCustomImages(widget.type, newFiles);
-            },
-          ),
+                onSubmitted: (url) {
+                  if (url.isNotEmpty) {
+                    final newFile = EditingImageModel(providerName: "Custom(URL)", url: url);
+                    ref.read(editItemProvider.notifier).addCustomImages(widget.type, [newFile]);
+                    _urlController.clear();
+                  }
+                },
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.add_link),
+              onPressed: () {
+                final url = _urlController.text;
+                if (url.isNotEmpty) {
+                  final newFile = EditingImageModel(providerName: "Custom(URL)", url: url);
+                  ref.read(editItemProvider.notifier).addCustomImages(widget.type, [newFile]);
+                  _urlController.clear();
+                }
+              },
+              tooltip: 'Add from URL',
+            ),
+            IconButton(
+              icon: const Icon(Icons.folder_open),
+              onPressed: () async {
+                final multipleFiles = switch (widget.type) {
+                  ImageType.backdrop => true,
+                  _ => false,
+                };
+                FilePickerResult? result = await FilePicker.platform.pickFiles(
+                  type: FileType.custom,
+                  allowedExtensions: ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'],
+                  withData: true,
+                  allowMultiple: multipleFiles,
+                );
+                if (result != null && context.mounted) {
+                  final newFiles = result.files.map(
+                    (e) => EditingImageModel(
+                      providerName: "Custom(${e.name})",
+                      imageData: e.bytes,
+                    ),
+                  );
+                  ref.read(editItemProvider.notifier).addCustomImages(widget.type, newFiles.toList());
+                }
+              },
+              tooltip: 'Pick image files',
+            ),
+          ],
         ),
         SettingsListTile(
           label: const Text("Include all languages"),

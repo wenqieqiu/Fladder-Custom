@@ -79,7 +79,6 @@ class AdaptiveColorState extends ConsumerState<AdaptiveColor> with WidgetsBindin
 
   @override
   Widget build(BuildContext context) {
-    final isLinux = defaultTargetPlatform == TargetPlatform.linux;
     final themeColor = ref.watch(clientSettingsProvider.select((value) => value.themeColor));
     final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
 
@@ -95,11 +94,8 @@ class AdaptiveColorState extends ConsumerState<AdaptiveColor> with WidgetsBindin
         : FladderTheme.theme(themeColor.schemeDark, schemeVariant);
 
     // Apply fonts
-    final lightTheme = isLinux
-        ? baseLightTheme
-        : FladderTheme.applyChineseFontToTheme(lightTheme: baseLightTheme, darkTheme: baseDarkTheme);
-
-    final darkTheme = isLinux ? baseDarkTheme : FladderTheme.applyChineseFontToDarkTheme(darkTheme: baseDarkTheme);
+    final lightTheme = baseLightTheme;
+    final darkTheme = baseDarkTheme;
 
     return ThemesData(
       light: lightTheme,

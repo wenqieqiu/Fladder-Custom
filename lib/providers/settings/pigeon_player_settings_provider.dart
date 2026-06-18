@@ -11,7 +11,7 @@ import 'package:fladder/models/settings/video_player_settings.dart';
 import 'package:fladder/providers/settings/client_settings_provider.dart';
 import 'package:fladder/providers/settings/video_player_settings_provider.dart';
 import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/src/player_settings_helper.g.dart' as pigeon;
+import 'package:fladder/generated/player_settings_helper.g.dart' as pigeon;
 
 final pigeonPlayerSettingsSyncProvider = Provider<void>((ref) {
   void sendSettings() {

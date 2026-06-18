@@ -15,7 +15,6 @@ import 'package:fladder/providers/settings/video_player_settings_provider.dart';
 import 'package:fladder/providers/user_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
 import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 import 'package:fladder/util/fladder_image.dart';
 import 'package:fladder/util/list_padding.dart';
@@ -338,7 +337,7 @@ class _VideoPlayerNextWrapperState extends ConsumerState<VideoPlayerNextWrapper>
                 opacity: show ? 1 : 0,
                 child: const Align(
                   alignment: Alignment.topRight,
-                  child: DefaultTitleBar(),
+                  child: const SizedBox.shrink(),
                 ),
               ),
             ),

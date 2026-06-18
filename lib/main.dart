@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/bootstrap/app_bootstrap.dart';
-import 'package:fladder/bootstrap/platform/platform_app_wrapper.dart';
+import 'package:fladder/app/app_bootstrap.dart';
+import 'package:fladder/app/app_wrapper.dart';
 import 'package:fladder/l10n/generated/app_localizations.dart';
-import 'package:fladder/localization_delegates.dart';
+import 'package:fladder/l10n/localization_delegates.dart';
 import 'package:fladder/providers/arguments_provider.dart';
 import 'package:fladder/providers/crash_log_provider.dart';
 import 'package:fladder/providers/settings/client_settings_provider.dart';

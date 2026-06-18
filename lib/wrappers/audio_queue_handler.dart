@@ -63,10 +63,6 @@ extension AudioQueueHandler on MediaControlsWrapper {
 
     unawaited(_syncMpvPlaylist());
 
-    final context = ref.read(localizationContextProvider);
-    if (context != null) {
-      ref.read(windowTitleProvider.notifier).setPlayTitle(currentItem.windowTitle(context.localized));
-    }
 
     final playbackModel = ref.read(playBackModel);
     if (playbackModel != null) {
@@ -247,10 +243,6 @@ extension AudioQueueHandler on MediaControlsWrapper {
       }
     }
 
-    final context = ref.read(localizationContextProvider);
-    if (context != null) {
-      ref.read(windowTitleProvider.notifier).setPlayTitle(item.windowTitle(context.localized));
-    }
 
     await updatedModel.playbackStarted(startPosition, ref);
     await _refreshMediaControls(model: updatedModel, playing: true);

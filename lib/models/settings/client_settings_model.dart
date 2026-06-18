@@ -13,7 +13,6 @@ import 'package:fladder/models/settings/key_combinations.dart';
 import 'package:fladder/models/syncing/transcode_download_model.dart';
 import 'package:fladder/models/syncing/transcode_music_download_model.dart';
 import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/src/directory_bookmark.g.dart';
 import 'package:fladder/util/custom_color_themes.dart';
 import 'package:fladder/util/localization_helper.dart';
 
@@ -111,13 +110,6 @@ abstract class ClientSettingsModel with _$ClientSettingsModel {
     );
   }
 
-  Future<String?> getSavePath() async {
-    if (kIsWeb && syncPath == null) return null;
-    if (Platform.isMacOS) {
-      return await DirectoryBookmark().resolveDirectory(syncPathKey);
-    }
-    return syncPath;
-  }
 
   factory ClientSettingsModel.fromJson(Map<String, dynamic> json) => _$ClientSettingsModelFromJson(json);
 

@@ -16,7 +16,6 @@ import 'package:fladder/providers/settings/photo_view_settings_provider.dart';
 import 'package:fladder/providers/user_provider.dart';
 import 'package:fladder/screens/photo_viewer/photo_viewer_controls.dart';
 import 'package:fladder/screens/photo_viewer/simple_video_player.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 import 'package:fladder/util/custom_cache_manager.dart';
 import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
@@ -406,9 +405,7 @@ class _PhotoViewerScreenState extends ConsumerState<PhotoViewerScreen> with Widg
                   onExit: (event) => setState(() => toolbarHover = false),
                   child: const Column(
                     children: [
-                      DefaultTitleBar(
-                        brightness: Brightness.dark,
-                      ),
+                      const SizedBox.shrink(),
                     ],
                   ),
                 ),

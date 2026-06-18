@@ -11,7 +11,6 @@ import 'package:fladder/models/settings/key_combinations.dart';
 import 'package:fladder/providers/shared_provider.dart';
 import 'package:fladder/providers/sync_provider.dart';
 import 'package:fladder/providers/update_notifications_provider.dart';
-import 'package:fladder/src/directory_bookmark.g.dart';
 import 'package:fladder/util/custom_color_themes.dart';
 import 'package:fladder/util/debouncer.dart';
 
@@ -34,16 +33,6 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
 
   Future<void> initialize(ClientSettingsModel value) async {
     ClientSettingsModel newState = value;
-    try {
-      if (!kIsWeb && Platform.isMacOS) {
-        final bookmarkPath = await DirectoryBookmark().resolveDirectory(syncPathKey);
-        newState = newState.copyWith(syncPath: bookmarkPath);
-      }
-    } catch (e) {
-      log("Error fetching bookmarks (macOS)");
-    } finally {
-      state = newState;
-    }
   }
 
   void setWindowPosition(Offset windowPosition) =>
@@ -81,20 +70,6 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
 
   void addPosterSize(double value) => state = state.copyWith(posterSize: (state.posterSize + value).clamp(0.5, 1.5));
 
-  Future<ClientSettingsModel> setSyncPath(String? path) async {
-    String? newPath = path;
-
-    if (path != null) {
-      if (!kIsWeb && Platform.isMacOS) {
-        final directoryBookmarks = DirectoryBookmark();
-        await closeDirectory();
-        await directoryBookmarks.saveDirectory(syncPathKey, path);
-        newPath = await directoryBookmarks.resolveDirectory(syncPathKey);
-      }
-    }
-
-    return state = state.copyWith(syncPath: newPath);
-  }
 
   void update(Function(ClientSettingsModel current) value) => state = value(state);
 
@@ -106,7 +81,6 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
   void setShortcuts(MapEntry<GlobalHotKeys, KeyCombination> newEntry) =>
       state = state.copyWith(shortcuts: state.shortcuts.setOrRemove(newEntry, state.defaultShortCuts));
 
-  Future<void> closeDirectory() => DirectoryBookmark().closeDirectory(syncPathKey);
 
   void setExpandedTVLayout(bool value) => state = state.copyWith(useTVExpandedLayout: value);
 

@@ -21,7 +21,6 @@ import 'package:fladder/providers/settings/client_settings_provider.dart';
 import 'package:fladder/providers/settings/video_player_settings_provider.dart';
 import 'package:fladder/providers/user_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
 import 'package:fladder/screens/shared/media/components/item_logo.dart';
 import 'package:fladder/screens/video_player/components/video_playback_information.dart';
 import 'package:fladder/screens/video_player/components/video_player_brightness_indicator.dart';
@@ -275,7 +274,7 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> {
             children: [
               const Align(
                 alignment: Alignment.topRight,
-                child: DefaultTitleBar(),
+                child: const SizedBox.shrink(),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),

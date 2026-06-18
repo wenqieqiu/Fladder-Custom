@@ -10,7 +10,7 @@ import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/models/playback/transcode_playback_model.dart';
 import 'package:fladder/models/playback/tv_playback_model.dart';
 import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/src/video_player_helper.g.dart';
+import 'package:fladder/generated/video_player_helper.g.dart';
 import 'package:fladder/wrappers/players/base_player.dart';
 import 'package:fladder/wrappers/players/player_states.dart';
 

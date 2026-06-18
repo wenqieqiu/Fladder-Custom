@@ -6,7 +6,6 @@
 .DS_Store
 .atom/
 .build/
-.dmg_temp/
 .buildlog/
 .history
 .svn/
@@ -57,17 +56,6 @@ local.properties
 
 # FVM Version Cache
 .fvm/
-
-# AppImage
-/AppDir/
-/AppDirassets/
-/AppDiricons/
-/appimage-build/
-*.AppImage
-*.AppImage.zsync
-
-# flatpak
-.flatpak-builder
 
 # Affinity lock
 *.afdesign~lock~

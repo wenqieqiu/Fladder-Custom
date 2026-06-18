@@ -29,7 +29,7 @@ import 'package:fladder/screens/shared/fladder_notification_overlay.dart';
 import 'package:fladder/screens/syncing/sync_button.dart';
 import 'package:fladder/screens/syncing/sync_item_details.dart';
 import 'package:fladder/seerr/seerr_models.dart';
-import 'package:fladder/src/wallpaper_api.g.dart';
+import 'package:fladder/generated/wallpaper_api.g.dart';
 import 'package:fladder/util/clipboard_helper.dart';
 import 'package:fladder/util/custom_cache_manager.dart';
 import 'package:fladder/util/file_downloader.dart';

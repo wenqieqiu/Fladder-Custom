@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:window_manager/window_manager.dart';
 
 import 'package:fladder/models/items/audio_model.dart';
 import 'package:fladder/models/media_playback_model.dart';

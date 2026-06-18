@@ -104,18 +104,6 @@
 			// }
 		},
 		{
-			"label": "Build AppImage",
-			"type": "shell",
-			"command": "/usr/local/bin/appimage-builder",
-			"args": [
-				"--recipe",
-				"AppImageBuilder.yml"
-			],
-			"group": {
-				"kind": "build",
-			}
-		},
-		{
 			"label": "Generate Pigeon Files",
 			"type": "shell",
 			"command": "bash",
@@ -128,30 +116,6 @@
 				"args": [
 					"-Command",
 					"Get-ChildItem -Path pigeons/*.dart | ForEach-Object { dart run pigeon --input $_.FullName }"
-				]
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": [],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			}
-		},
-		{
-			"label": "Build Web and Docker Image",
-			"type": "shell",
-			"command": "bash",
-			"args": [
-				"-c",
-				"flutter build web --release && docker build -t fladder:latest ."
-			],
-			"windows": {
-				"command": "powershell",
-				"args": [
-					"-Command",
-					"flutter build web; if ($?) { docker build -t fladder:latest . }"
 				]
 			},
 			"group": {

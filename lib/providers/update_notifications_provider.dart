@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io' show Platform;
@@ -10,7 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:workmanager/workmanager.dart';
 
-import 'package:fladder/background/update_notifications_worker.dart';
+import 'package:fladder/services/update_notifications_worker.dart';
 import 'package:fladder/models/last_seen_notifications_model.dart';
 import 'package:fladder/providers/arguments_provider.dart';
 import 'package:fladder/providers/settings/client_settings_provider.dart';
@@ -19,7 +18,7 @@ import 'package:fladder/providers/shared_provider.dart';
 final supportsNotificationsProvider = Provider.autoDispose<bool>((ref) {
   final leanBackMode = ref.watch(argumentsStateProvider.select((value) => value.leanBackMode));
   return (!kIsWeb && !leanBackMode) &&
-      (Platform.isAndroid || Platform.isIOS || Platform.isWindows || Platform.isMacOS || Platform.isLinux);
+      (Platform.isAndroid || Platform.isIOS);
 });
 
 final updateNotificationsProvider = Provider<UpdateNotifications>((ref) => UpdateNotifications(ref));
@@ -31,14 +30,11 @@ final notificationsProvider = StateProvider<LastSeenNotificationsModel>((ref) {
 class UpdateNotifications {
   UpdateNotifications(this.ref) {
     ref.onDispose(() {
-      _desktopTimer?.cancel();
-      _desktopTimer = null;
       stopWorkerListener();
     });
   }
 
   final Ref ref;
-  Timer? _desktopTimer;
   ReceivePort? _workerReceivePort;
 
   Future<void> registerBackgroundTask() async {
@@ -57,14 +53,6 @@ class UpdateNotifications {
 
     try {
       if (kIsWeb) return;
-      if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
-        _desktopTimer?.cancel();
-        _desktopTimer = Timer.periodic(interval, (_) {
-          performHeadlessUpdateCheck();
-        });
-        await performHeadlessUpdateCheck();
-        return;
-      }
 
       startWorkerListener();
 
@@ -89,8 +77,6 @@ class UpdateNotifications {
 
   Future<void> unregisterBackgroundTask() async {
     try {
-      _desktopTimer?.cancel();
-      _desktopTimer = null;
       if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
         await Workmanager().cancelByUniqueName(updateTaskName);
       }
@@ -108,8 +94,6 @@ class UpdateNotifications {
           .where((a) => a.updateNotificationsEnabled || a.seerrRequestsEnabled)
           .toList();
       if (accounts.isEmpty) {
-        _desktopTimer?.cancel();
-        _desktopTimer = null;
         if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
           await Workmanager().cancelByUniqueName(updateTaskName);
         }
@@ -123,27 +107,20 @@ class UpdateNotifications {
   //Used for debug purposes, to trigger the background task immediately and show a notification for any new items
   Future<void> executeBackgroundTask() async {
     try {
-      if (!kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux)) {
-        await performHeadlessUpdateCheck(debug: true);
-        return;
-      } else {
-        await Workmanager().registerOneOffTask(
-          updateTaskNameDebug,
-          updateTaskNameDebug,
-          existingWorkPolicy: ExistingWorkPolicy.replace,
-          constraints: Constraints(
-            networkType: NetworkType.connected,
-          ),
-        );
-      }
+      await Workmanager().registerOneOffTask(
+        updateTaskNameDebug,
+        updateTaskNameDebug,
+        existingWorkPolicy: ExistingWorkPolicy.replace,
+        constraints: Constraints(
+          networkType: NetworkType.connected,
+        ),
+      );
     } catch (e) {
       log('Error executing background task: $e');
     }
   }
 
   Future<void> cancelAllTasks() async {
-    _desktopTimer?.cancel();
-    _desktopTimer = null;
     if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
       await Workmanager().cancelAll();
     }

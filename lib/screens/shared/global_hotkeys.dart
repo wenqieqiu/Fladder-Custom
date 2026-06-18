@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +11,6 @@ import 'package:fladder/screens/shared/fladder_notification_overlay.dart';
 import 'package:fladder/util/focus_helper.dart';
 import 'package:fladder/util/input_handler.dart';
 import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/window_actions.dart';
 
 class GlobalHotkeys extends ConsumerWidget {
   final Widget child;
@@ -43,15 +43,12 @@ class GlobalHotkeys extends ConsumerWidget {
             return true;
           case GlobalHotKeys.closeWindow:
             Future.microtask(() async {
-              final closed = await closeCurrentWindow();
-              if (!closed && context.mounted) {
-                FladderSnack.show(context.localized.somethingWentWrong, context: context);
-              }
+              await SystemNavigator.pop();
             });
             return true;
           case GlobalHotKeys.exit:
             Future.microtask(() async {
-              await quitApplication(context);
+              await SystemNavigator.pop();
             });
             return true;
         }

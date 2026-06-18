@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import 'package:auto_route/auto_route.dart';
 
-import 'package:fladder/screens/shared/default_title_bar.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 
 class FladderAppBar extends StatelessWidget implements PreferredSize {
@@ -30,9 +29,7 @@ class FladderAppBar extends StatelessWidget implements PreferredSize {
               children: [
                 if (automaticallyImplyLeading && context.router.canPop()) const BackButton(),
                 Expanded(
-                  child: DefaultTitleBar(
-                    label: label,
-                  ),
+                  child: const SizedBox.shrink(),
                 )
               ],
             ),

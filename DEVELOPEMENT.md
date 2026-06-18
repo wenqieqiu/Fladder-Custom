@@ -27,13 +27,6 @@ cd Fladder
 flutter pub get
 ```
 
-## 🐧 Linux Dependencies
-
-If you're on **Linux**, install the `mpv` dependency:
-
-```bash
-sudo apt install libmpv-dev
-```
 
 ## 🛠️ Running the App
 

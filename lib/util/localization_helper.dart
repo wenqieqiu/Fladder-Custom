@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:fladder/l10n/generated/app_localizations.dart';
 import 'package:fladder/providers/sync/background_download_provider.dart';
-import 'package:fladder/src/translations_pigeon.g.dart' as messenger;
+import 'package:fladder/generated/translations_pigeon.g.dart' as messenger;
 
 ///Only use for base translations, under normal circumstances ALWAYS use the widgets provided context
 final localizationContextProvider = StateProvider<BuildContext?>((ref) => null);

@@ -16,7 +16,7 @@ import 'package:fladder/models/playback/playback_queue_state.dart';
 import 'package:fladder/providers/api_provider.dart';
 import 'package:fladder/providers/live_tv_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/src/video_player_helper.g.dart';
+import 'package:fladder/generated/video_player_helper.g.dart';
 import 'package:fladder/util/bitrate_helper.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/wrappers/media_control_wrapper.dart';

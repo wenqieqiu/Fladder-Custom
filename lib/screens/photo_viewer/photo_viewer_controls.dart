@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:square_progress_indicator/square_progress_indicator.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-import 'package:window_manager/window_manager.dart';
 
 import 'package:fladder/models/items/photos_model.dart';
 import 'package:fladder/models/settings/video_player_settings.dart';
@@ -52,7 +51,7 @@ class PhotoViewerControls extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _PhotoViewerControllsState();
 }
 
-class _PhotoViewerControllsState extends ConsumerState<PhotoViewerControls> with WindowListener {
+class _PhotoViewerControllsState extends ConsumerState<PhotoViewerControls> {
   final Throttler throttler = Throttler(duration: const Duration(milliseconds: 130));
   late int currentPage = widget.pageController.page?.round() ?? 0;
   double dragUpDelta = 0.0;
@@ -76,7 +75,6 @@ class _PhotoViewerControllsState extends ConsumerState<PhotoViewerControls> with
   @override
   void initState() {
     super.initState();
-    windowManager.addListener(this);
     widget.pageController.addListener(
       () {
         _resetOnScroll();
@@ -86,10 +84,6 @@ class _PhotoViewerControllsState extends ConsumerState<PhotoViewerControls> with
   }
 
   @override
-  void onWindowMinimize() {
-    timerController.cancel();
-    super.onWindowMinimize();
-  }
 
   @override
   void dispose() {
