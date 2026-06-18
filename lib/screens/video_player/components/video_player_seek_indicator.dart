@@ -12,21 +12,10 @@ import 'package:fladder/providers/video_player_provider.dart';
 import 'package:fladder/util/input_handler.dart';
 import 'package:fladder/util/localization_helper.dart';
 
-/// Controller to trigger the seek indicator from outside (e.g., double-tap).
-/// The parent widget creates this controller and passes it to [VideoPlayerSeekIndicator],
-/// then calls [seekBack] or [seekForward] to trigger the indicator.
-class SeekIndicatorController {
-  VoidCallback? _seekBack;
-  VoidCallback? _seekForward;
-
-  void seekBack() => _seekBack?.call();
-  void seekForward() => _seekForward?.call();
-}
 
 class VideoPlayerSeekIndicator extends ConsumerStatefulWidget {
-  final SeekIndicatorController? controller;
 
-  const VideoPlayerSeekIndicator({this.controller, super.key});
+  const VideoPlayerSeekIndicator({super.key});
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => VideoPlayerSeekIndicatorState();
 }
@@ -37,12 +26,6 @@ class VideoPlayerSeekIndicatorState extends ConsumerState<VideoPlayerSeekIndicat
   bool visible = false;
   int seekPosition = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    widget.controller?._seekBack = seekBack;
-    widget.controller?._seekForward = seekForward;
-  }
 
   void onSeekEnd() {
     setState(() {

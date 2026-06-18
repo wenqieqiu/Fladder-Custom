@@ -51,9 +51,6 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
   bool _speedBoostActive = false;
   double? _originalSpeed;
 
-  Offset? _doubleTapPosition;
-
-  final SeekIndicatorController _seekController = SeekIndicatorController();
 
 
   String? _vDragSide;
@@ -135,10 +132,9 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
                 Positioned.fill(
                   child: GestureDetector(
                     onTap: initInputDevice == InputDevice.pointer ? null : () => toggleOverlay(),
-                    onDoubleTapDown: initInputDevice == InputDevice.touch ? _handleDoubleTapDown : null,
                     onDoubleTap: initInputDevice == InputDevice.pointer
                         ? () => fullScreenHelper.toggleFullScreen(ref)
-                        : _handleDoubleTapSeek,
+                        : () => ref.read(videoPlayerProvider).playOrPause(),
                     onLongPressStart: initInputDevice == InputDevice.touch ? _handleLongPressStart : null,
                     onLongPressEnd: initInputDevice == InputDevice.touch ? _handleLongPressEnd : null,
                     onVerticalDragStart: initInputDevice == InputDevice.touch ? _handleVerticalDragStart : null,
@@ -175,7 +171,7 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
                     ),
                   ),
                 ),
-                VideoPlayerSeekIndicator(controller: _seekController),
+                VideoPlayerSeekIndicator(),
                 const VideoPlayerVolumeIndicator(),
                 const VideoPlayerBrightnessIndicator(),
                 const VideoPlayerSpeedIndicator(),
@@ -581,13 +577,6 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
     ref.read(videoPlayerProvider).seek(Duration(microseconds: newPosition));
   }
 
-  void seekBackWithIndicator() {
-    _seekController.seekBack();
-  }
-
-  void seekForwardWithIndicator() {
-    _seekController.seekForward();
-  }
 
 
   void _activateSpeedBoost() {
@@ -637,30 +626,6 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
 
   // --- Touch Gesture Handlers (Mobile) ---
 
-  void _handleDoubleTapDown(TapDownDetails details) {
-    final doubleTapSeekEnabled = ref.read(videoPlayerSettingsProvider.select((value) => value.enableDoubleTapSeek));
-    if (doubleTapSeekEnabled) {
-      _doubleTapPosition = details.globalPosition;
-    }
-  }
-
-  void _handleDoubleTapSeek() {
-    final doubleTapSeekEnabled = ref.read(videoPlayerSettingsProvider.select((value) => value.enableDoubleTapSeek));
-    if (!doubleTapSeekEnabled) return;
-
-    final screenWidth = MediaQuery.sizeOf(context).width;
-    final tapX = _doubleTapPosition?.dx ?? screenWidth / 2;
-    final zoneThird = screenWidth / 3;
-
-    if (tapX < zoneThird) {
-      seekBackWithIndicator();
-    } else if (tapX > zoneThird * 2) {
-      seekForwardWithIndicator();
-    } else {
-      ref.read(videoPlayerProvider).playOrPause();
-    }
-    _doubleTapPosition = null;
-  }
 
   void _handleLongPressStart(LongPressStartDetails details) {
     final settings = ref.read(videoPlayerSettingsProvider);

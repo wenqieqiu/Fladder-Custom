@@ -1656,8 +1656,6 @@
     "enableSpeedBoostDesc": "长按屏幕（移动端）或空格键（桌面端）可临时提高播放速度",
     "speedBoostRateTitle": "加速倍率",
     "speedBoostRateDesc": "加速激活时的播放倍速",
-    "enableDoubleTapSeekTitle": "双击快进/播放/暂停",
-    "enableDoubleTapSeekDesc": "双击屏幕左侧/右侧快进/快退。双击屏幕中央播放/暂停。",
     "backgroundColor": "背景颜色",
     "liveTV": "电视直播",
     "liveTvManageTunersEpg": "管理调谐器设备和节目指南",

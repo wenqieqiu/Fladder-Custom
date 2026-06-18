@@ -33,7 +33,6 @@ mixin _$VideoPlayerSettingsModel implements DiagnosticableTreeMixin {
   Screensaver get screensaver;
   bool get enableSpeedBoost;
   double get speedBoostRate;
-  bool get enableDoubleTapSeek;
   bool get enableAdvancedVideoOptions;
   bool get enableEdgeGestures;
   bool get reverseEdgeGestures;
@@ -79,7 +78,6 @@ mixin _$VideoPlayerSettingsModel implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('screensaver', screensaver))
       ..add(DiagnosticsProperty('enableSpeedBoost', enableSpeedBoost))
       ..add(DiagnosticsProperty('speedBoostRate', speedBoostRate))
-      ..add(DiagnosticsProperty('enableDoubleTapSeek', enableDoubleTapSeek))
       ..add(DiagnosticsProperty(
           'enableAdvancedVideoOptions', enableAdvancedVideoOptions))
       ..add(DiagnosticsProperty('enableEdgeGestures', enableEdgeGestures))
@@ -97,7 +95,7 @@ mixin _$VideoPlayerSettingsModel implements DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VideoPlayerSettingsModel(screenBrightness: $screenBrightness, videoFit: $videoFit, fillScreen: $fillScreen, hardwareAccel: $hardwareAccel, useLibass: $useLibass, enableTunneling: $enableTunneling, bufferSize: $bufferSize, playerOptions: $playerOptions, internalVolume: $internalVolume, allowedOrientations: $allowedOrientations, nextVideoType: $nextVideoType, maxHomeBitrate: $maxHomeBitrate, maxInternetBitrate: $maxInternetBitrate, audioDevice: $audioDevice, segmentSkipSettings: $segmentSkipSettings, hotKeys: $hotKeys, screensaver: $screensaver, enableSpeedBoost: $enableSpeedBoost, speedBoostRate: $speedBoostRate, enableDoubleTapSeek: $enableDoubleTapSeek, enableAdvancedVideoOptions: $enableAdvancedVideoOptions, enableEdgeGestures: $enableEdgeGestures, reverseEdgeGestures: $reverseEdgeGestures, horizontalSlideSeekSensitivity: $horizontalSlideSeekSensitivity, enablePictureInPicture: $enablePictureInPicture, enableReplayGain: $enableReplayGain, replayGainVolumeLevel: $replayGainVolumeLevel, enablePlayPauseFade: $enablePlayPauseFade, enableCrossfade: $enableCrossfade, crossfadeDurationMs: $crossfadeDurationMs)';
+    return 'VideoPlayerSettingsModel(screenBrightness: $screenBrightness, videoFit: $videoFit, fillScreen: $fillScreen, hardwareAccel: $hardwareAccel, useLibass: $useLibass, enableTunneling: $enableTunneling, bufferSize: $bufferSize, playerOptions: $playerOptions, internalVolume: $internalVolume, allowedOrientations: $allowedOrientations, nextVideoType: $nextVideoType, maxHomeBitrate: $maxHomeBitrate, maxInternetBitrate: $maxInternetBitrate, audioDevice: $audioDevice, segmentSkipSettings: $segmentSkipSettings, hotKeys: $hotKeys, screensaver: $screensaver, enableSpeedBoost: $enableSpeedBoost, speedBoostRate: $speedBoostRate, enableAdvancedVideoOptions: $enableAdvancedVideoOptions, enableEdgeGestures: $enableEdgeGestures, reverseEdgeGestures: $reverseEdgeGestures, horizontalSlideSeekSensitivity: $horizontalSlideSeekSensitivity, enablePictureInPicture: $enablePictureInPicture, enableReplayGain: $enableReplayGain, replayGainVolumeLevel: $replayGainVolumeLevel, enablePlayPauseFade: $enablePlayPauseFade, enableCrossfade: $enableCrossfade, crossfadeDurationMs: $crossfadeDurationMs)';
   }
 }
 
@@ -127,7 +125,6 @@ abstract mixin class $VideoPlayerSettingsModelCopyWith<$Res> {
       Screensaver screensaver,
       bool enableSpeedBoost,
       double speedBoostRate,
-      bool enableDoubleTapSeek,
       bool enableAdvancedVideoOptions,
       bool enableEdgeGestures,
       bool reverseEdgeGestures,
@@ -172,7 +169,6 @@ class _$VideoPlayerSettingsModelCopyWithImpl<$Res>
     Object? screensaver = null,
     Object? enableSpeedBoost = null,
     Object? speedBoostRate = null,
-    Object? enableDoubleTapSeek = null,
     Object? enableAdvancedVideoOptions = null,
     Object? enableEdgeGestures = null,
     Object? reverseEdgeGestures = null,
@@ -261,10 +257,6 @@ class _$VideoPlayerSettingsModelCopyWithImpl<$Res>
           ? _self.speedBoostRate
           : speedBoostRate // ignore: cast_nullable_to_non_nullable
               as double,
-      enableDoubleTapSeek: null == enableDoubleTapSeek
-          ? _self.enableDoubleTapSeek
-          : enableDoubleTapSeek // ignore: cast_nullable_to_non_nullable
-              as bool,
       enableAdvancedVideoOptions: null == enableAdvancedVideoOptions
           ? _self.enableAdvancedVideoOptions
           : enableAdvancedVideoOptions // ignore: cast_nullable_to_non_nullable
@@ -422,7 +414,6 @@ extension VideoPlayerSettingsModelPatterns on VideoPlayerSettingsModel {
             Screensaver screensaver,
             bool enableSpeedBoost,
             double speedBoostRate,
-            bool enableDoubleTapSeek,
             bool enableAdvancedVideoOptions,
             bool enableEdgeGestures,
             bool reverseEdgeGestures,
@@ -459,7 +450,6 @@ extension VideoPlayerSettingsModelPatterns on VideoPlayerSettingsModel {
             _that.screensaver,
             _that.enableSpeedBoost,
             _that.speedBoostRate,
-            _that.enableDoubleTapSeek,
             _that.enableAdvancedVideoOptions,
             _that.enableEdgeGestures,
             _that.reverseEdgeGestures,
@@ -510,7 +500,6 @@ extension VideoPlayerSettingsModelPatterns on VideoPlayerSettingsModel {
             Screensaver screensaver,
             bool enableSpeedBoost,
             double speedBoostRate,
-            bool enableDoubleTapSeek,
             bool enableAdvancedVideoOptions,
             bool enableEdgeGestures,
             bool reverseEdgeGestures,
@@ -546,7 +535,6 @@ extension VideoPlayerSettingsModelPatterns on VideoPlayerSettingsModel {
             _that.screensaver,
             _that.enableSpeedBoost,
             _that.speedBoostRate,
-            _that.enableDoubleTapSeek,
             _that.enableAdvancedVideoOptions,
             _that.enableEdgeGestures,
             _that.reverseEdgeGestures,
@@ -596,7 +584,6 @@ extension VideoPlayerSettingsModelPatterns on VideoPlayerSettingsModel {
             Screensaver screensaver,
             bool enableSpeedBoost,
             double speedBoostRate,
-            bool enableDoubleTapSeek,
             bool enableAdvancedVideoOptions,
             bool enableEdgeGestures,
             bool reverseEdgeGestures,
@@ -632,7 +619,6 @@ extension VideoPlayerSettingsModelPatterns on VideoPlayerSettingsModel {
             _that.screensaver,
             _that.enableSpeedBoost,
             _that.speedBoostRate,
-            _that.enableDoubleTapSeek,
             _that.enableAdvancedVideoOptions,
             _that.enableEdgeGestures,
             _that.reverseEdgeGestures,
@@ -674,7 +660,6 @@ class _VideoPlayerSettingsModel extends VideoPlayerSettingsModel
       this.screensaver = Screensaver.logo,
       this.enableSpeedBoost = false,
       this.speedBoostRate = 2.0,
-      this.enableDoubleTapSeek = true,
       this.enableAdvancedVideoOptions = false,
       this.enableEdgeGestures = true,
       this.reverseEdgeGestures = false,
@@ -769,9 +754,6 @@ class _VideoPlayerSettingsModel extends VideoPlayerSettingsModel
   final double speedBoostRate;
   @override
   @JsonKey()
-  final bool enableDoubleTapSeek;
-  @override
-  @JsonKey()
   final bool enableAdvancedVideoOptions;
   @override
   @JsonKey()
@@ -840,7 +822,6 @@ class _VideoPlayerSettingsModel extends VideoPlayerSettingsModel
       ..add(DiagnosticsProperty('screensaver', screensaver))
       ..add(DiagnosticsProperty('enableSpeedBoost', enableSpeedBoost))
       ..add(DiagnosticsProperty('speedBoostRate', speedBoostRate))
-      ..add(DiagnosticsProperty('enableDoubleTapSeek', enableDoubleTapSeek))
       ..add(DiagnosticsProperty(
           'enableAdvancedVideoOptions', enableAdvancedVideoOptions))
       ..add(DiagnosticsProperty('enableEdgeGestures', enableEdgeGestures))
@@ -858,7 +839,7 @@ class _VideoPlayerSettingsModel extends VideoPlayerSettingsModel
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VideoPlayerSettingsModel(screenBrightness: $screenBrightness, videoFit: $videoFit, fillScreen: $fillScreen, hardwareAccel: $hardwareAccel, useLibass: $useLibass, enableTunneling: $enableTunneling, bufferSize: $bufferSize, playerOptions: $playerOptions, internalVolume: $internalVolume, allowedOrientations: $allowedOrientations, nextVideoType: $nextVideoType, maxHomeBitrate: $maxHomeBitrate, maxInternetBitrate: $maxInternetBitrate, audioDevice: $audioDevice, segmentSkipSettings: $segmentSkipSettings, hotKeys: $hotKeys, screensaver: $screensaver, enableSpeedBoost: $enableSpeedBoost, speedBoostRate: $speedBoostRate, enableDoubleTapSeek: $enableDoubleTapSeek, enableAdvancedVideoOptions: $enableAdvancedVideoOptions, enableEdgeGestures: $enableEdgeGestures, reverseEdgeGestures: $reverseEdgeGestures, horizontalSlideSeekSensitivity: $horizontalSlideSeekSensitivity, enablePictureInPicture: $enablePictureInPicture, enableReplayGain: $enableReplayGain, replayGainVolumeLevel: $replayGainVolumeLevel, enablePlayPauseFade: $enablePlayPauseFade, enableCrossfade: $enableCrossfade, crossfadeDurationMs: $crossfadeDurationMs)';
+    return 'VideoPlayerSettingsModel(screenBrightness: $screenBrightness, videoFit: $videoFit, fillScreen: $fillScreen, hardwareAccel: $hardwareAccel, useLibass: $useLibass, enableTunneling: $enableTunneling, bufferSize: $bufferSize, playerOptions: $playerOptions, internalVolume: $internalVolume, allowedOrientations: $allowedOrientations, nextVideoType: $nextVideoType, maxHomeBitrate: $maxHomeBitrate, maxInternetBitrate: $maxInternetBitrate, audioDevice: $audioDevice, segmentSkipSettings: $segmentSkipSettings, hotKeys: $hotKeys, screensaver: $screensaver, enableSpeedBoost: $enableSpeedBoost, speedBoostRate: $speedBoostRate, enableAdvancedVideoOptions: $enableAdvancedVideoOptions, enableEdgeGestures: $enableEdgeGestures, reverseEdgeGestures: $reverseEdgeGestures, horizontalSlideSeekSensitivity: $horizontalSlideSeekSensitivity, enablePictureInPicture: $enablePictureInPicture, enableReplayGain: $enableReplayGain, replayGainVolumeLevel: $replayGainVolumeLevel, enablePlayPauseFade: $enablePlayPauseFade, enableCrossfade: $enableCrossfade, crossfadeDurationMs: $crossfadeDurationMs)';
   }
 }
 
@@ -890,7 +871,6 @@ abstract mixin class _$VideoPlayerSettingsModelCopyWith<$Res>
       Screensaver screensaver,
       bool enableSpeedBoost,
       double speedBoostRate,
-      bool enableDoubleTapSeek,
       bool enableAdvancedVideoOptions,
       bool enableEdgeGestures,
       bool reverseEdgeGestures,
@@ -935,7 +915,6 @@ class __$VideoPlayerSettingsModelCopyWithImpl<$Res>
     Object? screensaver = null,
     Object? enableSpeedBoost = null,
     Object? speedBoostRate = null,
-    Object? enableDoubleTapSeek = null,
     Object? enableAdvancedVideoOptions = null,
     Object? enableEdgeGestures = null,
     Object? reverseEdgeGestures = null,
@@ -1024,10 +1003,6 @@ class __$VideoPlayerSettingsModelCopyWithImpl<$Res>
           ? _self.speedBoostRate
           : speedBoostRate // ignore: cast_nullable_to_non_nullable
               as double,
-      enableDoubleTapSeek: null == enableDoubleTapSeek
-          ? _self.enableDoubleTapSeek
-          : enableDoubleTapSeek // ignore: cast_nullable_to_non_nullable
-              as bool,
       enableAdvancedVideoOptions: null == enableAdvancedVideoOptions
           ? _self.enableAdvancedVideoOptions
           : enableAdvancedVideoOptions // ignore: cast_nullable_to_non_nullable
