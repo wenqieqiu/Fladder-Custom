@@ -1,7 +1,7 @@
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **Fladder-Custom** (16655 symbols, 32894 relationships, 300 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **Fladder-Custom** (16662 symbols, 32901 relationships, 300 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > Index stale? Run `node .gitnexus/run.cjs analyze` from the project root — it auto-selects an available runner. No `.gitnexus/run.cjs` yet? `npx gitnexus analyze` (npm 11 crash → `npm i -g gitnexus`; #1939).
 
@@ -48,3 +48,40 @@ Single-context layout (`CONTEXT.md` + `docs/adr/` at repo root). See `docs/agent
 ## Development environment
 
 - Flutter SDK: `D:\flutter-sdk\flutter`
+
+## Version auto-bump
+
+A `pre-commit` hook at `.githooks/pre-commit` automatically increments the
+build number in `pubspec.yaml` on every `git commit`.
+
+- Format: `version: x.y.z+N` → each commit bumps `N` by 1
+- Version name `x.y.z` is left unchanged (update manually for new releases)
+- If the version line has no `+N` suffix (e.g. `version: 1.0.0`), the hook
+  initializes the build number at 1, producing `version: 1.0.0+1`
+
+### Install
+
+```bash
+bash .githooks/install.sh
+# or manually:
+git config core.hooksPath .githooks
+```
+
+### Verify
+
+```bash
+git config core.hooksPath
+# expected output: .githooks
+```
+
+### Uninstall
+
+```bash
+git config --unset core.hooksPath
+```
+
+### Bypass
+
+```bash
+git commit --no-verify
+```

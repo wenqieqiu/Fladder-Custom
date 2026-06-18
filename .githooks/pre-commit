@@ -1,0 +1,95 @@
+#!/bin/bash
+#
+# Pre-commit hook: auto-increment build number in pubspec.yaml
+#
+# Detects the version line `version: x.y.z+N` in pubspec.yaml
+# and increments the build number (N → N+1) before each commit.
+# The updated pubspec.yaml is re-staged into the commit.
+#
+# The bump also applies on `git commit --amend`.  This is by design:
+# an amended commit is a distinct revision with a new SHA.  To bypass
+# the hook for a specific commit, use `git commit --no-verify`.
+#
+# Enable via: git config core.hooksPath .githooks
+# Or run:     bash .githooks/install.sh
+
+set -e
+
+PUBSPEC="pubspec.yaml"
+
+# Only act if pubspec.yaml exists in the repo root
+[ ! -f "$PUBSPEC" ] && exit 0
+
+# ---- Extract and validate version ----
+extract_version() {
+    local line
+    line=$(grep -E '^version: ' "$PUBSPEC" | head -1)
+    [ -z "$line" ] && return 1
+
+    local raw
+    # Strip 'version:' prefix and inline YAML comments (e.g. "# for internal use")
+    raw=$(echo "$line" | sed 's/^version:[[:space:]]*//; s/[[:space:]]*#.*$//')
+
+    # Parse: name+build
+    local name build
+    name=$(echo "$raw" | cut -d'+' -f1)
+    build=$(echo "$raw" | cut -d'+' -f2)
+
+    # Validate version name: three dotted numeric segments
+    if ! echo "$name" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+        echo "[pre-commit] Warning: unexpected version name format '$name', skipping bump" >&2
+        return 1
+    fi
+
+    # If no build number suffix, start at 1
+    if [ -z "$build" ]; then
+        echo "${name}+1"
+        return 0
+    fi
+
+    # Validate build is a decimal integer (rejects letters, hex, etc.)
+    if ! echo "$build" | grep -Eq '^[0-9]+$'; then
+        echo "[pre-commit] Warning: non-numeric build identifier '$build', skipping bump" >&2
+        return 1
+    fi
+
+    # Strip leading zeros to avoid octal interpretation in arithmetic
+    build=$((10#$build))
+
+    echo "${name}+$((build + 1))"
+}
+
+NEW_VERSION=$(extract_version) || exit 0
+CURRENT_VERSION=$(grep -E '^version: ' "$PUBSPEC" | head -1 | sed 's/^version:[[:space:]]*//; s/[[:space:]]*#.*$//')
+
+if [ "$NEW_VERSION" = "$CURRENT_VERSION" ]; then
+    # Nothing changed (shouldn't happen, but be safe)
+    exit 0
+fi
+
+# ---- Update pubspec.yaml ----
+# Portable in-place edit: no sed/perl dependency.
+# Strips \r from input lines to handle CRLF-checked-out files on Windows,
+# ensuring the version replacement line has consistent line endings.
+TMPFILE=$(mktemp .githooks_pubspec_tmp.XXXXXX)
+while IFS= read -r line || [ -n "$line" ]; do
+    line=${line%$'\r'}
+    case "$line" in
+        version:*)
+            echo "version: ${NEW_VERSION}"
+            ;;
+        *)
+            echo "$line"
+            ;;
+    esac
+done < "$PUBSPEC" > "$TMPFILE"
+mv "$TMPFILE" "$PUBSPEC"
+
+# Stage the full file into this commit.  This is the standard pre-commit
+# pattern for hooks that modify committed files.  If the user has partially
+# staged pubspec.yaml (e.g. via git add -p), this overrides those partial
+# selections — an accepted trade-off since the version line is the only
+# automated change and partial staging of this file is rare in practice.
+git add "$PUBSPEC"
+
+echo "[pre-commit] Version bumped: ${CURRENT_VERSION} → ${NEW_VERSION}"
