@@ -10,6 +10,7 @@ import 'package:fladder/providers/settings/video_player_settings_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
 import 'package:fladder/util/input_handler.dart';
 import 'package:fladder/util/localization_helper.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 class VideoPlayerScreenshotIndicator extends ConsumerStatefulWidget {
   const VideoPlayerScreenshotIndicator({super.key});

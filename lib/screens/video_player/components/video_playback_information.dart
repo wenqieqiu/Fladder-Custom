@@ -13,6 +13,7 @@ import 'package:fladder/util/humanize_duration.dart';
 import 'package:fladder/util/list_padding.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/wrappers/players/player_states.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 Future<void> showVideoPlaybackInformation(BuildContext context) {
   return showDialog(

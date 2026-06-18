@@ -32,6 +32,7 @@ import 'package:fladder/widgets/shared/button_group.dart';
 import 'package:fladder/widgets/shared/pinch_poster_zoom.dart';
 import 'package:fladder/widgets/shared/poster_size_slider.dart';
 import 'package:fladder/widgets/shared/pull_to_refresh.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 class MusicDashboardScreen extends ConsumerStatefulWidget {
   const MusicDashboardScreen({super.key});

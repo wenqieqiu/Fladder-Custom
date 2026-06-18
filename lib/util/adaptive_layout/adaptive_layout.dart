@@ -249,7 +249,7 @@ class _AdaptiveLayoutBuilderState extends ConsumerState<AdaptiveLayoutBuilder> {
                 controller: scrollControllers,
                 posterDefaults: posterDefaults,
               ),
-              ),
+              child: widget.child(context),
             ),
           ),
         );

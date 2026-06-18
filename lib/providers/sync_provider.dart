@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide ConnectionState;
 
 import 'package:background_downloader/background_downloader.dart';
@@ -66,11 +65,11 @@ class SyncNotifier extends StateNotifier<SyncSettingsModel> {
     _init();
   }
 
+
   final Ref ref;
   final AppDatabase _db;
   final Directory mobileDirectory;
   final String subPath = "Synced";
-
   bool updatingSyncStatus = false;
 
   StreamSubscription<List<SyncedItem>>? _subscription;

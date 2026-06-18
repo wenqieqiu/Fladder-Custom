@@ -10,7 +10,7 @@ import 'package:fladder/generated/translations_pigeon.g.dart' as messenger;
 final localizationContextProvider = StateProvider<BuildContext?>((ref) => null);
 
 extension BuildContextExtension on BuildContext {
-  AppLocalizations get localized => AppLocalizations.of(this);
+  AppLocalizations get localized => AppLocalizations.of(this)!;
 }
 
 class LocalizationContextWrapper extends ConsumerStatefulWidget {

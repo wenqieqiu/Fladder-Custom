@@ -34,6 +34,7 @@ import 'package:fladder/util/duration_extensions.dart';
 import 'package:fladder/util/input_handler.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/widgets/full_screen_helpers/full_screen_wrapper.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 class TvPlayerControls extends ConsumerStatefulWidget {
   final Function(bool value) showGuide;

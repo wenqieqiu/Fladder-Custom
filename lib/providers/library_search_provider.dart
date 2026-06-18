@@ -34,6 +34,7 @@ import 'package:fladder/util/item_base_model/play_item_helpers.dart';
 import 'package:fladder/util/list_extensions.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/util/map_bool_helper.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 final librarySearchProvider =
     StateNotifierProvider.family.autoDispose<LibrarySearchNotifier, LibrarySearchModel, Key>((ref, id) {

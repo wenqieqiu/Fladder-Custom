@@ -86,5 +86,7 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
 
   void setBlurEffects(bool value) => state = state.copyWith(enableBlurEffects: value);
 
+
+  void setSyncPath(String? syncPath) => state = state.copyWith(syncPath: syncPath);
   void toggleSideBar() => state = state.copyWith(expandSideBar: !state.expandSideBar);
 }

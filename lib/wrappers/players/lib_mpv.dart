@@ -23,7 +23,7 @@ import 'package:fladder/util/subtitle_position_calculator.dart';
 import 'package:fladder/wrappers/players/base_player.dart';
 import 'package:fladder/wrappers/players/player_states.dart';
 
-class LibMPV extends BasePlayer {
+class LibMPV extends BasePlayer implements HasPlaylist, AudioQueueCapable {
   mpv.Player? _player;
   VideoController? _controller;
   String _currentSubtitleCodec = '';
@@ -118,17 +118,17 @@ class LibMPV extends BasePlayer {
   void _setupPlayerStreams(mpv.Player player) {
     _playerStreamSubs.addAll([
       player.stream.playing.listen((value) {
-        setState(lastState.update(playing: value));
+        setState(lastState = lastState.copyWith(playing: value));
       }),
-      player.stream.buffering.listen((value) => setState(lastState.update(buffering: value))),
-      player.stream.position.listen((value) => setState(lastState.update(position: value))),
-      player.stream.duration.listen((value) => setState(lastState.update(duration: value))),
+      player.stream.buffering.listen((value) => setState(lastState = lastState.copyWith(buffering: value))),
+      player.stream.position.listen((value) => setState(lastState = lastState.copyWith(position: value))),
+      player.stream.duration.listen((value) => setState(lastState = lastState.copyWith(duration: value))),
       player.stream.volume.listen((value) {
-        setState(lastState.update(volume: value));
+        setState(lastState = lastState.copyWith(volume: value));
       }),
-      player.stream.rate.listen((value) => setState(lastState.update(rate: value))),
-      player.stream.buffer.listen((value) => setState(lastState.update(buffer: value))),
-      player.stream.completed.listen((value) => setState(lastState.update(completed: value))),
+      player.stream.rate.listen((value) => setState(lastState = lastState.copyWith(rate: value))),
+      player.stream.buffer.listen((value) => setState(lastState = lastState.copyWith(buffer: value))),
+      player.stream.completed.listen((value) => setState(lastState = lastState.copyWith(completed: value))),
     ]);
   }
 
@@ -206,7 +206,7 @@ class LibMPV extends BasePlayer {
     oldPlayer.stop();
     oldPlayer.dispose();
 
-    setState(lastState.update(
+    setState(lastState = lastState.copyWith(
       playing: incomingPlayer.state.playing,
       buffering: incomingPlayer.state.buffering,
       position: incomingPlayer.state.position,
@@ -276,7 +276,7 @@ class LibMPV extends BasePlayer {
         }
       },
     );
-    return setState(lastState.update(buffering: true));
+    return setState(lastState = lastState.copyWith(buffering: true));
   }
 
   /// Apply ReplayGain normalization for the given [item] before loading it.

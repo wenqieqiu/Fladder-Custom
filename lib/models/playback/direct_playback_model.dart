@@ -1,6 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' hide RepeatMode;
 
-import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
@@ -10,14 +9,15 @@ import 'package:fladder/models/items/item_shared_models.dart';
 import 'package:fladder/models/items/media_segments_model.dart';
 import 'package:fladder/models/items/media_streams_model.dart';
 import 'package:fladder/models/items/trick_play_model.dart';
-import 'package:fladder/models/playback/playback_queue_state.dart';
 import 'package:fladder/models/playback/playback_model.dart';
+import 'package:fladder/models/playback/playback_queue_state.dart';
+import 'package:fladder/models/playback/playback_queue_source.dart';
+import 'package:fladder/models/playback/server_playback_mixin.dart';
 import 'package:fladder/providers/api_provider.dart';
 import 'package:fladder/util/bitrate_helper.dart';
 import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/wrappers/media_control_wrapper.dart';
 
-class DirectPlaybackModel extends PlaybackModel {
+class DirectPlaybackModel extends PlaybackModel with ServerPlaybackModelMixin {
   DirectPlaybackModel({
     required super.item,
     required super.media,
@@ -33,30 +33,11 @@ class DirectPlaybackModel extends PlaybackModel {
   });
 
   @override
-  List<SubStreamModel> get subStreams => [SubStreamModel.no(), ...mediaStreams?.subStreams ?? []];
-
-  List<QueueItem> get itemsInQueue =>
-      queue.mapIndexed((index, element) => QueueItem(id: element.id, playlistItemId: "playlistItem$index")).toList();
+  PlayMethod get playMethod => PlayMethod.directplay;
 
   @override
-  Future<DirectPlaybackModel> setSubtitle(SubStreamModel? model, MediaControlsWrapper player) async {
-    final newIndex = await player.setSubtitleTrack(model, this);
-    return copyWith(mediaStreams: () => mediaStreams?.copyWith(defaultSubStreamIndex: newIndex));
-  }
+  String? get sessionId => null;
 
-  @override
-  List<AudioStreamModel> get audioStreams => [AudioStreamModel.no(), ...mediaStreams?.audioStreams ?? []];
-
-  @override
-  Future<DirectPlaybackModel>? setAudio(AudioStreamModel? model, MediaControlsWrapper player) async {
-    final newIndex = await player.setAudioTrack(model, this);
-    return copyWith(mediaStreams: () => mediaStreams?.copyWith(defaultAudioStreamIndex: newIndex));
-  }
-
-  @override
-  Future<DirectPlaybackModel>? setQualityOption(Map<Bitrate, bool> map) async {
-    return copyWith(bitRateOptions: map);
-  }
 
   @override
   Future<PlaybackModel?> playbackStarted(Duration position, Ref ref) async {
@@ -76,22 +57,6 @@ class DirectPlaybackModel extends PlaybackModel {
             repeatMode: RepeatMode.repeatall,
           ),
         );
-    return null;
-  }
-
-  @override
-  Future<PlaybackModel?> playbackStopped(Duration position, Duration? totalDuration, Ref ref) async {
-    final stopPosition = resolvedStopPosition(position, totalDuration);
-
-    await ref.read(jellyApiProvider).sessionsPlayingStoppedPost(
-          body: PlaybackStopInfo(
-            itemId: item.id,
-            mediaSourceId: item.id,
-            playSessionId: playbackInfo?.playSessionId,
-            positionTicks: stopPosition.toRuntimeTicks,
-          ),
-        );
-
     return null;
   }
 
@@ -119,21 +84,21 @@ class DirectPlaybackModel extends PlaybackModel {
   }
 
   @override
-  DirectPlaybackModel? updateUserData(UserData userData) {
+  Future<PlaybackModel>? setQualityOption(Map<Bitrate, bool> map) async {
+    return copyWith(bitRateOptions: map);
+  }
+
+  @override
+  PlaybackModel? updateUserData(UserData userData) {
     return copyWith(
-      item: item.copyWith(
-        userData: userData,
-      ),
+      item: item.copyWith(userData: userData),
     );
   }
 
   @override
-  DirectPlaybackModel updatePlaybackQueue(PlaybackQueueState newQueue) {
+  PlaybackModel updatePlaybackQueue(PlaybackQueueState newQueue) {
     return copyWith(playbackQueue: newQueue);
   }
-
-  @override
-  String toString() => 'DirectPlaybackModel(item: $item, playbackInfo: $playbackInfo)';
 
   @override
   DirectPlaybackModel copyWith({

@@ -31,6 +31,7 @@ import 'package:fladder/routes/auto_router.gr.dart';
 import 'package:fladder/screens/book_viewer/book_viewer_screen.dart';
 import 'package:fladder/screens/library_search/widgets/library_play_options_.dart';
 import 'package:fladder/screens/shared/fladder_notification_overlay.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 import 'package:fladder/theme.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 import 'package:fladder/util/fladder_image.dart';

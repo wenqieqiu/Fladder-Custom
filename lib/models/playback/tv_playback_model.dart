@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/widgets.dart' hide RepeatMode;
 import 'dart:developer';
 
 import 'package:collection/collection.dart';
@@ -9,6 +10,9 @@ import 'package:fladder/models/item_base_model.dart';
 import 'package:fladder/models/items/channel_model.dart';
 import 'package:fladder/models/items/channel_program.dart';
 import 'package:fladder/models/items/item_shared_models.dart';
+import 'package:fladder/models/items/media_segments_model.dart';
+import 'package:fladder/models/items/chapters_model.dart';
+import 'package:fladder/models/items/trick_play_model.dart';
 import 'package:fladder/models/items/media_streams_model.dart';
 import 'package:fladder/models/live_tv_model.dart';
 import 'package:fladder/models/playback/playback_model.dart';
@@ -16,7 +20,7 @@ import 'package:fladder/models/playback/playback_queue_state.dart';
 import 'package:fladder/providers/api_provider.dart';
 import 'package:fladder/providers/live_tv_provider.dart';
 import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/generated/video_player_helper.g.dart';
+import 'package:fladder/generated/video_player_helper.g.dart' hide Chapter, TrickPlayModel;
 import 'package:fladder/util/bitrate_helper.dart';
 import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/wrappers/media_control_wrapper.dart';
@@ -329,10 +333,16 @@ class TvPlaybackModel extends PlaybackModel {
     ItemBaseModel? item,
     Duration? position,
     Duration? duration,
-    Media? media,
+    ValueGetter<Media?>? media,
+    ValueGetter<Duration>? lastPosition,
+    ValueGetter<MediaStreamsModel?>? mediaStreams,
+    ValueGetter<MediaSegmentsModel?>? mediaSegments,
+    ValueGetter<List<Chapter>?>? chapters,
+    ValueGetter<TrickPlayModel?>? trickPlay,
     List<ItemBaseModel>? queue,
     PlaybackQueueState? playbackQueue,
     PlaybackQueueSource? queueSource,
+    Map<Bitrate, bool>? bitRateOptions,
   }) =>
       TvPlaybackModel(
         channel: channel ?? this.channel,
@@ -342,7 +352,7 @@ class TvPlaybackModel extends PlaybackModel {
         item: item ?? this.item,
         position: position ?? this.position,
         duration: duration ?? this.duration,
-        media: media ?? this.media,
+        media: media != null ? media() : this.media,
         queue: queue ?? this.queue,
         playbackQueue: playbackQueue ?? this.playbackQueue,
         queueSource: queueSource ?? this.queueSource,

@@ -3,7 +3,7 @@
     "nativeName": "简体中文",
     "about": "关于",
     "accept": "接受",
-    "active": "活动",
+    "active": "开启",
     "actor": "{count, plural, other{演员} one{演员}}",
     "@actor": {
         "description": "演员",
@@ -14,12 +14,12 @@
             }
         }
     },
-    "addAsFavorite": "添加为收藏",
-    "addToCollection": "添加到合集",
+    "addAsFavorite": "添加到收藏",
+    "addToCollection": "添加到收藏夹",
     "addToPlaylist": "添加到播放列表",
     "advanced": "高级",
     "all": "全部",
-    "amoledBlack": "Amoled 黑色",
+    "amoledBlack": "AMOLED 纯黑",
     "appLockAutoLogin": "自动登录",
     "appLockBiometrics": "生物识别",
     "appLockPasscode": "密码",
@@ -37,7 +37,7 @@
     "autoPlay": "自动播放",
     "backgroundBlur": "背景模糊",
     "backgroundOpacity": "背景不透明度",
-    "biometricsFailedCheckAgain": "生物识别失败，请检查设置并重试.",
+    "biometricsFailedCheckAgain": "生物识别失败，请检查设置后重试。",
     "bold": "粗体",
     "cancel": "取消",
     "change": "更改",
@@ -61,8 +61,8 @@
     "collectionFolder": "{count, plural, one{合集文件夹} other{合集文件夹}}",
     "color": "颜色",
     "combined": "组合",
-    "communityRating": "用户评分",
-    "continuePage": "继续 - 第 {page} 页",
+    "communityRating": "社区评分",
+    "continuePage": "继续至第 {page} 页",
     "@continuePage": {
         "description": "继续 - 第 1 页",
         "placeholders": {
@@ -71,14 +71,14 @@
             }
         }
     },
-    "controls": "控制",
-    "dashboard": "控制台",
+    "controls": "操作",
+    "dashboard": "仪表盘",
     "dashboardContinue": "继续播放",
     "dashboardContinueListening": "继续收听",
     "dashboardContinueReading": "继续阅读",
     "dashboardContinueWatching": "继续观看",
-    "dashboardNextUp": "下一个",
-    "dashboardRecentlyAdded": "最近添加于 {name}",
+    "dashboardNextUp": "接下来播放",
+    "dashboardRecentlyAdded": "{name} 最近添加",
     "@dashboardRecentlyAdded": {
         "description": "最近添加到首页",
         "placeholders": {
@@ -88,11 +88,11 @@
         }
     },
     "dateAdded": "添加日期",
-    "dateLastContentAdded": "最后添加内容的日期",
+    "dateLastContentAdded": "最后更新日期",
     "datePlayed": "播放日期",
     "days": "{count, plural, one{天} other{天}}",
     "delete": "删除",
-    "deleteFileFromSystem": "删除此项目 {item} 将从文件系统和您的媒体库中删除它。您确定要继续吗？",
+    "deleteFileFromSystem": "删除 {item} 将从文件系统和媒体库中永久移除。确定要继续吗？",
     "@deleteFileFromSystem": {
         "description": "从系统中删除文件",
         "placeholders": {
@@ -101,7 +101,7 @@
             }
         }
     },
-    "deleteItem": "删除 {item}?",
+    "deleteItem": "删除 {item}？",
     "@deleteItem": {
         "description": "deleteItem",
         "placeholders": {
@@ -121,19 +121,19 @@
             }
         }
     },
-    "disableFilters": "禁用筛选器",
-    "disabled": "禁用",
+    "disableFilters": "关闭筛选",
+    "disabled": "关闭",
     "discovered": "已发现",
-    "displayLanguage": "显示语言 (显示语言)",
-    "downloadsClearDesc": "删除所有已同步数据，清除每个已同步用户的所有数据？",
+    "displayLanguage": "显示语言",
+    "downloadsClearDesc": "清除所有同步数据？这将删除每个已同步用户的全部数据。",
     "downloadsClearTitle": "清除同步数据",
-    "downloadsPath": "路径",
-    "downloadsSyncedData": "同步数据",
-    "downloadsTitle": "下载",
+    "downloadsPath": "下载目录",
+    "downloadsSyncedData": "已同步的数据",
+    "downloadsTitle": "下载管理",
     "dynamicText": "动态",
     "editMetadata": "编辑元数据",
     "empty": "空",
-    "enabled": "启用",
+    "enabled": "开启",
     "endsAt": "结束于 {date}",
     "episode": "{count, plural, other{集} one{集}}",
     "@episode": {
@@ -148,9 +148,9 @@
     "error": "错误",
     "failedToLoadImage": "加载图片失败",
     "favorite": "收藏",
-    "favorites": "收藏",
-    "fetchingLibrary": "正在获取媒体库项目…",
-    "filter": "{count, plural, other{筛选器} one{筛选器}}",
+    "favorites": "收藏夹",
+    "fetchingLibrary": "正在获取媒体库内容…",
+    "filter": "{count, plural, other{筛选条件} one{筛选条件}}",
     "@filter": {
         "description": "过滤器",
         "placeholders": {
@@ -174,21 +174,22 @@
             }
         }
     },
-    "goTo": "去往",
+    "goTo": "跳转至",
     "grid": "网格",
     "group": "分组",
     "groupBy": "分组依据",
-    "heightOffset": "高度偏移",
+    "heightOffset": "垂直偏移",
+    "scrollToTop": "回到顶部",
     "hide": "隐藏",
-    "hideEmpty": "隐藏空项",
-    "home": "主页",
+    "hideEmpty": "隐藏空内容",
+    "home": "首页",
     "identify": "刮削",
     "immediately": "立即",
-    "incorrectPinTryAgain": "PIN 码不正确。请重试。",
+    "incorrectPinTryAgain": "PIN 码错误，请重试。",
     "info": "信息",
-    "invalidUrl": "无效的 URL",
-    "invalidUrlDesc": "URL 必须以 http(s):// 开头",
-    "itemCount": "项目数：{count}",
+    "invalidUrl": "链接无效",
+    "invalidUrlDesc": "链接必须以 http(s):// 开头",
+    "itemCount": "共 {count} 项",
     "@itemCount": {
         "description": "项目数",
         "placeholders": {
@@ -217,16 +218,16 @@
             }
         }
     },
-    "libraryFetchNoItemsFound": "未找到项目。请尝试不同的设置。",
-    "libraryPageSizeDesc": "设置每次加载的数量。0 禁用分页。",
-    "libraryPageSizeTitle": "媒体库页面大小",
+    "libraryFetchNoItemsFound": "未找到内容。请尝试不同的筛选条件。",
+    "libraryPageSizeDesc": "设置每页加载数量。设为 0 禁用分页。",
+    "libraryPageSizeTitle": "每页数量",
     "light": "浅色",
     "list": "列表",
     "lockscreen": "锁屏",
     "loggedIn": "已登录",
     "login": "登录",
     "logout": "登出",
-    "logoutUserPopupContent": "这将登出 {userName} 并从应用程序中删除用户。\n你需要重新登录到 {serverName}。",
+    "logoutUserPopupContent": "将登出 {userName} 并从应用中移除该用户。\n你需要重新登录到 {serverName}。",
     "@logoutUserPopupContent": {
         "description": "登出用户的弹窗描述",
         "placeholders": {
@@ -247,13 +248,13 @@
             }
         }
     },
-    "loop": "循环",
-    "markAsUnwatched": "标记为未观看",
-    "markAsWatched": "标记为已观看",
-    "masonry": "砖石",
-    "mediaTypeBase": "基础类型",
+    "loop": "循环播放",
+    "markAsUnwatched": "标记为未看",
+    "markAsWatched": "标记为已看",
+    "masonry": "瀑布流",
+    "mediaTypeBase": "基础媒体",
     "mediaTypeBook": "{count, plural, one{书籍} other{书籍}}",
-    "mediaTypeBoxset": "{count, plural, one{套装} other{套装}}",
+    "mediaTypeBoxset": "{count, plural, one{合集} other{合集}}",
     "mediaTypeEpisode": "{count, plural, one{集} other{集}}",
     "mediaTypeFolder": "{count, plural, one{文件夹} other{文件夹}}",
     "mediaTypeMovie": "{count, plural, one{电影} other{电影}}",
@@ -262,7 +263,7 @@
     "mediaTypePhotoAlbum": "{count, plural, one{相册} other{相册}}",
     "mediaTypePlaylist": "{count, plural, one{播放列表} other{播放列表}}",
     "mediaTypeSeason": "{count, plural, one{季} other{季}}",
-    "mediaTypeSeries": "{count, plural, one{节目} other{节目}}",
+    "mediaTypeSeries": "{count, plural, one{剧集} other{剧集}}",
     "metaDataSavedFor": "{item} 的元数据已保存",
     "@metaDataSavedFor": {
         "description": "元数据已保存",
@@ -272,8 +273,8 @@
             }
         }
     },
-    "metadataRefreshDefault": "扫描新文件和更新的文件",
-    "metadataRefreshFull": "替换所有元数据",
+    "metadataRefreshDefault": "扫描新增和更新文件",
+    "metadataRefreshFull": "替换全部元数据",
     "metadataRefreshValidation": "搜索缺失的元数据",
     "minutes": "{count, plural, other{分钟} one{分钟} }",
     "@minutes": {
@@ -296,26 +297,26 @@
         }
     },
     "moreOptions": "更多选项",
-    "mouseDragSupport": "使用鼠标拖动",
+    "mouseDragSupport": "启用鼠标拖动",
     "musicAlbum": "{count, plural, one{专辑} other{专辑}}",
     "name": "名称",
     "navigation": "导航",
-    "navigationDashboard": "控制台",
+    "navigationDashboard": "仪表盘",
     "navigationFavorites": "收藏夹",
-    "navigationSync": "已同步",
+    "navigationSync": "同步",
     "never": "从不",
     "nextUp": "接下来",
-    "noItemsSynced": "没有已同步的项目",
-    "noItemsToShow": "没有可显示的项目",
+    "noItemsSynced": "暂无已同步内容",
+    "noItemsToShow": "暂无内容可显示",
     "noRating": "无评分",
-    "noResults": "没有结果",
-    "noServersFound": "未找到新服务器",
-    "noSuggestionsFound": "未找到建议",
+    "noResults": "无结果",
+    "noServersFound": "未找到服务器",
+    "noSuggestionsFound": "无建议",
     "none": "无",
     "normal": "正常",
-    "notPartOfAlbum": "不属于专辑的一部分",
+    "notPartOfAlbum": "不属于任何专辑",
     "openParent": "打开上级文件夹",
-    "openShow": "打开节目",
+    "openShow": "打开剧集",
     "openWebLink": "打开网页链接",
     "options": "选项",
     "other": "其他",
@@ -331,12 +332,12 @@
             }
         }
     },
-    "parentalRating": "家长评级",
+    "parentalRating": "家长分级",
     "password": "密码",
-    "pathClearTitle": "清除下载路径",
-    "pathEditDesc": "此位置设置适用于所有用户，任何已同步的数据将不再可访问。它将保留在你的存储中。",
-    "pathEditSelect": "选择下载目标",
-    "pathEditTitle": "更改位置",
+    "pathClearTitle": "清除下载路径？",
+    "pathEditDesc": "此路径设置适用于所有用户。已同步的数据将保留在存储中，但不再可访问。",
+    "pathEditSelect": "选择下载位置",
+    "pathEditTitle": "修改位置",
     "play": "播放 {item}",
     "@play": {
         "description": "播放",
@@ -368,10 +369,10 @@
     "playLabel": "播放",
     "playVideos": "播放视频",
     "played": "已播放",
-    "quickConnectAction": "输入快速连接代码",
+    "quickConnectAction": "输入快速连接码",
     "quickConnectInputACode": "输入代码",
     "quickConnectTitle": "快速连接",
-    "quickConnectWrongCode": "错误的代码",
+    "quickConnectWrongCode": "代码错误",
     "random": "随机",
     "rating": "{count, plural, other{评分} one{评分}}",
     "@rating": {
@@ -402,7 +403,7 @@
             }
         }
     },
-    "recursive": "递归",
+    "recursive": "包含子目录",
     "refresh": "刷新",
     "refreshMetadata": "刷新元数据",
     "refreshPopup": "刷新 - {name}",
@@ -415,10 +416,10 @@
     },
     "refreshPopupContentMetadata": "根据控制台中启用的设置和互联网服务刷新元数据。",
     "related": "相关",
-    "releaseDate": "发布日期",
+    "releaseDate": "发行日期",
     "removeAsFavorite": "取消收藏",
-    "removeFromCollection": "从合集中删除",
-    "removeFromPlaylist": "从播放列表中删除",
+    "removeFromCollection": "从收藏夹移除",
+    "removeFromPlaylist": "从播放列表移除",
     "replaceAllImages": "替换所有图片",
     "replaceExistingImages": "替换现有图片",
     "restart": "重新开始",
@@ -435,7 +436,7 @@
     },
     "retrievePublicListOfUsers": "检索公共用户列表",
     "retry": "重试",
-    "runTime": "运行时间",
+    "runTime": "时长",
     "save": "保存",
     "saved": "已保存",
     "scanBiometricHint": "验证身份",
@@ -456,7 +457,6 @@
             }
         }
     },
-    "scrollToTop": "滚动到顶部",
     "search": "搜索",
     "season": "{count, plural, other{季} one{季}}",
     "@season": {
@@ -498,7 +498,7 @@
         "description": "用于设置某个值",
         "context": "设置时间"
     },
-    "setIdentityTo": "变更身份为 {name}",
+    "setIdentityTo": "将身份设置为 {name}",
     "@setIdentityTo": {
         "description": "setIdentityTo",
         "placeholders": {
@@ -509,41 +509,41 @@
     },
     "settingSecurityApplockTitle": "应用锁",
     "settings": "设置",
-    "settingsBlurEpisodesDesc": "模糊所有即将播放的剧集",
-    "settingsBlurEpisodesTitle": "模糊下一个剧集",
-    "settingsBlurredPlaceholderDesc": "加载海报时显示模糊的背景",
-    "settingsBlurredPlaceholderTitle": "模糊的占位符",
-    "settingsClientDesc": "常规，超时，布局，主题",
+    "settingsBlurEpisodesDesc": "模糊即将播放的剧集画面",
+    "settingsBlurEpisodesTitle": "模糊下一集",
+    "settingsBlurredPlaceholderDesc": "海报加载时显示模糊背景",
+    "settingsBlurredPlaceholderTitle": "模糊占位",
+    "settingsClientDesc": "常规、超时、布局、主题",
     "settingsClientTitle": "Fladder",
     "settingsContinue": "继续播放",
-    "settingsEnableOsMediaControls": "启用操作系统媒体控制",
-    "settingsHomeCarouselDesc": "在仪表板屏幕上显示轮播",
-    "settingsHomeCarouselTitle": "仪表板轮播",
-    "settingsHomeNextUpDesc": "控制台屏幕上显示的海报类型",
-    "settingsHomeNextUpTitle": "下一个海报",
-    "settingsNextUpCutoffDays": "下一个截止天数",
-    "settingsPlayerCustomSubtitlesDesc": "自定义大小、颜色、位置和轮廓",
+    "settingsEnableOsMediaControls": "启用系统媒体控制",
+    "settingsHomeCarouselDesc": "在仪表盘显示轮播图",
+    "settingsHomeCarouselTitle": "首页轮播",
+    "settingsHomeNextUpDesc": "首页显示的下集预告样式",
+    "settingsHomeNextUpTitle": "下集预告",
+    "settingsNextUpCutoffDays": "连续观看截止天数",
+    "settingsPlayerCustomSubtitlesDesc": "自定义字幕大小、颜色、位置和描边",
     "settingsPlayerCustomSubtitlesTitle": "自定义字幕",
-    "settingsPlayerDesc": "纵横比，高级",
-    "settingsPlayerMobileWarning": "在 Android 上启用硬件加速和本地 libass 字幕可能会导致某些字幕无法渲染。",
-    "settingsPlayerNativeLibassAccelDesc": "使用视频播放器 libass 字幕渲染器",
-    "settingsPlayerNativeLibassAccelTitle": "本地 libass 字幕",
+    "settingsPlayerDesc": "画面比例、高级选项",
+    "settingsPlayerMobileWarning": "在 Android 上启用硬件加速和本地 libass 字幕渲染可能导致部分字幕无法正常显示。",
+    "settingsPlayerNativeLibassAccelDesc": "使用播放器的 libass 字幕渲染引擎",
+    "settingsPlayerNativeLibassAccelTitle": "原生 libass 字幕",
     "settingsPlayerTitle": "播放器",
     "settingsPlayerVideoHWAccelDesc": "使用 GPU 渲染视频（推荐）",
     "settingsPlayerVideoHWAccelTitle": "硬件加速",
-    "settingsPosterPinch": "捏合缩放以调整海报大小",
+    "settingsPosterPinch": "双指缩放调整海报大小",
     "settingsPosterSize": "海报大小",
-    "settingsPosterSlider": "显示比例滑块",
-    "settingsProfileDesc": "锁屏，本地网址，Seerr",
+    "settingsPosterSlider": "显示缩放滑块",
+    "settingsProfileDesc": "锁屏、本地地址、Seerr",
     "settingsProfileTitle": "个人资料",
     "settingsQuickConnectTitle": "快速连接",
     "settingsSecurity": "安全",
-    "settingsShowScaleSlider": "显示海报大小滑块",
+    "settingsShowScaleSlider": "显示海报缩放滑块",
     "settingsVisual": "视觉",
     "shadow": "阴影",
-    "showAlbum": "显示相册",
+    "showAlbum": "显示专辑",
     "showDetails": "显示详情",
-    "showEmpty": "显示空项",
+    "showEmpty": "显示空内容",
     "shuffleGallery": "随机播放图库",
     "shuffleVideos": "随机播放视频",
     "somethingWentWrong": "出了点问题",
@@ -552,7 +552,7 @@
     "sortName": "名称",
     "sortOrder": "排序顺序",
     "start": "开始",
-    "studio": "{count, plural, other{工作室} one{工作室}}",
+    "studio": "{count, plural, one{制作公司} other{制作公司}}",
     "@studio": {
         "description": "工作室",
         "placeholders": {
@@ -562,12 +562,12 @@
             }
         }
     },
-    "subtitleConfigurator": "字幕配置器",
-    "subtitleConfiguratorPlaceHolder": "这是占位符文本，此处无任何内容。",
+    "subtitleConfigurator": "字幕配置",
+    "subtitleConfiguratorPlaceHolder": "此区域为占位符，暂无内容。",
     "subtitles": "字幕",
     "switchUser": "切换用户",
     "sync": "同步",
-    "syncDeleteItemDesc": "为 {item} 删除所有已同步的数据？",
+    "syncDeleteItemDesc": "是否删除 {item} 的所有已同步数据？",
     "@syncDeleteItemDesc": {
         "description": "同步删除项目弹出窗口",
         "placeholders": {
@@ -576,13 +576,13 @@
             }
         }
     },
-    "syncDeleteItemTitle": "删除已同步的项目",
-    "syncDeletePopupPermanent": "此操作是永久性的，将删除所有已在本地同步的文件",
+    "syncDeleteItemTitle": "删除已同步内容",
+    "syncDeletePopupPermanent": "此操作不可撤销，将删除所有本地同步文件。",
     "syncDetails": "同步详情",
     "syncOpenParent": "打开父级",
-    "syncRemoveDataDesc": "删除已同步的视频数据？这是永久性的，您需要重新同步文件",
-    "syncRemoveDataTitle": "删除已同步的数据？",
-    "syncedItems": "已同步的项目",
+    "syncRemoveDataDesc": "删除已同步的视频数据？此操作不可撤销，之后需重新同步。",
+    "syncRemoveDataTitle": "删除同步数据？",
+    "syncedItems": "已同步内容",
     "tag": "{count, plural, one{标签} other{标签}}",
     "@tag": {
         "description": "标签",
@@ -594,7 +594,7 @@
         }
     },
     "theme": "主题",
-    "themeColor": "主题颜色",
+    "themeColor": "主题色",
     "themeModeDark": "深色",
     "themeModeLight": "浅色",
     "themeModeSystem": "系统",
@@ -629,7 +629,7 @@
             }
         }
     },
-    "unPlayed": "未播放",
+    "unPlayed": "未观看",
     "unableToConnectHost": "无法连接到主机",
     "unableToReverseAction": "此操作无法撤销，它将删除所有设置。",
     "unknown": "未知",
@@ -669,8 +669,8 @@
         }
     },
     "homeBannerSlideshow": "幻灯片",
-    "aboutLicenses": "许可证",
-    "addItemsToCollection": "将 {itemLength} 个项目添加到合集",
+    "aboutLicenses": "开源许可",
+    "addItemsToCollection": "将 {itemLength} 项添加到收藏夹",
     "@addItemsToCollection": {
         "placeholders": {
             "itemLength": {
@@ -681,9 +681,9 @@
     "syncStatusComplete": "同步完成",
     "syncNoFolderSetup": "未设置同步文件夹",
     "syncStatusNotFound": "资源未找到",
-    "syncStatusPaused": "同步已暂停",
-    "syncOverlayDeleting": "正在删除已同步的项目",
-    "aboutBuild": "构建：{buildNumber}",
+    "syncStatusPaused": "已暂停",
+    "syncOverlayDeleting": "正在删除已同步内容",
+    "aboutBuild": "构建版本：{buildNumber}",
     "@aboutBuild": {
         "placeholders": {
             "buildNumber": {
@@ -692,18 +692,18 @@
         }
     },
     "syncStatusCanceled": "用户已取消",
-    "settingsHomeBannerInformationDesc": "主页横幅中显示的信息",
+    "settingsHomeBannerInformationDesc": "首页横幅中显示的信息",
     "settingsHomeBannerInformationTitle": "横幅信息",
-    "syncStatusEnqueued": "已添加到队列",
+    "syncStatusEnqueued": "等待中",
     "syncStatusRunning": "同步中",
     "syncStatusFailed": "同步失败",
     "syncStatusWaitingToRetry": "等待自动重试",
-    "syncStatusSynced": "已完成同步",
-    "syncStatusPartially": "部分同步成功",
+    "syncStatusSynced": "已完成",
+    "syncStatusPartially": "部分同步完成",
     "syncOverlaySyncing": "正在同步项目详情",
     "syncSelectDownloadsFolder": "选择下载文件夹",
-    "syncRemoveUnableToDeleteItem": "出现了一些问题，导致无法移除已同步的项目",
-    "syncAddItemForSyncing": "已添加 {item} 进行同步",
+    "syncRemoveUnableToDeleteItem": "移除已同步项目时出现问题",
+    "syncAddItemForSyncing": "已将 {item} 加入同步队列",
     "@syncAddItemForSyncing": {
         "placeholders": {
             "item": {
@@ -719,7 +719,7 @@
             }
         }
     },
-    "unableToSyncItem": "无法同步 {item}，出了点问题",
+    "unableToSyncItem": "无法同步 {item}，出现错误",
     "@unableToSyncItem": {
         "placeholders": {
             "item": {
@@ -727,8 +727,8 @@
             }
         }
     },
-    "addToNewCollection": "新建合集",
-    "removedFromCollection": "已从 {collectionName} 合集中移除",
+    "addToNewCollection": "新建收藏夹",
+    "removedFromCollection": "已从 {collectionName} 收藏夹移除",
     "@removedFromCollection": {
         "placeholders": {
             "collectionName": {
@@ -736,10 +736,10 @@
             }
         }
     },
-    "settingsHomeBannerDescription": "显示为幻灯片、轮播或隐藏横幅",
-    "homeBannerCarousel": "轮播",
-    "settingsHomeBannerTitle": "主页横幅",
-    "addItemsToPlaylist": "将 {itemLength} 个项目添加到播放列表",
+    "settingsHomeBannerDescription": "显示为幻灯片、轮播图或隐藏",
+    "homeBannerCarousel": "轮播图",
+    "settingsHomeBannerTitle": "首页横幅",
+    "addItemsToPlaylist": "将 {itemLength} 项添加到播放列表",
     "@addItemsToPlaylist": {
         "placeholders": {
             "itemLength": {
@@ -764,13 +764,13 @@
             }
         }
     },
-    "aboutSocials": "社交",
+    "aboutSocials": "社交平台",
     "subtitle": "字幕",
-    "subtitleConfiguration": "字幕设置",
-    "off": "关闭",
+    "subtitleConfiguration": "字幕配置",
+    "off": "关",
     "screenBrightness": "屏幕亮度",
     "playBackSettings": "播放设置",
-    "addedToCollection": "已添加到 {collectionName} 合集",
+    "addedToCollection": "已添加到 {collectionName} 收藏夹",
     "@addedToCollection": {
         "placeholders": {
             "collectionName": {
@@ -780,27 +780,27 @@
     },
     "addToNewPlaylist": "新建播放列表",
     "scale": "缩放",
-    "autoNextOffSmartDesc": "如果片尾结束后剩余时间不超过 10 秒，则在片尾开始时显示接下来预览窗。否则，它会在播放时间还剩 30 秒时显示接下来预览窗",
-    "settingsAutoNextTitle": "接下来预览",
-    "settingsAutoNextDesc": "如果有其他项目在队列中，则在接近末尾处显示接下来预览",
-    "autoNextOffStaticDesc": "播放时间还剩 30 秒时显示接下来预览窗",
+    "autoNextOffSmartDesc": "当片尾剩余时间不超过 10 秒时，在片尾开始时显示下集预告。否则，在播放还剩 30 秒时显示。",
+    "settingsAutoNextTitle": "下集预告",
+    "settingsAutoNextDesc": "队列中还有其他项目时，在播放接近末尾时显示下集预告",
+    "autoNextOffStaticDesc": "播放还剩 30 秒时显示下集预告",
     "autoNextOffSmartTitle": "智能模式",
     "autoNextOffStaticTitle": "固定模式",
-    "playbackRate": "播放速率",
-    "speed": "速度",
-    "unableToPlayMedia": "寻找兼容的媒体类型时出错",
-    "errorOpeningMedia": "尝试播放此媒体时发生错误",
-    "unableToPlayBooksOnWeb": "目前书籍在网页上不受支持",
-    "updateFilterForLibrary": "更新筛选器",
-    "deleteFilterConfirmation": "您确实要删除该筛选器吗？",
-    "libraryFiltersLimitReached": "已达到筛选器限制 (10) 删除一些筛选器",
-    "libraryFiltersRemoveAll": "删除所有筛选器",
-    "libraryFiltersRemoveAllConfirm": "这将删除每个媒体库的所有已保存的筛选器",
-    "playerSettingsOrientationDesc": "设置视频播放器为特定方向",
-    "deviceOrientationLandscapeLeft": "水平向左",
-    "deviceOrientationLandscapeRight": "水平向右",
-    "defaultFilterForLibrary": "媒体库的默认筛选器",
-    "removeFilterForLibrary": "删除 {filter}？",
+    "playbackRate": "播放速度",
+    "speed": "倍速",
+    "unableToPlayMedia": "无法播放此媒体",
+    "errorOpeningMedia": "尝试播放此媒体时出错",
+    "unableToPlayBooksOnWeb": "网页版暂不支持阅读书籍",
+    "updateFilterForLibrary": "更新筛选条件",
+    "deleteFilterConfirmation": "确定要删除此筛选条件吗？",
+    "libraryFiltersLimitReached": "已达筛选条件上限（10 个），请删除部分条件",
+    "libraryFiltersRemoveAll": "清除全部筛选",
+    "libraryFiltersRemoveAllConfirm": "这将清除所有媒体库中已保存的筛选条件",
+    "playerSettingsOrientationDesc": "设置视频播放器的屏幕方向",
+    "deviceOrientationLandscapeLeft": "横屏向左",
+    "deviceOrientationLandscapeRight": "横屏向右",
+    "defaultFilterForLibrary": "默认筛选条件",
+    "removeFilterForLibrary": "删除筛选条件「{filter}」？",
     "@removeFilterForLibrary": {
         "description": "removeFilterForLibrary",
         "placeholders": {
@@ -810,36 +810,36 @@
         }
     },
     "playerSettingsOrientationTitle": "播放器方向",
-    "deviceOrientationPortraitUp": "纵向向上",
-    "deviceOrientationPortraitDown": "纵向向下",
+    "deviceOrientationPortraitUp": "竖屏向上",
+    "deviceOrientationPortraitDown": "竖屏向下",
     "clientSettingsSchemeVariantTitle": "配色方案",
     "schemeSettingsRainbow": "彩虹",
-    "schemeSettingsVibrant": "有活力",
-    "schemeSettingsTonalSpot": "色调点",
-    "schemeSettingsFidelity": "保真度",
+    "schemeSettingsVibrant": "鲜活",
+    "schemeSettingsTonalSpot": "色调",
+    "schemeSettingsFidelity": "高保真",
     "schemeSettingsMonochrome": "单色",
     "schemeSettingsExpressive": "表现力",
     "schemeSettingsContent": "内容",
-    "schemeSettingsFruitSalad": "水果沙拉",
-    "schemeSettingsNeutral": "中性的",
-    "libraryShuffleAndPlayItems": "随机播放项目",
-    "libraryPlayItems": "播放项目",
-    "clientSettingsRequireWifiTitle": "需要 Wi-Fi",
-    "clientSettingsRequireWifiDesc": "仅在连接到 Wi-Fi 网络时下载",
+    "schemeSettingsFruitSalad": "缤纷",
+    "schemeSettingsNeutral": "中性",
+    "libraryShuffleAndPlayItems": "随机播放",
+    "libraryPlayItems": "顺序播放",
+    "clientSettingsRequireWifiTitle": "仅在 Wi-Fi 下下载",
+    "clientSettingsRequireWifiDesc": "仅在连接到 Wi-Fi 网络时进行下载",
     "clientSettingsShowAllCollectionsTitle": "显示所有合集类型",
-    "clientSettingsShowAllCollectionsDesc": "启用后，显示所有合集类型，包括 Fladder 不支持的合集类型",
-    "resumeVideo": "恢复播放视频",
-    "playNextVideo": "播放下一个视频",
+    "clientSettingsShowAllCollectionsDesc": "启用后显示所有合集类型，包括 Fladder 不支持的。",
+    "resumeVideo": "继续播放视频",
+    "playNextVideo": "播放下一个",
     "closeVideo": "关闭视频",
     "stop": "停止",
     "defaultLabel": "默认",
     "@defaultLabel": {
         "description": "To indicate a default value, default video player backend"
     },
-    "noVideoPlayerOptions": "所选的后端没有设置项",
+    "noVideoPlayerOptions": "所选后端无可配置项",
     "mdkExperimental": "MDK 仍处于实验阶段",
-    "playerSettingsBackendTitle": "视频播放器后端",
-    "playerSettingsBackendDesc": "选择您喜好的媒体播放器以获得最佳播放体验",
+    "playerSettingsBackendTitle": "视频播放后端",
+    "playerSettingsBackendDesc": "选择偏好的播放后端以获得最佳体验",
     "skipButtonLabel": "跳过 {segment}",
     "@skipButtonLabel": {
         "placeholders": {
@@ -864,33 +864,33 @@
             }
         }
     },
-    "copyStreamUrl": "复制流媒体网址",
+    "copyStreamUrl": "复制串流地址",
     "settingsLayoutSizesTitle": "布局尺寸",
-    "settingsLayoutSizesDesc": "根据窗口大小选择应用程序可以使用的布局大小",
+    "settingsLayoutSizesDesc": "根据窗口大小选择可用的布局尺寸",
     "settingsLayoutModesTitle": "布局模式",
-    "settingsLayoutModesDesc": "控制应用是否可以使用单面板或双面板布局",
+    "settingsLayoutModesDesc": "控制应用使用单栏还是双栏布局",
     "phone": "手机",
     "tablet": "平板电脑",
     "desktop": "桌面",
     "layoutModeDual": "双",
     "layoutModeSingle": "单",
     "copiedToClipboard": "已复制到剪贴板",
-    "episodeAvailable": "播出中",
+    "episodeAvailable": "已播出",
     "episodeUnaired": "未播出",
-    "episodeMissing": "缺少的",
-    "homeStreamingQualityTitle": "家庭网络质量",
-    "homeStreamingQualityDesc": "连接到家庭网络时可获得最佳流媒体质量",
-    "internetStreamingQualityTitle": "网络质量",
-    "internetStreamingQualityDesc": "使用移动网络时可获得最佳流媒体质量",
+    "episodeMissing": "缺失",
+    "homeStreamingQualityTitle": "家庭网络画质",
+    "homeStreamingQualityDesc": "连接家庭网络时的最佳串流质量",
+    "internetStreamingQualityTitle": "互联网画质",
+    "internetStreamingQualityDesc": "通过互联网远程连接时的最佳串流质量",
     "qualityOptionsTitle": "质量选项",
-    "qualityOptionsOriginal": "原画",
+    "qualityOptionsOriginal": "原画质",
     "qualityOptionsAuto": "自动",
     "version": "版本",
     "segmentActionSkip": "跳过",
-    "segmentActionNone": "无",
-    "mediaSegmentActions": "媒体片段操作",
-    "segmentActionAskToSkip": "询问",
-    "loading": "加载中",
+    "segmentActionNone": "不操作",
+    "mediaSegmentActions": "片头片尾处理",
+    "segmentActionAskToSkip": "询问是否跳过",
+    "loading": "正在加载",
     "castAndCrew": "演职人员",
     "guestActor": "{count, plural, other{客串演员} one{客串演员}}",
     "@guestActor": {
@@ -902,31 +902,31 @@
             }
         }
     },
-    "settingsPlayerBufferSizeDesc": "配置视频播放的缓冲区大小，确定加载到缓存中的数据量。",
-    "settingsPlayerBufferSizeTitle": "视频缓冲区大小",
-    "maxConcurrentDownloadsTitle": "最大并发下载",
-    "maxConcurrentDownloadsDesc": "设置可同时运行的最大下载数量。设置为 0 则禁用限制。",
+    "settingsPlayerBufferSizeDesc": "配置视频缓冲区大小，决定预加载的数据量。",
+    "settingsPlayerBufferSizeTitle": "视频缓冲区",
+    "maxConcurrentDownloadsTitle": "最大并发下载数",
+    "maxConcurrentDownloadsDesc": "设置最大同时下载数。设为 0 则不限制。",
     "playbackTrackSelection": "播放轨道选择",
-    "rememberAudioSelections": "根据上一项设置音轨",
-    "rememberAudioSelectionsDesc": "尝试将音轨设置为与上一个视频最接近的匹配。",
-    "rememberSubtitleSelections": "根据上一项设置字幕轨",
-    "rememberSubtitleSelectionsDesc": "尝试将字幕轨设置为与上一个视频最接近的匹配。",
-    "similarToLikedItem": "类似的喜欢项目",
+    "rememberAudioSelections": "记住音轨选择",
+    "rememberAudioSelectionsDesc": "尝试自动选择与上一个视频最匹配的音轨。",
+    "rememberSubtitleSelections": "记住字幕选择",
+    "rememberSubtitleSelectionsDesc": "尝试自动选择与上一个视频最匹配的字幕。",
+    "similarToLikedItem": "类似喜欢的项目",
     "exitFladderTitle": "退出 Fladder",
-    "similarToRecentlyPlayed": "类似的最近播放",
-    "hasActorFromRecentlyPlayed": "最近播出的演员",
+    "similarToRecentlyPlayed": "类似最近播放",
+    "hasActorFromRecentlyPlayed": "最近播放影片的参演演员",
     "hasLikedDirector": "喜欢的导演",
     "hasLikedActor": "喜欢的演员",
-    "latest": "最新的",
-    "recommended": "建议",
-    "hasDirectorFromRecentlyPlayed": "最近播出的导演",
-    "playbackType": "播放类型",
-    "playbackTypeDirect": "直接播放",
-    "playbackTypeTranscode": "转码",
-    "playbackTypeOffline": "离线",
-    "latestReleases": "最新版本",
+    "latest": "最新",
+    "recommended": "推荐",
+    "hasDirectorFromRecentlyPlayed": "最近播放影片的导演",
+    "playbackType": "播放方式",
+    "playbackTypeDirect": "直连播放",
+    "playbackTypeTranscode": "转码播放",
+    "playbackTypeOffline": "离线播放",
+    "latestReleases": "最新发布",
     "autoCheckForUpdates": "定期检查更新",
-    "newReleaseFoundTitle": "更新 {newRelease} 可用！",
+    "newReleaseFoundTitle": "发现新版本 {newRelease}！",
     "@newReleaseFoundTitle": {
         "placeholders": {
             "newRelease": {
@@ -934,15 +934,15 @@
             }
         }
     },
-    "newUpdateFoundOnGithub": "在 Github 上发现新的更新",
-    "settingsEnableOsMediaControlsDesc": "允许使用媒体键控制播放并在操作系统中显示当前正在播放的媒体",
+    "newUpdateFoundOnGithub": "在 GitHub 上发现新版本",
+    "settingsEnableOsMediaControlsDesc": "允许使用媒体键控制播放，并在系统中显示当前播放内容",
     "enableBackgroundPostersTitle": "启用背景海报",
-    "enableBackgroundPostersDesc": "在适用的屏幕上显示随机海报",
-    "notificationDownloadingDownloading": "下载",
+    "enableBackgroundPostersDesc": "在适用页面中显示随机背景海报",
+    "notificationDownloadingDownloading": "正在下载",
     "notificationDownloadingPaused": "下载已暂停",
     "notificationDownloadingFinished": "下载完成",
-    "notificationDownloadingError": "下载错误",
-    "syncAllItemsTitle": "同步来自 {itemName} 的所有项目吗？",
+    "notificationDownloadingError": "下载出错",
+    "syncAllItemsTitle": "同步来自 {itemName} 的全部项目？",
     "@syncAllItemsTitle": {
         "description": "syncAllItemsFrom",
         "placeholders": {
@@ -951,7 +951,7 @@
             }
         }
     },
-    "syncAllItemsDesc": "这会将 '{itemName}' 中的 ({itemCount}) 个项目同步到您的设备。\n这可能需要一段时间，具体取决于项目数量。",
+    "syncAllItemsDesc": "将「{itemName}」中的 {itemCount} 个项目同步到当前设备。\n所需时间取决于项目数量。",
     "@syncAllItemsDesc": {
         "description": "syncAllitemsFromDesc",
         "placeholders": {
@@ -963,7 +963,7 @@
             }
         }
     },
-    "syncDeleteAllItemsTitle": "要删除 {itemName} 中所有已同步的项目吗？",
+    "syncDeleteAllItemsTitle": "删除 {itemName} 中所有已同步项目？",
     "@syncDeleteAllItemsTitle": {
         "description": "syncDeleteAllitemsFrom",
         "placeholders": {
@@ -972,7 +972,7 @@
             }
         }
     },
-    "syncDeleteAllItemsDesc": "这将删除 '{itemName}' 中所有已同步的项目。\n此操作是永久性的，您需要重新同步 ({itemCount}) 个文件。",
+    "syncDeleteAllItemsDesc": "将删除「{itemName}」中所有已同步的项目。\n此操作不可撤销，之后需重新同步 {itemCount} 个文件。",
     "@syncDeleteAllItemsDesc": {
         "description": "syncDeleteAllitemsFromDesc",
         "placeholders": {
@@ -987,28 +987,28 @@
     "syncPauseAll": "全部暂停",
     "syncResumeAll": "全部恢复",
     "syncStopAll": "全部停止",
-    "syncDeleteAll": "删除所有文件",
-    "syncAllFiles": "同步所有文件",
-    "usePostersForLibraryIconsTitle": "显示媒体库图标的海报",
-    "usePostersForLibraryIconsDesc": "显示媒体库海报而不是图标",
+    "syncDeleteAll": "删除全部",
+    "syncAllFiles": "同步全部",
+    "usePostersForLibraryIconsTitle": "使用海报作为媒体库图标",
+    "usePostersForLibraryIconsDesc": "显示媒体库海报而非默认图标",
     "offline": "离线",
     "shortCuts": "快捷键",
-    "skipForwardLength": "跳过向前的长度",
-    "skipBackLength": "跳过向后的长度",
+    "skipForwardLength": "快进时长",
+    "skipBackLength": "后退时长",
     "playPause": "播放/暂停",
-    "seekBack": "回退",
+    "seekBack": "后退",
     "mute": "静音",
     "seekForward": "快进",
-    "volumeUp": "音量增大",
-    "volumeDown": "音量降低",
+    "volumeUp": "提高音量",
+    "volumeDown": "降低音量",
     "nextVideo": "下一个视频",
     "prevVideo": "上一个视频",
-    "nextChapter": "下一章",
-    "prevChapter": "上一章",
+    "nextChapter": "下一章节",
+    "prevChapter": "上一章节",
     "fullScreen": "全屏",
     "skipMediaSegment": "跳过媒体片段",
     "exit": "退出",
-    "shortCutAlreadyAssigned": "快捷键 '{hotKey}' 已经分配了",
+    "shortCutAlreadyAssigned": "快捷键「{hotKey}」已被占用",
     "@shortCutAlreadyAssigned": {
         "placeholders": {
             "hotKey": {
@@ -1016,7 +1016,7 @@
             }
         }
     },
-    "blurred": "模糊",
+    "blurred": "模糊背景",
     "volumeIndicator": "音量：{volume}",
     "@volumeIndicator": {
         "placeholders": {
@@ -1028,7 +1028,7 @@
     "keyboardShortCuts": "键盘快捷键",
     "speedUp": "加速",
     "speedDown": "减速",
-    "speedIndicator": "播放速率：{speed}",
+    "speedIndicator": "播放倍速：{speed}",
     "@speedIndicator": {
         "placeholders": {
             "speed": {
@@ -1036,18 +1036,18 @@
             }
         }
     },
-    "television": "电视",
-    "exitFladderDesc": "您确定要关闭 Fladder 吗？",
+    "television": "电视模式",
+    "exitFladderDesc": "确定要关闭 Fladder 吗？",
     "quickConnectPostFailed": "无法获取快速连接代码",
     "quickConnectLoginUsingCode": "使用快速连接",
     "quickConnectEnterCodeDescription": "输入以下代码登录",
     "showMore": "显示更多",
-    "itemColorsTitle": "项目颜色",
-    "itemColorsDesc": "使用项目的主色调作为详情页面的主题",
+    "itemColorsTitle": "项目主题色",
+    "itemColorsDesc": "使用项目的主色调作为详情页主题色",
     "mediaTunnelingTitle": "媒体隧道",
     "mediaTunnelingDesc": "为本机播放器启用媒体隧道",
-    "clientSettingsUseSystemIMETitle": "使用系统键盘",
-    "clientSettingsUseSystemIMEDesc": "使用系统提供的内置键盘",
+    "clientSettingsUseSystemIMETitle": "使用系统输入法",
+    "clientSettingsUseSystemIMEDesc": "使用系统自带的输入法键盘",
     "nextUpInCount": "接下来是 {seconds}",
     "@nextUpInCount": {
         "placeholders": {
@@ -1066,30 +1066,30 @@
             }
         }
     },
-    "openImeKeyboard": "打开输入法键盘",
+    "openImeKeyboard": "打开系统键盘",
     "screensaverDvd": "DVD",
     "screensaverLogo": "Logo",
     "screensaverTime": "时间",
-    "screensaverBlack": "黑色",
-    "playerSettingsScreensaverTitle": "屏幕保护程序",
-    "playerSettingsScreensaverDesc": "选择在播发无活动后显示的屏幕保护程序",
+    "screensaverBlack": "纯黑",
+    "playerSettingsScreensaverTitle": "屏幕保护",
+    "playerSettingsScreensaverDesc": "选择播放无操作一段时间后显示的屏幕保护",
     "settingsLocalUrlTitle": "本地 Jellyfin 地址",
     "settingsLocalUrlSetTitle": "配置本地 Jellyfin 地址",
-    "settingsLocalUrlSetDesc": "指定本地 Jellyfin 地址。当您的设备连接到同一网络时，Fladder 将自动使用此地址。",
+    "settingsLocalUrlSetDesc": "指定局域网内 Jellyfin 地址。设备连接同一网络时，Fladder 将自动使用此地址。",
     "takeScreenshot": "截屏",
-    "takeScreenshotClean": "截取屏幕截图（不含字幕）",
-    "screenshots": "屏幕截图",
+    "takeScreenshotClean": "截取截图（不含字幕）",
+    "screenshots": "截屏记录",
     "screenshotTaken": "截图已保存！",
-    "screenshotCleanTaken": "已保存无字幕截图！",
-    "errorTakingScreenshot": "截屏时出现错误",
-    "regenerateTrickplayImages": "重新生成特技播放图片",
+    "screenshotCleanTaken": "无字幕截图已保存！",
+    "errorTakingScreenshot": "截屏时出错",
+    "regenerateTrickplayImages": "重新生成特技播放缩略图",
     "segmentActionSkipOnce": "跳过一次",
-    "controlPanel": "控制面板",
-    "controlPanelDesc": "服务器，活动，用户，媒体库",
-    "controlDashboard": "控制面板",
+    "controlPanel": "服务器控制",
+    "controlPanelDesc": "服务器、活动、用户、媒体库",
+    "controlDashboard": "服务器仪表盘",
     "serverName": "服务器名称",
-    "serverVersion": "服务器版",
-    "webVersion": "网页版",
+    "serverVersion": "服务器版本",
+    "webVersion": "Web 版本",
     "devices": "设备",
     "storagePaths": "存储路径",
     "programData": "程序数据",
@@ -1098,13 +1098,13 @@
     "transcodingTemp": "转码临时文件",
     "web": "网页",
     "used": "使用",
-    "count": "统计",
+    "count": "总数",
     "scanAllLibraries": "扫描所有媒体库",
     "restartServer": "重启服务器",
     "shutDownServer": "关闭服务器",
-    "dashboardDesc": "服务器，统计，设备，存储",
-    "lastActivity": "上次活动",
-    "activeTasks": "活动任务",
+    "dashboardDesc": "服务器、统计、设备、存储",
+    "lastActivity": "最近活动",
+    "activeTasks": "运行中的任务",
     "hours": "{count, plural, one{小时} other{小时}}",
     "@hours": {
         "description": "Pluralization for hours",
@@ -1220,14 +1220,14 @@
         }
     },
     "performance": "性能",
-    "controlPanelServerDesc": "服务器名称，快速连接，性能",
+    "controlPanelServerDesc": "服务器名称、快速连接、性能",
     "serverNameLabel": "服务器名称",
     "cachePath": "缓存路径",
     "metadataPath": "元数据路径",
     "maxConcurrentLibraryScanLabel": "最大并发媒体库扫描次数",
-    "maxConcurrentLibraryScanDesc": "媒体库扫描期间的最大并行任务数。如果留空，系统将根据系统核心数自动选择限制值。警告：此值设置过高可能会导致网络文件系统出现问题；如果遇到问题，请降低此值。",
+    "maxConcurrentLibraryScanDesc": "媒体库扫描期间的最大并行任务数。留空则系统根据核心数自动选择。警告：此值过高可能导致网络文件系统出问题；若遇到问题请降低此值。",
     "maxImageDecodingThreadsLabel": "最大图片解码线程",
-    "maxImageDecodingThreadsDesc": "允许并行运行的最大图片编码数量。如果留空，系统将根据核心数自动选择一个限制值。",
+    "maxImageDecodingThreadsDesc": "允许并行运行的最大图片编解码线程数。留空则系统根据核心数自动选择。",
     "deleteUserTitle": "删除用户 {user}？",
     "@deleteUserTitle": {
         "description": "deleteUserTitle",
@@ -1237,7 +1237,7 @@
             }
         }
     },
-    "deleteUserDesc": "这将永久删除用户 {user} 及其所有关联设置。",
+    "deleteUserDesc": "将永久删除用户 {user} 及其所有关联设置。",
     "@deleteUserDesc": {
         "description": "deleteUserDesc",
         "placeholders": {
@@ -1247,33 +1247,33 @@
         }
     },
     "userInformation": "用户信息",
-    "allowManageServer": "允许此用户管理服务器",
-    "allowCollections": "允许此用户访问合集",
-    "allowEditSubtitles": "允许此用户编辑字幕",
-    "featureAccess": "功能访问",
-    "allowLiveTVAccess": "允许直播电视访问",
-    "allowLiveTVRecording": "允许直播电视录制管理",
+    "allowManageServer": "允许管理服务器",
+    "allowCollections": "允许访问合集",
+    "allowEditSubtitles": "允许编辑字幕",
+    "featureAccess": "功能权限",
+    "allowLiveTVAccess": "允许访问电视直播",
+    "allowLiveTVRecording": "允许管理电视录制",
     "mediaPlayback": "媒体播放",
-    "allowMediaPlayback": "允许媒体播放",
-    "allowVideoTranscoding": "允许播放需要转码的视频",
-    "allowAudioTranscoding": "允许播放需要转码的音频",
-    "allowMediaConversion": "允许播放需要媒体转换的视频",
-    "forceRemoteTranscoding": "强制远程源转码",
+    "allowMediaPlayback": "允许播放媒体",
+    "allowVideoTranscoding": "允许播放需转码的视频",
+    "allowAudioTranscoding": "允许播放需转码的音频",
+    "allowMediaConversion": "允许播放需转换的视频",
+    "forceRemoteTranscoding": "强制远程转码",
     "syncplay": "同步播放",
-    "syncplayAccess": "同步播放访问",
+    "syncplayAccess": "访问同步播放",
     "allowMediaDeletion": "允许删除媒体",
     "allLibraries": "所有媒体库",
-    "libraryAccess": "媒体库访问",
-    "enableAllLibraries": "启用对所有媒体库的访问",
-    "enableAllDevices": "启用对所有设备的访问权限",
+    "libraryAccess": "媒体库权限",
+    "enableAllLibraries": "开放所有媒体库",
+    "enableAllDevices": "开放所有设备",
     "parentalControl": "家长控制",
-    "blockedItemsNoRating": "已屏蔽且无分级或分级无法识别的项目",
+    "blockedItemsNoRating": "屏蔽无分级或分级无法识别的项目",
     "maxParentalRating": "最高家长分级",
-    "allowItemsTags": "允许带有标签的项目",
-    "blockItemsTags": "使用标签阻止项目",
-    "accessSchedule": "访问计划",
-    "accessSchedules": "访问计划",
-    "addAccessSchedule": "添加访问计划",
+    "allowItemsTags": "允许带标签的项目",
+    "blockItemsTags": "屏蔽带标签的项目",
+    "accessSchedule": "访问时段",
+    "accessSchedules": "访问时段",
+    "addAccessSchedule": "添加访问时段",
     "dayOfWeek": "星期几",
     "startTime": "开始时间",
     "endTime": "结束时间",
@@ -1282,7 +1282,7 @@
     "createUser": "创建用户",
     "users": "用户",
     "editUser": "编辑用户",
-    "general": "默认",
+    "general": "常规",
     "access": "访问",
     "enableAccessAllLibraries": "启用对所有媒体库的访问",
     "passwordSettingsComing": "密码设置即将推出",
@@ -1299,7 +1299,7 @@
     "passwordChangeFailed": "更改密码失败",
     "savePassword": "保存密码",
     "deleteLibraryConfirmTitle": "删除媒体库？",
-    "deleteLibraryConfirmMessage": "您确定要删除 {libraryName} 吗?\n此操作无法撤销。",
+    "deleteLibraryConfirmMessage": "确定要删除 {libraryName} 吗？\n此操作不可撤销。",
     "@deleteLibraryConfirmMessage": {
         "placeholders": {
             "libraryName": {
@@ -1312,14 +1312,14 @@
     "enabledLUFSScan": "启用 LUFS 扫描",
     "enabledRealtimeMonitoring": "启用实时监控",
     "automaticallyAddToCollection": "自动添加到合集",
-    "enabledEmbeddedTitles": "启用嵌入式标题",
-    "enabledEmbeddedExtrasTitles": "启用附加内容嵌入式标题",
+    "enabledEmbeddedTitles": "启用内嵌标题",
+    "enabledEmbeddedExtrasTitles": "启用附加内容内嵌标题",
     "automaticRefreshInterval": "自动刷新间隔",
-    "autoRefreshIntervalNote": "启用此功能可能会导致媒体库刷新时间延长。",
+    "autoRefreshIntervalNote": "开启后可能导致媒体库刷新时间变长。",
     "preferredDownloadLanguage": "首选下载语言",
     "countryRegion": "国家/地区",
-    "saveMetadata": "保存元数据",
-    "metadataFetchers": "元数据获取器 ({type})",
+    "saveMetadata": "保存到元数据",
+    "metadataFetchers": "元数据源（{type}）",
     "@metadataFetchers": {
         "placeholders": {
             "type": {
@@ -1327,9 +1327,9 @@
             }
         }
     },
-    "enableAndRankMetadataFetchers": "启用并按优先级对您首选的元数据获取器进行排序。",
-    "enableAndRankImagesFetchers": "启用并按优先级排列您首选的图片刮削器。",
-    "imageFetchers": "图片获取器 ({type})",
+    "enableAndRankMetadataFetchers": "启用并拖动排序首选的元数据源。",
+    "enableAndRankImagesFetchers": "启用并拖动排序首选的图片来源。",
+    "imageFetchers": "图片来源（{type}）",
     "@imageFetchers": {
         "placeholders": {
             "type": {
@@ -1337,33 +1337,33 @@
             }
         }
     },
-    "enableAndRankImageFetchers": "启用并按优先级排列您首选的图片刮削器。",
-    "mediaSegmentProviders": "媒体片段发行商",
-    "enableAndRankMediaSegmentProviders": "启用并按优先级对您首选的媒体片段发行商进行排序。",
+    "enableAndRankImageFetchers": "启用并拖动排序首选的图片来源。",
+    "mediaSegmentProviders": "片段识别提供商",
+    "enableAndRankMediaSegmentProviders": "启用并拖动排序首选的片段识别提供商。",
     "trickplay": "特技播放",
-    "enableTrickplayImageExtraction": "启用特技播放图片提取",
-    "extractTrickplayImagesDuringLibraryScan": "在媒体库扫描期间提取特技播放图片",
-    "saveTrickplayImagesNextToMedia": "将特技播放图片保存在媒体文件旁边",
-    "chapterImages": "章节图片",
-    "enableChapterImageExtraction": "启用章节图片提取",
-    "extractChapterImagesDuringLibraryScan": "在媒体库扫描过程中提取章节图片",
+    "enableTrickplayImageExtraction": "启用特技播放缩略图提取",
+    "extractTrickplayImagesDuringLibraryScan": "媒体库扫描期间提取特技播放缩略图",
+    "saveTrickplayImagesNextToMedia": "将特技播放缩略图保存在媒体文件旁",
+    "chapterImages": "章节缩略图",
+    "enableChapterImageExtraction": "启用章节缩略图提取",
+    "extractChapterImagesDuringLibraryScan": "媒体库扫描期间提取章节缩略图",
     "subtitleDownloads": "字幕下载",
     "downloadLanguages": "下载语言",
-    "subtitleDownloaders": "字幕下载器",
-    "onlyPerfectSubtitleMatch": "只下载与媒体完全匹配的字幕",
-    "perfectSubtitleMatchDescription": "启用“完全匹配”选项后，字幕将仅包含经过测试并与您的视频文件完全匹配的字幕。取消勾选此选项会增加字幕下载的成功率，但也会增加字幕出现时间错乱或文本错误的风险。",
-    "skipSubtitlesIfAudioMatches": "如果默认音轨与下载语言匹配，则跳过此步骤",
-    "skipSubtitlesIfEmbedded": "如果视频已包含内嵌字幕，则跳过此步骤",
-    "saveSubtitlesNextToMedia": "将字幕保存到媒体文件旁边",
-    "saveArtWorkNextToMedia": "将艺术图保存到媒体文件旁边",
-    "saveArtWorkNextToMediaDesc": "将图片保存到媒体文件夹中，可以方便地进行编辑。",
+    "subtitleDownloaders": "字幕下载源",
+    "onlyPerfectSubtitleMatch": "仅下载与媒体完全匹配的字幕",
+    "perfectSubtitleMatchDescription": "启用「完全匹配」后，仅下载经过验证与您的视频文件完全匹配的字幕。不勾选可提高字幕下载成功率，但可能出现时间轴错位或文本错误。",
+    "skipSubtitlesIfAudioMatches": "若默认音轨语言与下载语言匹配则跳过",
+    "skipSubtitlesIfEmbedded": "若视频已包含内嵌字幕则跳过",
+    "saveSubtitlesNextToMedia": "将字幕保存到媒体文件旁",
+    "saveArtWorkNextToMedia": "将图片保存到媒体文件旁",
+    "saveArtWorkNextToMediaDesc": "将图片保存到媒体文件夹便于手动编辑。",
     "select": "选择",
     "newLibrary": "新建媒体库",
     "contentType": "内容类型",
     "metadataImageLongPressTouch": "长按删除图片",
-    "metadataImageLongPressClick": "右键单击删除图片",
+    "metadataImageLongPressClick": "右键点击删除图片",
     "primary": "首选",
-    "logo": "{count, plural, other{Logos} one{Logo}}",
+    "logo": "{count, plural, other{徽标} one{徽标}}",
     "@logo": {
         "description": "logo",
         "placeholders": {
@@ -1396,10 +1396,10 @@
     "deleteRequestConfirmation": "您确定要删除此请求吗？",
     "recentlyAdded": "最近添加",
     "recentRequests": "最近请求",
-    "trending": "热门趋势",
+    "trending": "热门",
     "popularMovies": "热门电影",
-    "expectedMovies": "预计上映的电影",
-    "expectedSeries": "预计上映的节目",
+    "expectedMovies": "即将上映的电影",
+    "expectedSeries": "即将上映的剧集",
     "requestConfiguration": "请求配置",
     "qualityProfile": "质量配置文件",
     "selectProfile": "选择配置文件",
@@ -1407,9 +1407,9 @@
     "selectFolder": "选择文件夹",
     "tags": "标签",
     "noTags": "无标签",
-    "requestAs": "请求为",
+    "requestAs": "请求身份",
     "requestQuotaTitle": "请求配额",
-    "requestQuotaStatus": "{remaining} of {limit} 剩余 (每 {days} 天重置一次)",
+    "requestQuotaStatus": "剩余 {remaining} / {limit}（每 {days} 天重置）",
     "@requestQuotaStatus": {
         "placeholders": {
             "remaining": {
@@ -1423,7 +1423,7 @@
             }
         }
     },
-    "requestQuotaLimitReached": "{mediaType} 的请求次数已达到上限。",
+    "requestQuotaLimitReached": "{mediaType} 的请求次数已达上限。",
     "@requestQuotaLimitReached": {
         "placeholders": {
             "mediaType": {
@@ -1451,7 +1451,7 @@
             }
         }
     },
-    "seerrSetServerFirst": "请先设置 Seerr 服务器",
+    "seerrSetServerFirst": "请先设置 Seerr 服务器地址",
     "seerrLocalLoginTitle": "Seerr 本地登录",
     "seerrJellyfinLoginTitle": "Seerr Jellyfin 登录",
     "seerrSessionSaved": "Seerr 会话已保存",
@@ -1466,8 +1466,8 @@
     "seerrServer": "Seerr 服务器",
     "seerrAuthenticateLocal": "Seerr 身份验证（本地）",
     "seerrAuthenticateJellyfin": "Seerr 身份验证（Jellyfin）",
-    "seerrSessionConfigured": "会话配置",
-    "seerrConfigured": "配置",
+    "seerrSessionConfigured": "已配置会话",
+    "seerrConfigured": "已配置",
     "seerrTestConnection": "测试 Seerr 连接",
     "rootFolderDefaultLabel": "{folder} (默认)",
     "@rootFolderDefaultLabel": {
@@ -1487,7 +1487,7 @@
     "seerrEnterServerUrlFirst": "请先输入 Seerr 服务器地址",
     "seerrApiKeySaved": "API 密钥已保存",
     "seerrLoggedIn": "已登录 Seerr",
-    "seerrConnectedToServer": "已连接到 Seerr 服务器: {serverUrl}",
+    "seerrConnectedToServer": "已连接到 Seerr 服务器：{serverUrl}",
     "@seerrConnectedToServer": {
         "placeholders": {
             "serverUrl": {
@@ -1499,21 +1499,21 @@
     "discover": "发现",
     "settingsProfileSubtitleLanguage": "首选字幕语言",
     "settingsProfileSubtitleLanguageTitle": "设置首选字幕语言",
-    "settingsProfileSubtitleLanguageDesc": "输入语言代码 (例如., 'en', 'es', 'fr')",
+    "settingsProfileSubtitleLanguageDesc": "输入语言代码（如 en、es、fr）",
     "settingsProfileSubtitleMode": "字幕模式",
     "subtitlePlaybackModeDefault": "默认",
-    "subtitlePlaybackModeAlways": "始终播放",
-    "subtitlePlaybackModeOnlyForced": "仅限强制",
-    "subtitlePlaybackModeNone": "无",
-    "subtitlePlaybackModeSmart": "自动",
+    "subtitlePlaybackModeAlways": "始终显示",
+    "subtitlePlaybackModeOnlyForced": "仅限强制字幕",
+    "subtitlePlaybackModeNone": "不显示",
+    "subtitlePlaybackModeSmart": "智能选择",
     "syncplayAccessCreateAndJoinGroups": "创建和加入群组",
     "syncplayAccessJoinGroups": "加入群组",
-    "syncplayAccessNone": "无",
+    "syncplayAccessNone": "无权限",
     "sponsor": "赞助",
-    "sponsorMessage": "如果您喜欢使用 Fladder，可以考虑赞助该项目，以支持持续的开发和改进。感谢您的支持！",
-    "popularity": "热门",
+    "sponsorMessage": "如果您喜欢 Fladder，欢迎赞助该项目以支持持续的开发和改进。感谢您的支持！",
+    "popularity": "热度",
     "contentRating": "内容分级",
-    "runtimeMinutesTitle": "运行时间（分钟）",
+    "runtimeMinutesTitle": "时长（分钟）",
     "runtimeRangeMinutes": "{min} - {max} 分钟",
     "@runtimeRangeMinutes": {
         "placeholders": {
@@ -1534,7 +1534,7 @@
             }
         }
     },
-    "streamingServices": "发行商 ({count})",
+    "streamingServices": "流媒体平台（{count}）",
     "@streamingServices": {
         "description": "Streaming providers (Netflix,HBO, etc.)",
         "placeholders": {
@@ -1544,27 +1544,27 @@
             }
         }
     },
-    "popularSeries": "热门节目",
+    "popularSeries": "热门剧集",
     "min": "最小",
     "max": "最大",
     "manageRequest": "管理请求",
-    "requestAll": "请求所有",
+    "requestAll": "全部请求",
     "openInSeerr": "在 Seerr 中打开",
     "openInSonarr": "在 Sonarr 中打开",
     "openInRadarr": "在 Radarr 中打开",
-    "removeFromSonarr": "从 Sonarr 中移除",
-    "removeFromRadarr": "从 Radarr 中移除",
-    "markAllSeasonsAsAvailable": "将所有季标记为播出中",
-    "markAsAvailable": "标记为播出中",
-    "markAllSeasonsAsAvailableConfirm": "将所有季标记为播出中？",
-    "markAsAvailableConfirm": "标记为播出中？",
-    "markedAsAvailable": "标记为播出中",
+    "removeFromSonarr": "从 Sonarr 移除",
+    "removeFromRadarr": "从 Radarr 移除",
+    "markAllSeasonsAsAvailable": "标记所有季为可用",
+    "markAsAvailable": "标记为可用",
+    "markAllSeasonsAsAvailableConfirm": "标记所有季为可用？",
+    "markAsAvailableConfirm": "标记为可用？",
+    "markedAsAvailable": "已标记为可用",
     "deleteData": "删除数据",
-    "removeSeriesFromSonarrConfirm": "要从 Sonarr 中删除此节目吗？这将删除所有数据，包括文件。",
-    "removeMovieFromRadarrConfirm": "要从 Radarr 中删除此电影吗？这将删除所有数据，包括文件。",
-    "removedFromSonarr": "从 Sonarr 中移除",
-    "removedFromRadarr": "从 Radarr 中移除",
-    "deleteSeerrDataConfirm": "确定要删除 Seerr 中的所有文件吗？此操作无法撤销。\n如果数据仍然存在于 {service} 中，则可以重新导入。",
+    "removeSeriesFromSonarrConfirm": "确定从 Sonarr 中删除此剧集吗？这将删除所有数据，包括文件。",
+    "removeMovieFromRadarrConfirm": "确定从 Radarr 中删除此电影吗？这将删除所有数据，包括文件。",
+    "removedFromSonarr": "已从 Sonarr 移除",
+    "removedFromRadarr": "已从 Radarr 移除",
+    "deleteSeerrDataConfirm": "确定要删除 Seerr 中的所有数据吗？此操作不可撤销。\n如果 {service} 中仍存在数据，则可重新导入。",
     "@deleteSeerrDataConfirm": {
         "description": "Confirmation message for deleting Seerr data",
         "placeholders": {
@@ -1575,19 +1575,19 @@
         }
     },
     "dataDeleted": "数据已删除",
-    "seerrRequestStatusPending": "待处理",
-    "seerrRequestStatusApproved": "批准",
-    "seerrRequestStatusDeclined": "拒绝",
+    "seerrRequestStatusPending": "待审核",
+    "seerrRequestStatusApproved": "已批准",
+    "seerrRequestStatusDeclined": "已拒绝",
     "seerrRequestStatusFailed": "失败",
-    "seerrRequestStatusCompleted": "完成",
-    "seerrMediaStatusProcessing": "进程",
+    "seerrRequestStatusCompleted": "已完成",
+    "seerrMediaStatusProcessing": "处理中",
     "seerrMediaStatusPartiallyAvailable": "部分可用",
     "seerrMediaStatusAvailable": "可用",
-    "seerrMediaStatusBlacklisted": "列入黑名单",
-    "seerrMediaStatusDeleted": "删除",
+    "seerrMediaStatusBlacklisted": "已拉黑",
+    "seerrMediaStatusDeleted": "已删除",
     "approve": "批准",
     "decline": "拒绝",
-    "pendingRequests": "{count, plural, other{没有待处理的请求} one{{count} 个待处理的请求} two{{count} 个待处理的请求}}",
+    "pendingRequests": "{count, plural, other{待处理请求：{count} 个} one{待处理请求：{count} 个}}",
     "@pendingRequests": {
         "description": "pendingRequests",
         "placeholders": {
@@ -1619,10 +1619,10 @@
             }
         }
     },
-    "playbackTypeTV": "电视",
-    "seerrCustomHeaders": "自定义标头",
-    "seerrHeader": "标头",
-    "seerrHeaderValue": "值",
+    "playbackTypeTV": "电视直播",
+    "seerrCustomHeaders": "自定义请求头",
+    "seerrHeader": "请求头名称",
+    "seerrHeaderValue": "请求头值",
     "watch": "观看",
     "watchChannel": "观看 {channel}",
     "@watchChannel": {
@@ -1646,28 +1646,28 @@
             }
         }
     },
-    "homeBannerDetailed": "详情",
-    "homeBannerTV": "电视",
+    "homeBannerDetailed": "详细信息",
+    "homeBannerTV": "电视直播",
     "showLess": "显示更少",
-    "activeTvChannels": "活动的电视频道",
-    "enableNewTVLayout": "启用新的电视布局",
-    "enableNewTVLayoutDesc": "在控制台上显示更大的电视风格横幅广告。这将成为未来版本中的默认布局。",
-    "enableSpeedBoostTitle": "启用加速功能",
-    "enableSpeedBoostDesc": "按住屏幕（移动设备）或空格键（电脑）可暂时提高播放速度",
-    "speedBoostRateTitle": "速度倍率",
-    "speedBoostRateDesc": "加速激活时的播放速度",
-    "enableDoubleTapSeekTitle": "双击即可快进/播放/暂停",
-    "enableDoubleTapSeekDesc": "双击屏幕左侧/右侧可快进/快退。双击屏幕中央可播放/暂停",
+    "activeTvChannels": "活跃的电视频道",
+    "enableNewTVLayout": "启用新版电视布局",
+    "enableNewTVLayoutDesc": "在仪表盘上显示更大的电视风格横幅。这将成为未来版本的默认布局。",
+    "enableSpeedBoostTitle": "启用加速播放",
+    "enableSpeedBoostDesc": "长按屏幕（移动端）或空格键（桌面端）可临时提高播放速度",
+    "speedBoostRateTitle": "加速倍率",
+    "speedBoostRateDesc": "加速激活时的播放倍速",
+    "enableDoubleTapSeekTitle": "双击快进/播放/暂停",
+    "enableDoubleTapSeekDesc": "双击屏幕左侧/右侧快进/快退。双击屏幕中央播放/暂停。",
     "backgroundColor": "背景颜色",
-    "liveTV": "直播电视",
-    "liveTvManageTunersEpg": "管理调谐器设备和电子节目指南提供商",
+    "liveTV": "电视直播",
+    "liveTvManageTunersEpg": "管理调谐器设备和节目指南",
     "tunerDevices": "调谐器设备",
-    "epgGuideProviders": "电子节目指南提供商",
+    "epgGuideProviders": "节目指南提供商",
     "noTunerDevicesConfigured": "未配置调谐器设备",
-    "noEpgProvidersConfigured": "未配置电子节目指南提供商",
+    "noEpgProvidersConfigured": "未配置节目指南提供商",
     "addTunerDevice": "添加调谐器设备",
     "addProvider": "添加提供商",
-    "tunerHostAddedSuccessfully": "调谐器主机已成功添加",
+    "tunerHostAddedSuccessfully": "调谐器主机已添加",
     "failedToAddTunerHost": "添加调谐器主机失败: {error}",
     "@failedToAddTunerHost": {
         "placeholders": {
@@ -1676,7 +1676,7 @@
             }
         }
     },
-    "tunerHostUpdatedSuccessfully": "调谐器主机已成功更新",
+    "tunerHostUpdatedSuccessfully": "调谐器主机已更新",
     "failedToUpdateTunerHost": "更新调谐器主机失败: {error}",
     "@failedToUpdateTunerHost": {
         "placeholders": {
@@ -1686,7 +1686,7 @@
         }
     },
     "deleteTunerHost": "删除调谐器主机",
-    "deleteTunerHostConfirm": "您确定要删除\"{name}\"吗？",
+    "deleteTunerHostConfirm": "确定要删除「{name}」吗？",
     "@deleteTunerHostConfirm": {
         "placeholders": {
             "name": {
@@ -1694,7 +1694,7 @@
             }
         }
     },
-    "tunerHostDeletedSuccessfully": "调谐器主机已成功删除",
+    "tunerHostDeletedSuccessfully": "调谐器主机已删除",
     "failedToDeleteTunerHost": "删除调谐器主机失败: {error}",
     "@failedToDeleteTunerHost": {
         "placeholders": {
@@ -1703,8 +1703,8 @@
             }
         }
     },
-    "epgProviderAddedSuccessfully": "电子节目指南提供商已成功添加",
-    "failedToAddEpgProvider": "添加电子节目指南提供商: {error}",
+    "epgProviderAddedSuccessfully": "节目指南提供商已添加",
+    "failedToAddEpgProvider": "添加节目指南提供商失败：{error}",
     "@failedToAddEpgProvider": {
         "placeholders": {
             "error": {
@@ -1712,8 +1712,8 @@
             }
         }
     },
-    "epgProviderUpdatedSuccessfully": "电子节目指南提供商已成功更新",
-    "failedToUpdateEpgProvider": "更新电子节目指南提供商失败: {error}",
+    "epgProviderUpdatedSuccessfully": "节目指南提供商已更新",
+    "failedToUpdateEpgProvider": "更新节目指南提供商失败：{error}",
     "@failedToUpdateEpgProvider": {
         "placeholders": {
             "error": {
@@ -1721,10 +1721,10 @@
             }
         }
     },
-    "deleteEpgProvider": "删除电子节目指南提供商",
-    "deleteEpgProviderConfirm": "您确定要删除此服务提供商吗？",
-    "epgProviderDeletedSuccessfully": "电子节目指南提供商已成功删除",
-    "failedToDeleteEpgProvider": "删除电子节目指南提供商失败: {error}",
+    "deleteEpgProvider": "删除节目指南提供商",
+    "deleteEpgProviderConfirm": "确定要删除此服务提供商吗？",
+    "epgProviderDeletedSuccessfully": "节目指南提供商已删除",
+    "failedToDeleteEpgProvider": "删除节目指南提供商失败：{error}",
     "@failedToDeleteEpgProvider": {
         "placeholders": {
             "error": {
@@ -1733,16 +1733,16 @@
         }
     },
     "editTunerDevice": "编辑调谐器设备",
-    "friendlyName": "友好名称",
+    "friendlyName": "显示名称",
     "url": "URL",
-    "userAgent": "用户代理",
+    "userAgent": "User-Agent",
     "userAgentOptional": "用户代理（可选）",
     "maxConcurrentStreams": "最大并发流",
-    "addEpgProvider": "添加电子节目指南提供商",
-    "editEpgProvider": "编辑电子节目指南提供商",
+    "addEpgProvider": "添加节目指南提供商",
+    "editEpgProvider": "编辑节目指南提供商",
     "xmltvPathUrl": "XMLTV 路径/URL",
-    "enableAllTuners": "对所有调谐器启用",
-    "enabledTuners": "启用调谐器",
+    "enableAllTuners": "启用全部调谐器",
+    "enabledTuners": "已启用的调谐器",
     "selectTuners": "选择调谐器",
     "moviePrefix": "电影前缀",
     "movieCategories": "电影类别",
@@ -1754,11 +1754,11 @@
     "fallbackMaxBitrate": "最大备用比特率（Mbps）",
     "concurrentStreams": "最大并发流",
     "concurrentStreamsHint": "0 = 无限制",
-    "allowFmp4Container": "允许 fMP4 转码容器",
-    "allowStreamSharing": "允许流共享",
-    "enableStreamLooping": "启用流循环",
-    "ignoreDts": "忽略DTS时间戳",
-    "readAtNativeFramerate": "以原生帧速率读取",
+    "allowFmp4Container": "允许 fMP4 封装",
+    "allowStreamSharing": "允许串流共享",
+    "enableStreamLooping": "启用串流循环",
+    "ignoreDts": "忽略 DTS 时间戳",
+    "readAtNativeFramerate": "以原始帧率读取",
     "importFavoritesOnly": "仅导入收藏频道",
     "allowHWTranscoding": "允许硬件转码",
     "detectDevices": "检测设备",
@@ -1781,7 +1781,7 @@
     "sportsCategoriesSubLabel": "要分配给与体育前缀匹配的频道的类别",
     "kidsCategoriesSubLabel": "要分配给与儿童前缀匹配的频道的类别",
     "notifications": "通知",
-    "showNewItemNotificationTitle": "媒体库项目通知",
+    "showNewItemNotificationTitle": "媒体库新内容通知",
     "notificationChannelDescription": "新增项目的通知",
     "notificationNewEpisodes": "新增剧集",
     "notificationNewItems": "{count, plural, one{{count} 新项目} other{{count} 新项目}}",
@@ -1793,9 +1793,9 @@
             }
         }
     },
-    "notificationTimerIOSWarning": " iOS 决定何时/是否实际执行更新，通知可能会延迟或根本不显示。",
+    "notificationTimerIOSWarning": "iOS 决定何时以及是否执行更新，通知可能会延迟或完全不显示。",
     "updateCheckInterval": "更新检查间隔",
-    "updateCheckIntervalDesc": "后台任务运行频率",
+    "updateCheckIntervalDesc": "后台任务的运行频率",
     "notificationsIntervalClientReminder": "已为所有用户设置通知间隔。",
     "requestMore": "请求更多",
     "seerrRequestNotifications": "Seerr 请求的通知",
@@ -1824,12 +1824,12 @@
     },
     "includeHiddenItems": "包含隐藏媒体库",
     "includeHiddenItemsDesc": "包含控制台中隐藏的媒体库",
-    "batteryOptimizationDesc": "电池优化可能会延迟 Fladder 的后台通知。\n点击打开系统设置，关闭 Fladder 的电池优化功能，以提高通知的可靠性。",
+    "batteryOptimizationDesc": "电池优化可能会延迟 Fladder 的后台通知。\n点击打开系统设置，关闭 Fladder 的电池优化，以提高通知的可靠性。",
     "settingsBlurEffectsTitle": "启用模糊效果",
     "settingsBlurEffectsDesc": "启用用户界面中的模糊效果。禁用此功能可以提高低端设备的性能。",
-    "profileSettingsOpenAuthAtLaunch": "在应用锁上显示身份验证方法",
+    "profileSettingsOpenAuthAtLaunch": "启动时验证身份",
     "toggleSidebar": "切换侧边栏",
-    "generateLoginLink": "{userName} 的代码",
+    "generateLoginLink": "{userName} 的登录码",
     "@generateLoginLink": {
         "description": "Code for a user to share",
         "placeholders": {
@@ -1842,10 +1842,10 @@
     "shareQRCode": "分享二维码",
     "copyLoginLink": "复制链接",
     "includePassword": "包含密码",
-    "invalidAuthLink": "登录链接无效",
+    "invalidAuthLink": "身份验证链接无效",
     "advancedVideoOptionsTitle": "高级视频选项",
     "advancedVideoOptionsDesc": "启用 HDR、色调映射和高级色彩处理（在某些设备上可能不稳定）",
-    "requestedSuccessForItem": "成功请求 {itemName}",
+    "requestedSuccessForItem": "已成功请求 {itemName}",
     "@requestedSuccessForItem": {
         "description": "Message shown when a media item is successfully requested",
         "placeholders": {
@@ -1857,8 +1857,8 @@
     "linkData": "链接数据",
     "passwordNotRequired": "并非必填项，留空则链接中不包含密码",
     "authLinkButtonToolTip": "打开身份验证链接对话框",
-    "connectWithAuthLink": "使用身份验证链接",
-    "pasteFladderAuthLink": "粘贴 fladder 身份验证链接 fladder:///login?authLink=...",
+    "connectWithAuthLink": "使用身份验证链接登录",
+    "pasteFladderAuthLink": "粘贴 Fladder 身份验证链接 fladder:///login?authLink=...",
     "connect": "连接",
     "authLinkDesc": "请服务器管理员提供身份验证链接。该链接包含身份验证信息，请务必妥善保管。",
     "deletedItem": "删除 {itemName}",
@@ -1877,18 +1877,18 @@
     "groupedFoldersTitle": "分组媒体库",
     "groupedFoldersDescription": "自动将以下媒体库中的内容分组到“电影”、“音乐”和“电视节目”等视图中。",
     "transcodeInfoTitle": "转码信息",
-    "transcodeInfoNoMetadata": "没有可用的转码元数据。",
+    "transcodeInfoNoMetadata": "没有可用的转码信息。",
     "transcodeDetailsTitle": "转码详情",
-    "containerLabel": "容器",
+    "containerLabel": "封装格式",
     "videoCodecLabel": "视频编解码器",
     "audioCodecLabel": "音频编解码器",
     "bitrateLabel": "比特率",
     "kbps": "kbps",
     "resolutionLabel": "分辨率",
     "seerrUrlSchemeWarning": "无法自动检测 URL 协议。默认使用 https://。如果您的服务器未使用 HTTPS，请在 URL 前添加 http:// 前缀。",
-    "downloadTranscoded": "下载转码后的版本",
-    "downloadOriginal": "下载原始版本",
-    "airsIn": "播出时长 {count} {duration}",
+    "downloadTranscoded": "下载转码版",
+    "downloadOriginal": "下载原片",
+    "airsIn": "距播出还有 {count} {duration}",
     "@airsIn": {
         "description": "airsIn",
         "placeholders": {
@@ -1907,8 +1907,8 @@
     "anyLanguage": "任何语言",
     "enableEdgeGesturesTitle": "启用边缘手势",
     "enableEdgeGesturesDesc": "通过在屏幕边缘上下滑动，调节亮度和音量",
-    "reverseEdgeGesturesTitle": "切换边缘手势",
-    "reverseEdgeGesturesDesc": "切换亮度与音量控制的侧边",
+    "reverseEdgeGesturesTitle": "交换边缘手势",
+    "reverseEdgeGesturesDesc": "交换亮度和音量控制的屏幕边缘",
     "brightnessIndicator": "亮度: {brightness}",
     "@brightnessIndicator": {
         "placeholders": {
@@ -1918,7 +1918,7 @@
         }
     },
     "viewTrailer": "观看预告片",
-    "personBirthday": "生日: {date}",
+    "personBirthday": "生日：{date}",
     "@personBirthday": {
         "description": "Birthday label with formatted date",
         "placeholders": {
@@ -1927,7 +1927,7 @@
             }
         }
     },
-    "personAge": "年龄: {age}",
+    "personAge": "年龄：{age}",
     "@personAge": {
         "description": "Age label with age number",
         "placeholders": {
@@ -1946,9 +1946,163 @@
         }
     },
     "seerrMovies": "推荐电影",
-    "seerrSeries": "推荐节目",
+    "seerrSeries": "推荐剧集",
     "stepForward": "向前",
     "stepBack": "向后",
-    "seekForwardInstant": "向前（即时）",
-    "seekBackInstant": "向后（即时）"
+    "seekForwardInstant": "快速快进",
+    "seekBackInstant": "快速快退",
+    "addToQueue": "添加到队列",
+    "@addToQueue": {},
+    "instantMix": "即时混音",
+    "@instantMix": {},
+    "addedToQueue": "已将 {count} 首曲目添加到队列",
+    "@addedToQueue": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "audioPlayerPlaybackOptionsTitle": "播放选项",
+    "@audioPlayerPlaybackOptionsTitle": {},
+    "audioPlayerRepeatAll": "全部循环",
+    "@audioPlayerRepeatAll": {},
+    "audioPlayerRepeatOff": "关闭循环",
+    "@audioPlayerRepeatOff": {},
+    "audioPlayerRepeatOne": "单曲循环",
+    "@audioPlayerRepeatOne": {},
+    "audioPlayerShuffle": "随机播放",
+    "@audioPlayerShuffle": {},
+    "showArtist": "显示艺术家",
+    "track": "曲目",
+    "@track": {
+        "description": "track",
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "1"
+            }
+        }
+    },
+    "dashboardRecentlyAddedItems": "最近添加的 {name}",
+    "@dashboardRecentlyAddedItems": {
+        "description": "Recently added items on home screen",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "mediaTypeArtists": "{count, plural, one{艺术家} other{艺术家}}",
+    "@mediaTypeArtists": {
+        "description": "Artist (plural)",
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "1"
+            }
+        }
+    },
+    "playMusic": "播放音乐",
+    "@playMusic": {},
+    "authenticateWithBiometrics": "使用生物识别验证 {user}",
+    "@authenticateWithBiometrics": {
+        "description": "Prompt shown to the user when biometric authentication is requested",
+        "placeholders": {
+            "user": {
+                "type": "String",
+                "example": "Jane"
+            }
+        }
+    },
+    "settingsPlayerPlayPauseFadeTitle": "播放/暂停音量淡入淡出",
+    "@settingsPlayerPlayPauseFadeTitle": {},
+    "settingsPlayerPlayPauseFadeDesc": "在播放或暂停时淡入淡出音量",
+    "@settingsPlayerPlayPauseFadeDesc": {},
+    "syncPlaylistDeleteTitle": "删除同步的播放列表",
+    "@syncPlaylistDeleteTitle": {},
+    "syncPlaylistDeleteContent": "是否也要移除此播放列表同步的曲目？",
+    "@syncPlaylistDeleteContent": {},
+    "syncPlaylistKeepTracks": "保留曲目",
+    "@syncPlaylistKeepTracks": {},
+    "syncPlaylistRemoveTracks": "移除曲目",
+    "@syncPlaylistRemoveTracks": {},
+    "pictureInPictureTitle": "画中画",
+    "@pictureInPictureTitle": {
+        "description": "Tooltip on the in-player PiP button"
+    },
+    "pictureInPictureAutoTitle": "自动画中画",
+    "@pictureInPictureAutoTitle": {
+        "description": "Title of the auto-enter Picture-in-Picture setting toggle"
+    },
+    "pictureInPictureSubtitle": "当您离开播放器时自动进入画中画模式。无论此项设置如何，控件中的画中画按钮始终有效。",
+    "@pictureInPictureSubtitle": {
+        "description": "Subtitle of the auto-enter Picture-in-Picture setting toggle"
+    },
+    "pictureInPictureNotSupported": "此设备不支持画中画",
+    "@pictureInPictureNotSupported": {
+        "description": "Snackbar shown when the user taps the PiP button and the OS reports it unsupported"
+    },
+    "removedFromPlaylist": "已从播放列表 {playlistName} 中移除",
+    "@removedFromPlaylist": {
+        "placeholders": {
+            "playlistName": {
+                "type": "String"
+            }
+        }
+    },
+    "playerSettingsReplayGainTitle": "回放增益",
+    "playerSettingsReplayGainDesc": "使用回放增益标签标准化音乐响度。",
+    "playerSettingsReplayGainLevelTitle": "回放增益级别",
+    "playerSettingsReplayGainLevelDesc": "设置回放增益标准化的目标响度级别。常见标准为 -14 dB，但您可以根据偏好调整。",
+    "settingsPlayerCrossfadeTitle": "交叉淡入淡出",
+    "@settingsPlayerCrossfadeTitle": {},
+    "settingsPlayerCrossfadeDesc": "在同一专辑中非连续曲目之间淡入淡出",
+    "@settingsPlayerCrossfadeDesc": {},
+    "settingsPlayerCrossfadeDurationTitle": "交叉淡入淡出时长",
+    "@settingsPlayerCrossfadeDurationTitle": {},
+    "settingsPlayerCrossfadeDurationDesc": "交叉淡入淡出的时长",
+    "@settingsPlayerCrossfadeDurationDesc": {},
+    "quitMultipleWindowsDesc": "您已打开 {count} 个窗口。退出 Fladder 将关闭所有窗口。是否要继续？",
+    "@quitMultipleWindowsDesc": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "2"
+            }
+        }
+    },
+    "closeWindow": "关闭窗口",
+    "openJellyfinQuickConnect": "打开 Jellyfin 快速连接",
+    "@openJellyfinQuickConnect": {},
+    "toggleSubtitles": "切换字幕",
+    "recentlyPlayed": "最近播放",
+    "@recentlyPlayed": {},
+    "recentlyFavorited": "最近收藏",
+    "@recentlyFavorited": {},
+    "mostPlayed": "播放最多",
+    "@mostPlayed": {},
+    "nowPlaying": "正在播放",
+    "@nowPlaying": {},
+    "upNext": "下一个",
+    "@upNext": {},
+    "queue": "队列",
+    "@queue": {},
+    "queueIsEmpty": "队列为空",
+    "@queueIsEmpty": {},
+    "queueItemCount": "{count} 项",
+    "@queueItemCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "removeFromQueue": "从队列中移除",
+    "@removeFromQueue": {},
+    "musicDashboard": "音乐仪表盘",
+    "quiet": "安静",
+    "loud": "响亮",
+    "share": "分享",
+    "setAs": "设置为"
 }

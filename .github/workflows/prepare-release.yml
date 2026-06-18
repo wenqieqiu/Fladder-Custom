@@ -16,7 +16,7 @@ jobs:
           private-key: ${{ secrets.FLADDER_BOT_APP_PRIVATE_KEY }}
 
       - name: Checkout repository
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.2.2
         with:
           ref: develop
           fetch-depth: 0

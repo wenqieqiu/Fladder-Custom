@@ -1,14 +1,14 @@
 class PlayerState {
-  bool playing;
-  bool completed;
-  Duration position;
-  Duration duration;
-  double volume;
-  double rate;
-  bool buffering;
-  Duration buffer;
+  final bool playing;
+  final bool completed;
+  final Duration position;
+  final Duration duration;
+  final double volume;
+  final double rate;
+  final bool buffering;
+  final Duration buffer;
 
-  PlayerState({
+  const PlayerState({
     this.playing = false,
     this.completed = false,
     this.position = Duration.zero,
@@ -19,7 +19,7 @@ class PlayerState {
     this.buffer = Duration.zero,
   });
 
-  PlayerState update({
+  PlayerState copyWith({
     bool? playing,
     bool? completed,
     bool? buffering,
@@ -29,18 +29,42 @@ class PlayerState {
     double? rate,
     Duration? buffer,
   }) {
-    if (playing != null) this.playing = playing;
-    if (completed != null) this.completed = completed;
-    if (buffering != null) this.buffering = buffering;
-    if (position != null) this.position = position;
-    if (duration != null) this.duration = duration;
-    if (volume != null) this.volume = volume;
-    if (rate != null) this.rate = rate;
-    if (buffer != null) this.buffer = buffer;
-    return this;
+    return PlayerState(
+      playing: playing ?? this.playing,
+      completed: completed ?? this.completed,
+      buffering: buffering ?? this.buffering,
+      position: position ?? this.position,
+      duration: duration ?? this.duration,
+      volume: volume ?? this.volume,
+      rate: rate ?? this.rate,
+      buffer: buffer ?? this.buffer,
+    );
   }
-}
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PlayerState &&
+          playing == other.playing &&
+          completed == other.completed &&
+          position == other.position &&
+          duration == other.duration &&
+          volume == other.volume &&
+          rate == other.rate &&
+          buffering == other.buffering &&
+          buffer == other.buffer;
+
+  @override
+  int get hashCode =>
+      playing.hashCode ^
+      completed.hashCode ^
+      position.hashCode ^
+      duration.hashCode ^
+      volume.hashCode ^
+      rate.hashCode ^
+      buffering.hashCode ^
+      buffer.hashCode;
+}
 class PlayerStream {
   final Stream<bool> playing;
   final Stream<bool> completed;
@@ -62,13 +86,4 @@ class PlayerStream {
     this.buffer,
   );
 
-  void bindToState(PlayerState state) {
-    playing.listen((value) => state.update(playing: value));
-    buffering.listen((value) => state.update(buffering: value));
-    position.listen((value) => state.update(position: value));
-    duration.listen((value) => state.update(duration: value));
-    volume.listen((value) => state.update(volume: value));
-    rate.listen((value) => state.update(rate: value));
-    buffer.listen((value) => state.update(buffer: value));
-  }
 }

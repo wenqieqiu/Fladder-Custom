@@ -30,6 +30,7 @@ import 'package:fladder/screens/video_player/components/video_player_quality_con
 import 'package:fladder/screens/video_player/components/video_player_screenshot_indicator.dart';
 import 'package:fladder/screens/video_player/components/video_player_seek_indicator.dart';
 import 'package:fladder/screens/video_player/components/video_player_speed_indicator.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 import 'package:fladder/screens/video_player/components/video_player_volume_indicator.dart';
 import 'package:fladder/screens/video_player/components/video_progress_bar.dart';
 import 'package:fladder/screens/video_player/components/video_volume_slider.dart';

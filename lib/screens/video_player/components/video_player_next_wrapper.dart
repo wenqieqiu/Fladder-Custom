@@ -22,6 +22,7 @@ import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/widgets/full_screen_helpers/full_screen_wrapper.dart';
 import 'package:fladder/widgets/navigation_scaffold/components/shared/player_bar_shared.dart';
 import 'package:fladder/widgets/shared/progress_floating_button.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 class VideoPlayerNextWrapper extends ConsumerStatefulWidget {
   final Widget video;

@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/providers/video_player_provider.dart';
 import 'package:fladder/util/localization_helper.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 Future<void> openQualityOptions(BuildContext context) async {
   return showDialog(

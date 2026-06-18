@@ -92,9 +92,7 @@ class LibMDK extends BasePlayer {
       min: const Duration(seconds: 15).inMilliseconds,
       max: const Duration(seconds: 30).inMilliseconds,
     );
-    return setState(lastState.update(
-      buffering: true,
-    ));
+    return setState(lastState.copyWith(buffering: true));
   }
 
   void setState(PlayerState state) {
@@ -103,7 +101,7 @@ class LibMDK extends BasePlayer {
   }
 
   void updateState() {
-    setState(lastState.update(
+    lastState = lastState.copyWith(
       playing: _controller?.value.isPlaying ?? false,
       completed: _controller?.value.isCompleted ?? false,
       position: _controller?.value.position ?? Duration.zero,
@@ -112,7 +110,8 @@ class LibMDK extends BasePlayer {
       rate: _controller?.value.playbackSpeed ?? 1.0,
       buffering: _controller?.value.isBuffering ?? true,
       buffer: calculateBufferedDuration(_controller?.value),
-    ));
+    );
+    setState(lastState);
   }
 
   Duration calculateBufferedDuration(VideoPlayerValue? value) {

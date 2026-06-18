@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'package:fladder/models/items/photos_model.dart';
 import 'package:fladder/models/settings/video_player_settings.dart';
@@ -30,7 +31,7 @@ class SimpleVideoPlayer extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _SimpleVideoPlayerState();
 }
 
-class _SimpleVideoPlayerState extends ConsumerState<SimpleVideoPlayer> with WidgetsBindingObserver {
+class _SimpleVideoPlayerState extends ConsumerState<SimpleVideoPlayer> with WidgetsBindingObserver, WindowListener {
   late final BasePlayer player = switch (ref.read(videoPlayerSettingsProvider).wantedPlayer) {
     PlayerOptions.libMDK => LibMDK(),
     PlayerOptions.libMPV => LibMPV(),

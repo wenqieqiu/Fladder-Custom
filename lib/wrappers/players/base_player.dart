@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
+import 'package:fladder/models/item_base_model.dart';
 import 'package:fladder/models/items/media_streams_model.dart';
 import 'package:fladder/models/playback/playback_model.dart';
 import 'package:fladder/models/settings/subtitle_settings_model.dart';
@@ -10,6 +11,21 @@ import 'package:fladder/models/settings/video_player_settings.dart';
 import 'package:fladder/wrappers/players/player_states.dart';
 
 const libassFallbackFont = "assets/mp-font.ttf";
+
+/// Interface for players that manage an internal playlist (e.g. LibMPV).
+abstract class HasPlaylist {
+  Future<void> addToPlaylist(String url);
+  Future<void> removeFromPlaylist(int index);
+  Future<void> playerNext();
+  Future<void> playerPrevious();
+  Stream<int> get playlistIndexStream;
+}
+
+/// Interface for players capable of audio queue crossfading and ReplayGain.
+abstract class AudioQueueCapable {
+  Future<void> crossfadeToUrl(String url, Duration startPosition, {double? replayGainDb});
+  Future<void> applyReplayGainForItem(ItemBaseModel? item);
+}
 
 abstract class BasePlayer {
   Stream<PlayerState> get stateStream;
@@ -29,13 +45,6 @@ abstract class BasePlayer {
   Future<void> stop();
   Future<void> playOrPause();
   Future<void> loop(bool loop);
-  Future<void> skipToNext() async {}
-  Future<void> skipToPrevious() async {}
-  Future<void> addToPlaylist(String url) async {}
-  Future<void> removeFromPlaylist(int index) async {}
-  Future<void> playerNext() async {}
-  Future<void> playerPrevious() async {}
-  Stream<int> get playlistIndexStream => const Stream<int>.empty();
   Future<Uint8List?> takeScreenshot();
   Future<int> setSubtitleTrack(SubStreamModel? model, PlaybackModel playbackModel);
   Future<int> setAudioTrack(AudioStreamModel? model, PlaybackModel playbackModel);

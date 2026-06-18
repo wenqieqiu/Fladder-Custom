@@ -103,7 +103,7 @@ class NativePlayer extends BasePlayer implements VideoPlayerListenerCallback {
 
   @override
   void onPlaybackStateChanged(PlaybackState state) {
-    lastState = lastState.update(
+    lastState = lastState.copyWith(
       playing: state.playing,
       position: Duration(milliseconds: state.position),
       buffer: Duration(milliseconds: state.buffered),

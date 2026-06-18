@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fladder/util/bitrate_helper.dart';
+import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
 
 import 'package:fladder/models/item_base_model.dart';
 import 'package:fladder/models/items/chapters_model.dart';
@@ -133,13 +135,17 @@ class OfflinePlaybackModel extends PlaybackModel {
   OfflinePlaybackModel copyWith({
     ItemBaseModel? item,
     ValueGetter<Media?>? media,
-    SyncedItem? syncedItem,
+    ValueGetter<Duration>? lastPosition,
+    PlaybackInfoResponse? playbackInfo,
     ValueGetter<MediaStreamsModel?>? mediaStreams,
     ValueGetter<MediaSegmentsModel?>? mediaSegments,
+    ValueGetter<List<Chapter>?>? chapters,
     ValueGetter<TrickPlayModel?>? trickPlay,
     List<ItemBaseModel>? queue,
     PlaybackQueueState? playbackQueue,
     PlaybackQueueSource? queueSource,
+    Map<Bitrate, bool>? bitRateOptions,
+    SyncedItem? syncedItem,
     List<SyncedItem>? syncedQueue,
   }) {
     return OfflinePlaybackModel(

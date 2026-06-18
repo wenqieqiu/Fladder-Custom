@@ -18,6 +18,7 @@ import 'package:fladder/screens/video_player/video_player_controls.dart';
 import 'package:fladder/util/adaptive_layout/adaptive_layout.dart';
 import 'package:fladder/util/themes_data.dart';
 import 'package:fladder/widgets/shared/back_intent_dpad.dart';
+import 'package:fladder/providers/playback_model_helper.dart';
 
 class VideoPlayer extends ConsumerStatefulWidget {
   const VideoPlayer({super.key});
