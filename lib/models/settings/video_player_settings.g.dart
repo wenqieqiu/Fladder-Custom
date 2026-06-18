@@ -54,6 +54,8 @@ _VideoPlayerSettingsModel _$VideoPlayerSettingsModelFromJson(
           json['enableAdvancedVideoOptions'] as bool? ?? false,
       enableEdgeGestures: json['enableEdgeGestures'] as bool? ?? true,
       reverseEdgeGestures: json['reverseEdgeGestures'] as bool? ?? false,
+      horizontalSlideSeekSensitivity:
+          (json['horizontalSlideSeekSensitivity'] as num?)?.toDouble() ?? 1.0,
       enablePictureInPicture: json['enablePictureInPicture'] as bool? ?? true,
       enableReplayGain: json['enableReplayGain'] as bool? ?? true,
       replayGainVolumeLevel: $enumDecodeNullable(
@@ -95,6 +97,7 @@ Map<String, dynamic> _$VideoPlayerSettingsModelToJson(
       'enableAdvancedVideoOptions': instance.enableAdvancedVideoOptions,
       'enableEdgeGestures': instance.enableEdgeGestures,
       'reverseEdgeGestures': instance.reverseEdgeGestures,
+      'horizontalSlideSeekSensitivity': instance.horizontalSlideSeekSensitivity,
       'enablePictureInPicture': instance.enablePictureInPicture,
       'enableReplayGain': instance.enableReplayGain,
       'replayGainVolumeLevel':
@@ -189,6 +192,7 @@ const _$VideoHotKeysEnumMap = {
   VideoHotKeys.skipMediaSegment: 'skipMediaSegment',
   VideoHotKeys.takeScreenshot: 'takeScreenshot',
   VideoHotKeys.takeScreenshotClean: 'takeScreenshotClean',
+  VideoHotKeys.toggleSubtitles: 'toggleSubtitles',
   VideoHotKeys.exit: 'exit',
 };
 

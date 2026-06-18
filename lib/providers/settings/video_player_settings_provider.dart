@@ -193,6 +193,9 @@ class VideoPlayerSettingsProviderNotifier extends StateNotifier<VideoPlayerSetti
     state = state.copyWith(enableCrossfade: value && state.canUseCrossfade);
   }
 
+  void setHorizontalSlideSeekSensitivity(double value) =>
+      state = state.copyWith(horizontalSlideSeekSensitivity: value.clamp(0.25, 4.0));
+
   void setCrossfadeDurationMs(int value) => state = state.copyWith(crossfadeDurationMs: value);
 
   static VideoPlayerSettingsModel _sanitizeCrossfade(VideoPlayerSettingsModel value) {

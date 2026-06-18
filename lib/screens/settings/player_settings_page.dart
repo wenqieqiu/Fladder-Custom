@@ -261,6 +261,22 @@ class _PlayerSettingsPageState extends ConsumerState<PlayerSettingsPage> {
                   onChanged: (value) => provider.setReverseEdgeGestures(value),
                 ),
               ),
+              const SizedBox(height: 8),
+              SettingsListTile(
+                label: const Text("横滑灵敏度"),
+                subLabel: Text("灵敏度 ${videoSettings.horizontalSlideSeekSensitivity.toStringAsFixed(1)}x"),
+                trailing: SizedBox(
+                  width: 200,
+                  child: Slider(
+                    value: videoSettings.horizontalSlideSeekSensitivity,
+                    min: 0.25,
+                    max: 4.0,
+                    divisions: 15,
+                    label: videoSettings.horizontalSlideSeekSensitivity.toStringAsFixed(1),
+                    onChanged: (value) => provider.setHorizontalSlideSeekSensitivity(value),
+                  ),
+                ),
+              ),
             ],
             SettingsListTile(
               label: Text(context.localized.enableSpeedBoostTitle),

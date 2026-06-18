@@ -36,6 +36,7 @@ import 'package:fladder/util/localization_helper.dart';
 import 'package:fladder/util/string_extensions.dart';
 import 'package:fladder/widgets/full_screen_helpers/full_screen_wrapper.dart';
 import 'package:fladder/wrappers/pip_manager.dart';
+import 'package:fladder/widgets/shared/trick_play_image.dart';
 import 'package:fladder/screens/video_player/components/player_controls_mixin.dart';
 
 class DesktopControls extends ConsumerStatefulWidget {
@@ -58,6 +59,12 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
   String? _vDragSide;
   double? _vDragStartValue;
   double? _vDragLastValue;
+
+  // Horizontal slide seek state (touch)
+  bool _hDragActive = false;
+  double? _hDragLastX;
+  double? _hDragTotalDistance;
+  Duration? _hDragTargetPosition;
 
   int? _lastSelectedSubtitleIndex;
 
@@ -119,6 +126,10 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
             onHover: AdaptiveLayout.of(context).isDesktop || kIsWeb ? (event) => toggleOverlay(value: true) : null,
             child: Stack(
               children: [
+                if (_hDragActive)
+                  Positioned.fill(
+                    child: _buildScrubPreview(),
+                  ),
                 Positioned.fill(
                   child: GestureDetector(
                     onTap: initInputDevice == InputDevice.pointer ? null : () => toggleOverlay(),
@@ -130,7 +141,12 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
                     onLongPressEnd: initInputDevice == InputDevice.touch ? _handleLongPressEnd : null,
                     onVerticalDragStart: initInputDevice == InputDevice.touch ? _handleVerticalDragStart : null,
                     onVerticalDragUpdate: initInputDevice == InputDevice.touch ? _handleVerticalDragUpdate : null,
-                    onVerticalDragEnd: initInputDevice == InputDevice.touch ? _handleVerticalDragEnd : null,
+                    onHorizontalDragStart:
+                        initInputDevice == InputDevice.touch ? _handleHorizontalDragStart : null,
+                    onHorizontalDragUpdate:
+                        initInputDevice == InputDevice.touch ? _handleHorizontalDragUpdate : null,
+                    onHorizontalDragEnd:
+                        initInputDevice == InputDevice.touch ? _handleHorizontalDragEnd : null,
                     //better play/pause handling on Desktop (works with dragging on click)
                     onHorizontalDragDown:
                         initInputDevice == InputDevice.pointer ? (details) => player.playOrPause() : null,
@@ -704,6 +720,136 @@ class _DesktopControlsState extends ConsumerState<DesktopControls> with PlayerCo
     _vDragSide = null;
     _vDragStartValue = null;
     _vDragLastValue = null;
+  }
+
+  // --- Touch Horizontal Drag Handlers (Scrub Seek) ---
+
+  void _handleHorizontalDragStart(DragStartDetails details) {
+    final mediaPlayback = ref.read(mediaPlaybackProvider);
+    if (mediaPlayback.buffering || mediaPlayback.duration.inMilliseconds <= 0) return;
+    resetTimer();
+    setState(() {
+      _hDragActive = true;
+      _hDragLastX = details.localPosition.dx;
+      _hDragTotalDistance = 0;
+      _hDragTargetPosition = mediaPlayback.position;
+    });
+    // Pause the video during drag
+    ref.read(videoPlayerProvider).pause();
+  }
+
+  void _handleHorizontalDragUpdate(DragUpdateDetails details) {
+    if (!_hDragActive || _hDragTargetPosition == null) return;
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    if (screenWidth <= 0) return;
+    final mediaPlayback = ref.read(mediaPlaybackProvider);
+    final totalMs = mediaPlayback.duration.inMilliseconds.toDouble();
+    if (totalMs <= 0) return;
+
+    final sensitivity = ref.read(videoPlayerSettingsProvider).horizontalSlideSeekSensitivity;
+    // Map pixel delta to time delta: full screen width = full duration, scaled by sensitivity
+    final deltaDx = details.localPosition.dx - (_hDragLastX ?? details.localPosition.dx);
+    final deltaMs = (deltaDx / screenWidth) * totalMs * sensitivity;
+
+    setState(() {
+      _hDragLastX = details.localPosition.dx;
+      _hDragTotalDistance = (_hDragTotalDistance ?? 0) + details.delta.dx.abs();
+      final newMs = (_hDragTargetPosition!.inMilliseconds + deltaMs).clamp(0, totalMs.toInt()).toInt();
+      _hDragTargetPosition = Duration(milliseconds: newMs);
+    });
+  }
+
+  void _handleHorizontalDragEnd(DragEndDetails details) {
+    if (!_hDragActive || _hDragTargetPosition == null) {
+      setState(() => _hDragActive = false);
+      // Resume playback regardless — video was paused on drag start
+      ref.read(videoPlayerProvider).play();
+      return;
+    }
+
+    final targetPosition = _hDragTargetPosition!;
+    final totalDistance = _hDragTotalDistance ?? 0;
+
+    setState(() {
+      _hDragActive = false;
+      _hDragLastX = null;
+      _hDragTotalDistance = null;
+      _hDragTargetPosition = null;
+    });
+
+    // Seek first (if drag was meaningful), then always resume
+    if (totalDistance >= 20) {
+      ref.read(videoPlayerProvider).seek(targetPosition);
+    }
+    ref.read(videoPlayerProvider).play();
+  }
+
+  Widget _buildScrubPreview() {
+    final playbackModel = ref.read(playBackModel);
+    final trickPlay = playbackModel?.trickPlay;
+    final mediaPlayback = ref.read(mediaPlaybackProvider);
+    final targetPosition = _hDragTargetPosition ?? mediaPlayback.position;
+    final progress = mediaPlayback.duration.inMilliseconds > 0
+        ? targetPosition.inMilliseconds / mediaPlayback.duration.inMilliseconds
+        : 0.0;
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        // Full-screen trick play preview or dark overlay
+        if (trickPlay != null && trickPlay.images.isNotEmpty)
+          Positioned.fill(
+            child: TrickPlayImage(
+              trickPlay,
+              position: targetPosition,
+            ),
+          )
+        else
+          Container(
+            color: Colors.black,
+          ),
+
+        // Top time badge
+        Positioned(
+          top: MediaQuery.of(context).padding.top + 24,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.7),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                '${targetPosition.readAbleDuration} / ${mediaPlayback.duration.readAbleDuration}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        // Bottom progress indicator
+        Positioned(
+          bottom: 120,
+          left: 32,
+          right: 32,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(3),
+            child: LinearProgressIndicator(
+              value: progress,
+              backgroundColor: Colors.white24,
+              valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+              minHeight: 4,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   void _toggleSubtitles() {
