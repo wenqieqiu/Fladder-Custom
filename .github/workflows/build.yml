@@ -6,6 +6,11 @@ on:
       - "v*"
     branches:
       - master
+    paths-ignore:
+      - ".vscode/**"
+      - "docs/**"
+      - "**/*.md"
+      - "LICENSE"
   pull_request:
     paths:
       - pubspec.yaml
@@ -84,6 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version_name: ${{ steps.fetch.outputs.version_name }}
+      build_name: ${{ steps.fetch.outputs.build_name }}
       flutter_version: ${{ steps.fetch.outputs.flutter_version }}
       nightly_version: ${{ steps.fetch.outputs.nightly_version }}
       build_type: ${{ needs.check-trigger.outputs.build_type }}
@@ -103,7 +109,6 @@ jobs:
           # Extract flutter_version from .fvmrc
           FLUTTER_VERSION=$(jq -r '.flutter' .fvmrc)
           echo "flutter_version=${FLUTTER_VERSION}" >> "$GITHUB_OUTPUT"
-
           # Create nightly version if needed
           if [[ "${{ needs.check-trigger.outputs.build_type }}" == "nightly" ]]; then
             NIGHTLY_VERSION="${VERSION_NAME}-nightly"
@@ -111,8 +116,16 @@ jobs:
             echo "Nightly version: $NIGHTLY_VERSION"
           fi
 
-          # Print versions for logging
-          echo "Base version: $VERSION_NAME"
+          # Create dynamic build-name for flutter build --build-name
+          if [[ "${{ needs.check-trigger.outputs.build_type }}" == "nightly" ]]; then
+            BUILD_NAME="${VERSION_NAME}-nightly"
+          elif [[ "${{ needs.check-trigger.outputs.build_type }}" == "development" ]]; then
+            BUILD_NAME="${VERSION_NAME}.dev${{ github.run_number }}"
+          else
+            BUILD_NAME="${VERSION_NAME}"
+          fi
+          echo "build_name=${BUILD_NAME}" >> "$GITHUB_OUTPUT"
+          echo "Build name: $BUILD_NAME"
           echo "Flutter version: $FLUTTER_VERSION"
         shell: bash
 
@@ -167,16 +180,14 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
-
       - name: Build Android APK (PRs)
         if: needs.fetch-info.outputs.build_type == 'development'
         run: |
-          flutter build apk --debug --target-platform android-arm64 --build-number=${{github.run_number}} --flavor production
-
+          flutter build apk --debug --target-platform android-arm64 --build-name=${{ needs.fetch-info.outputs.build_name }} --build-number=${{github.run_number}} --flavor production
       - name: Build Android APK
         if: needs.fetch-info.outputs.build_type != 'development'
         run: |
-          flutter build apk --release --target-platform android-arm64 --build-number=${{github.run_number}} --flavor production
+          flutter build apk --release --target-platform android-arm64 --build-name=${{ needs.fetch-info.outputs.build_name }} --build-number=${{github.run_number}} --flavor production
 
       - name: Rename APK for PR
         if: needs.fetch-info.outputs.build_type == 'development'

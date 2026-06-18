@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "ficonsax",
+    "Fladder",
     "jellyfin",
     "Jellyfin",
     "LTRB",
@@ -9,7 +10,7 @@
     "seerr",
     "Seerr"
   ],
-  "dart.flutterSdkPath": ".fvm/versions/3.35.7",
+  "dart.flutterSdkPath": ".fvm/versions/3.44.2",
   "search.exclude": {
     "**/.fvm": true
   },
